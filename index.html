@@ -32,7 +32,7 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--tx);font-family:var(--f-body);font-size:17px;line-height:1.95;overflow-x:hidden}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:var(--f-body);font-size:1.0625rem;line-height:1.95;overflow-x:hidden}
 img,svg,canvas{max-width:100%}
 a{color:var(--acc);text-underline-offset:4px}
 a:hover{text-decoration-thickness:2px}
@@ -376,12 +376,62 @@ html[dir=rtl] .kpi .v{text-align:right}
 .gloss dt small{display:block;color:var(--mut);font-size:.72rem}
 .gloss dd{margin:4px 0 0;font-size:.94rem;line-height:1.8;color:#cfd8e5}
 
+/* share / QR */
+.share{display:grid;gap:28px;align-items:center}
+@media(min-width:760px){.share{grid-template-columns:auto 1fr;gap:48px}}
+.qr-box{background:#fff;border-radius:14px;padding:14px;width:min(260px,70vw);box-shadow:0 0 0 1px var(--line2),0 20px 50px -20px rgba(255,162,63,.35)}
+.qr-box .qr{display:block;width:100%;height:auto}
+.share-url{font-family:var(--f-mono);direction:ltr;unicode-bidi:isolate;color:var(--acc);font-size:1.05rem;overflow-wrap:anywhere}
+html[dir=rtl] .share-url{text-align:right}
+.only-present{display:none}
+.pres-btn{font:inherit;font-size:.86rem;color:var(--tx);background:transparent;border:1px solid var(--line2);border-radius:8px;min-height:40px;padding:4px 12px;cursor:pointer;display:none;align-items:center;gap:8px}
+.pres-btn:hover{border-color:var(--acc);color:var(--acc)}
+.pres-btn svg{width:18px;height:18px}
+@media(min-width:640px){.pres-btn{display:inline-flex}}
+.top .mnav a.m-pres{grid-column:1/-1;border-color:rgba(255,162,63,.5);color:var(--acc)}
+@media(min-width:640px){.top .mnav a.m-pres{display:none}}
+
+/* presentation mode */
+html.present{font-size:clamp(16px,1.12vw,23px);scroll-behavior:auto}
+html.present body{overflow:hidden}
+html.present .top,html.present footer,html.present main>hr{display:none}
+html.present main>section{display:none}
+html.present main>section.slide-on{display:flex;flex-direction:column;height:100vh;height:100dvh;overflow-y:auto;padding:5vh 0 13vh;animation:pin .45s ease}
+html.present main>section.slide-on>.wrap{margin-block:auto;max-width:min(1560px,94vw)}
+@keyframes pin{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+html.present .only-present{display:block}
+html.present #share .qr-box{width:min(42vh,420px)}
+html.present .thanks{font-family:var(--f-display);font-size:2.6rem;color:var(--acc);margin:18px 0 0}
+html.present .stage{height:min(60vh,720px)}
+html.present .stage-note{display:none}
+html.present .lab-out,html.present .orbit-wrap{top:16px}
+html.present .journey .orbit-wrap{position:sticky}
+.pbar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:80;display:flex;align-items:center;gap:6px;background:rgba(5,8,15,.92);border:1px solid var(--line2);border-radius:12px;padding:6px;transition:opacity .3s}
+.pbar[hidden]{display:none}
+.pbar.idle{opacity:0;pointer-events:none}
+.pbar button{font:inherit;font-size:.9rem;color:var(--tx);background:transparent;border:1px solid var(--line);border-radius:8px;min-width:44px;min-height:42px;padding:2px 12px;cursor:pointer}
+.pbar button:hover{border-color:var(--acc);color:var(--acc)}
+.pbar button[aria-pressed=true]{border-color:rgba(255,162,63,.6);color:var(--acc)}
+.pbar .k{font-family:var(--f-mono);font-size:.7rem;color:var(--mut);border:1px solid var(--line);border-radius:3px;padding:0 4px;margin-inline-start:4px}
+.p-count{direction:ltr;unicode-bidi:isolate;font-family:var(--f-mono);color:var(--mut);font-size:.9rem;min-width:5.5em;text-align:center}
+.pqr{position:fixed;bottom:18px;inset-inline-end:18px;z-index:79;background:#fff;border-radius:10px;padding:8px;width:152px;display:flex;flex-direction:column;align-items:center;gap:2px;box-shadow:0 10px 30px -10px #000}
+.pqr[hidden]{display:none}
+.pqr .qr{width:136px;height:136px}
+.pqr span{font-family:var(--f-mono);font-size:7.6px;color:#111;direction:ltr;white-space:nowrap}
+html.present.on-share .pqr{display:none}
+.phelp{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:80;background:rgba(5,8,15,.92);border:1px solid var(--line2);border-radius:10px;padding:8px 14px;font-size:.85rem;color:var(--mut);max-width:92vw;text-align:center;transition:opacity .5s}
+.phelp[hidden]{display:none}
+.phelp b{color:var(--acc);font-family:var(--f-mono);font-weight:500}
+.phelp.gone{opacity:0}
+@media print{.pbar,.pqr,.phelp{display:none!important}}
+
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
 @media print{#stars,.top,.ctrls,.hint,.sc-ctrl{display:none!important}body{background:#fff;color:#000}.stage,.orbit-wrap{break-inside:avoid}}
 </style>
 </head>
 <body>
 <canvas id="stars" aria-hidden="true"></canvas>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="qr-ar" viewBox="0 0 33 33"><path fill="#ffffff" d="M0 0h33v33H0z"/><path stroke="#000000" d="M2 2.5h7m5 0h1m3 0h4m2 0h7M2 3.5h1m5 0h1m4 0h1m3 0h1m1 0h1m4 0h1m5 0h1M2 4.5h1m1 0h3m1 0h1m1 0h1m1 0h2m2 0h1m3 0h2m2 0h1m1 0h3m1 0h1M2 5.5h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h6m4 0h1m1 0h3m1 0h1M2 6.5h1m1 0h3m1 0h1m1 0h1m1 0h3m3 0h5m1 0h1m1 0h3m1 0h1M2 7.5h1m5 0h1m1 0h1m3 0h2m1 0h2m1 0h1m1 0h1m1 0h1m5 0h1M2 8.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M10 9.5h3m4 0h1m4 0h1M2 10.5h1m1 0h5m2 0h2m1 0h4m1 0h1m2 0h1m1 0h5M3 11.5h1m1 0h2m2 0h3m1 0h1m1 0h1m2 0h9m3 0h1M4 12.5h2m2 0h4m1 0h1m3 0h3m3 0h4M2 13.5h2m3 0h1m1 0h5m2 0h3m5 0h1m1 0h2m1 0h1M3 14.5h1m1 0h2m1 0h1m3 0h2m1 0h2m2 0h3m1 0h1m3 0h2M2 15.5h2m1 0h1m3 0h1m2 0h1m1 0h1m4 0h4m1 0h3m3 0h1M3 16.5h1m1 0h1m2 0h1m1 0h1m3 0h2m1 0h1m1 0h1m5 0h1m1 0h2M3 17.5h1m1 0h2m3 0h2m4 0h3m3 0h1m1 0h1m1 0h1m2 0h1M2 18.5h2m2 0h3m3 0h1m1 0h2m1 0h3m2 0h1m2 0h1m1 0h2M2 19.5h1m4 0h1m5 0h1m1 0h1m2 0h1m1 0h7m1 0h1m1 0h1M2 20.5h1m1 0h2m2 0h3m3 0h7m1 0h1m1 0h1m1 0h1m1 0h1M2 21.5h1m1 0h4m2 0h1m1 0h2m2 0h2m7 0h2m2 0h1M2 22.5h1m1 0h3m1 0h2m4 0h1m2 0h1m1 0h1m1 0h6m1 0h3M10 23.5h4m1 0h1m2 0h1m3 0h1m3 0h5M2 24.5h7m5 0h5m2 0h2m1 0h1m1 0h3M2 25.5h1m5 0h1m1 0h2m1 0h1m1 0h1m5 0h2m3 0h1M2 26.5h1m1 0h3m1 0h1m1 0h1m2 0h1m2 0h4m2 0h5m1 0h3M2 27.5h1m1 0h3m1 0h1m1 0h4m4 0h1m1 0h4m1 0h1m1 0h4M2 28.5h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h1m2 0h5m1 0h7M2 29.5h1m5 0h1m3 0h2m1 0h4m1 0h1m1 0h1m1 0h4m1 0h1M2 30.5h7m1 0h1m1 0h6m1 0h1m1 0h1m1 0h2m3 0h1"/></symbol><symbol id="qr-en" viewBox="0 0 37 37"><path fill="#ffffff" d="M0 0h37v37H0z"/><path stroke="#000000" d="M2 2.5h7m1 0h4m1 0h2m2 0h2m5 0h1m1 0h7M2 3.5h1m5 0h1m1 0h1m2 0h1m1 0h2m3 0h2m1 0h2m3 0h1m5 0h1M2 4.5h1m1 0h3m1 0h1m1 0h1m2 0h4m1 0h1m2 0h6m1 0h1m1 0h3m1 0h1M2 5.5h1m1 0h3m1 0h1m2 0h2m1 0h1m1 0h1m1 0h1m1 0h1m1 0h2m1 0h2m1 0h1m1 0h3m1 0h1M2 6.5h1m1 0h3m1 0h1m1 0h3m4 0h3m3 0h1m4 0h1m1 0h3m1 0h1M2 7.5h1m5 0h1m2 0h1m1 0h1m2 0h3m1 0h2m1 0h1m1 0h1m2 0h1m5 0h1M2 8.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M14 9.5h2m1 0h2m1 0h1m3 0h1m1 0h1M2 10.5h1m2 0h6m1 0h2m2 0h1m1 0h3m1 0h1m3 0h2m2 0h1m1 0h3M4 11.5h1m1 0h1m5 0h1m1 0h2m1 0h1m1 0h3m2 0h2m4 0h3M2 12.5h1m2 0h7m3 0h1m1 0h2m3 0h1m1 0h2m4 0h3m1 0h1M2 13.5h2m2 0h1m2 0h1m2 0h1m2 0h1m4 0h1m4 0h3m1 0h1m2 0h1M2 14.5h1m1 0h1m3 0h1m1 0h1m1 0h1m2 0h1m1 0h1m1 0h1m4 0h3m1 0h2m4 0h1M3 15.5h1m5 0h1m2 0h5m2 0h7m1 0h1m1 0h1m1 0h1M3 16.5h1m4 0h2m2 0h3m1 0h2m1 0h1m1 0h3m2 0h1m1 0h2m1 0h2M3 17.5h2m1 0h1m5 0h2m1 0h1m2 0h1m1 0h1m1 0h1m4 0h1m2 0h3m1 0h1M3 18.5h2m1 0h4m1 0h1m1 0h1m2 0h3m3 0h1m3 0h6M4 19.5h1m4 0h2m2 0h1m2 0h2m1 0h6m3 0h1m1 0h1m1 0h3M3 20.5h6m2 0h2m1 0h1m2 0h1m1 0h5m1 0h1m1 0h3m1 0h2m1 0h1M2 21.5h1m7 0h1m1 0h2m1 0h3m3 0h1m2 0h3m3 0h3m1 0h1M5 22.5h2m1 0h2m1 0h1m2 0h2m1 0h2m1 0h2m4 0h2m1 0h1m1 0h1m1 0h1M2 23.5h4m1 0h1m1 0h2m2 0h3m3 0h1m3 0h3m3 0h2m1 0h1M2 24.5h1m1 0h1m2 0h3m5 0h2m2 0h4m1 0h2m6 0h3M2 25.5h1m2 0h1m1 0h1m1 0h2m4 0h3m1 0h1m1 0h2m1 0h1m2 0h1m2 0h1m1 0h2M2 26.5h2m1 0h2m1 0h2m1 0h1m1 0h2m3 0h1m7 0h5m2 0h2M10 27.5h3m1 0h2m1 0h4m4 0h2m3 0h1m1 0h2M2 28.5h7m1 0h1m1 0h2m1 0h1m1 0h1m1 0h1m1 0h3m1 0h2m1 0h1m1 0h1m1 0h1M2 29.5h1m5 0h1m1 0h2m3 0h1m1 0h1m1 0h2m1 0h1m2 0h2m3 0h4M2 30.5h1m1 0h3m1 0h1m1 0h1m2 0h1m4 0h2m1 0h2m1 0h7m3 0h1M2 31.5h1m1 0h3m1 0h1m1 0h2m1 0h1m4 0h1m1 0h1m3 0h4m1 0h1m1 0h4M2 32.5h1m1 0h3m1 0h1m2 0h2m2 0h3m3 0h2m3 0h1m2 0h3m1 0h2M2 33.5h1m5 0h1m3 0h2m2 0h1m7 0h2m3 0h6M2 34.5h7m1 0h2m3 0h6m5 0h1m1 0h3"/></symbol></svg>
 
 <header class="top">
   <div class="wrap">
@@ -400,6 +450,7 @@ html[dir=rtl] .kpi .v{text-align:right}
       <a href="#quiz"><span data-l="ar">اختبر نفسك</span><span data-l="en">Quiz</span></a>
     </nav>
     <div class="top-act">
+      <button class="pres-btn" id="pres-btn" type="button" aria-label="Presentation mode (P)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.5v5l4.2-2.5z" fill="currentColor"/><path d="M12 16v4M8 20h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span data-l="ar">عرض تقديمي</span><span data-l="en">Present</span></button>
       <button class="lang-btn" id="lang-btn" type="button"><span data-l="ar" lang="en">EN</span><span data-l="en" lang="ar">عربي</span></button>
       <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="mnav">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
@@ -418,6 +469,8 @@ html[dir=rtl] .kpi .v{text-align:right}
     <a href="#quiz"><span data-l="ar">اختبر نفسك</span><span data-l="en">Quiz</span></a>
     <a href="#glossary"><span data-l="ar">المصطلحات</span><span data-l="en">Glossary</span></a>
     <a href="#sources"><span data-l="ar">المصادر</span><span data-l="en">Sources</span></a>
+    <a href="#share"><span data-l="ar">رمز QR</span><span data-l="en">QR code</span></a>
+    <a href="#" id="m-pres" class="m-pres"><span data-l="ar">▶ وضع العرض التقديمي</span><span data-l="en">▶ Presentation mode</span></a>
   </nav>
   <div class="progress" id="progress"></div>
 </header>
@@ -853,6 +906,23 @@ html[dir=rtl] .kpi .v{text-align:right}
   </div>
 </section>
 
+<hr class="rule">
+
+<!-- SHARE / QR -->
+<section id="share" aria-labelledby="h-share">
+  <div class="wrap share">
+    <div class="qr-box"><svg class="qr" viewBox="0 0 33 33" data-l="ar" shape-rendering="crispEdges" aria-hidden="true"><use href="#qr-ar"/></svg><svg class="qr" viewBox="0 0 37 37" data-l="en" shape-rendering="crispEdges" aria-hidden="true"><use href="#qr-en"/></svg></div>
+    <div class="share-txt">
+      <p class="eyebrow">Share</p>
+      <h2 id="h-share"><span data-l="ar">افتح الصفحة على هاتفك</span><span data-l="en">Open this page on your phone</span></h2>
+      <p class="lead"><span data-l="ar">امسح الرمز بكاميرا الهاتف لتفتح هذا الدليل، وجرّب المجسّم ومختبر التصميم بنفسك.</span><span data-l="en">Scan the code with your phone camera to open this guide and try the 3D model and the design lab yourself.</span></p>
+      <p class="share-url">itsak7m.github.io/cubesat-arabic</p>
+      <p class="share-by only-present"><span data-l="ar">إعداد: </span><span data-l="en">Prepared by: </span><bdi>Ameer Hamam</bdi> · <span data-l="ar">مُقدَّم إلى الاتحاد العربي لعلوم الفضاء والفلك</span><span data-l="en">Presented to the Arab Union for Astronomy and Space Sciences</span></p>
+      <p class="thanks only-present"><span data-l="ar">شكرًا لكم</span><span data-l="en">Thank you</span></p>
+    </div>
+  </div>
+</section>
+
 </main>
 
 <footer>
@@ -862,6 +932,16 @@ html[dir=rtl] .kpi .v{text-align:right}
     <small><span data-l="ar">مشروع تعليمي أعدّه طالب هندسة ميكاترونكس في الجامعة الأردنية. هذه الصفحة ليست صفحة رسمية للاتحاد.</span><span data-l="en">An educational project by a mechatronics engineering student at the University of Jordan. This is not an official page of the Union.</span></small>
   </div>
 </footer>
+
+<div class="pbar" id="pbar" hidden>
+  <button type="button" id="p-prev" aria-label="Previous slide"><span data-l="ar">→</span><span data-l="en">←</span></button>
+  <span class="p-count" id="p-count">1 / 1</span>
+  <button type="button" id="p-next" aria-label="Next slide"><span data-l="ar">←</span><span data-l="en">→</span></button>
+  <button type="button" id="p-qr" aria-pressed="false">QR</button>
+  <button type="button" id="p-exit"><span data-l="ar">خروج</span><span data-l="en">Exit</span> <span class="k">Esc</span></button>
+</div>
+<div class="pqr" id="pqr" hidden><svg class="qr" viewBox="0 0 33 33" data-l="ar" shape-rendering="crispEdges" aria-hidden="true"><use href="#qr-ar"/></svg><svg class="qr" viewBox="0 0 37 37" data-l="en" shape-rendering="crispEdges" aria-hidden="true"><use href="#qr-en"/></svg><span>itsak7m.github.io/cubesat-arabic</span></div>
+<div class="phelp" id="phelp" hidden><span data-l="ar">التالي: <b>PageDown</b> أو <b>←</b> أو مفتاح المسافة · السابق: <b>PageUp</b> أو <b>→</b> · <b>Q</b> رمز QR · <b>Esc</b> خروج</span><span data-l="en">Next: <b>PageDown</b>, <b>→</b> or <b>Space</b> · Previous: <b>PageUp</b> or <b>←</b> · <b>Q</b> QR code · <b>Esc</b> exit</span></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
@@ -1610,6 +1690,82 @@ function initTimeline(){
   render();onLang(render);
 }
 
+/* ---------- presentation mode ---------- */
+function initPresent(){
+  var html=document.documentElement,slides=Array.prototype.slice.call(document.querySelectorAll('main > section')),cur=0,on=false;
+  var bar=$('pbar'),cnt=$('p-count'),pqr=$('pqr'),help=$('phelp'),qrOn=false,idleT=null,helpT=null;
+  function show(i){
+    cur=Math.max(0,Math.min(slides.length-1,i));
+    slides.forEach(function(s,j){s.classList.toggle('slide-on',j===cur)});
+    slides[cur].scrollTop=0;
+    html.classList.toggle('on-share',slides[cur].id==='share');
+    cnt.textContent=(cur+1)+' / '+slides.length;
+    pqr.hidden=!(qrOn||cur===0);
+    window.dispatchEvent(new Event('resize'));
+  }
+  function wake(){bar.classList.remove('idle');clearTimeout(idleT);if(matchMedia('(hover: hover)').matches)idleT=setTimeout(function(){bar.classList.add('idle')},2600)}
+  function nearest(){var best=0,bd=1e9;slides.forEach(function(s,j){var d=Math.abs(s.getBoundingClientRect().top);if(d<bd){bd=d;best=j}});return best}
+  function enter(){
+    if(on)return;on=true;var start=nearest();
+    if(document.activeElement)document.activeElement.blur();
+    html.classList.add('present');bar.hidden=false;help.hidden=false;help.classList.remove('gone');
+    clearTimeout(helpT);helpT=setTimeout(function(){help.classList.add('gone');setTimeout(function(){help.hidden=true},600)},4500);
+    var el=html;try{var p=el.requestFullscreen?el.requestFullscreen():el.webkitRequestFullscreen&&el.webkitRequestFullscreen();if(p&&p.catch)p.catch(function(){})}catch(e){}
+    show(start);wake();
+  }
+  function exit(){
+    if(!on)return;on=false;var target=slides[cur];
+    html.classList.remove('present','on-share');bar.hidden=true;pqr.hidden=true;help.hidden=true;
+    slides.forEach(function(s){s.classList.remove('slide-on')});
+    try{if(document.fullscreenElement&&document.exitFullscreen)document.exitFullscreen().catch(function(){});else if(document.webkitFullscreenElement&&document.webkitExitFullscreen)document.webkitExitFullscreen()}catch(e){}
+    window.dispatchEvent(new Event('resize'));
+    target.scrollIntoView({behavior:'auto',block:'start'});
+  }
+  /* long slides: scroll inside the slide first, then advance */
+  function forward(scrollFirst){
+    var s=slides[cur];
+    if(scrollFirst&&s.scrollTop+s.clientHeight<s.scrollHeight-8){s.scrollBy({top:s.clientHeight*.8,behavior:reduce?'auto':'smooth'});return}
+    show(cur+1);
+  }
+  function back(scrollFirst){
+    var s=slides[cur];
+    if(scrollFirst&&s.scrollTop>8){s.scrollBy({top:-s.clientHeight*.8,behavior:reduce?'auto':'smooth'});return}
+    show(cur-1);
+  }
+  $('pres-btn').addEventListener('click',enter);
+  $('m-pres').addEventListener('click',function(e){e.preventDefault();$('mnav').classList.remove('open');$('menu-btn').setAttribute('aria-expanded','false');enter()});
+  $('p-next').addEventListener('click',function(){show(cur+1);wake()});
+  $('p-prev').addEventListener('click',function(){show(cur-1);wake()});
+  $('p-exit').addEventListener('click',exit);
+  $('p-qr').addEventListener('click',function(){qrOn=!qrOn;pqr.hidden=!(qrOn||cur===0);this.setAttribute('aria-pressed',String(qrOn))});
+  document.addEventListener('fullscreenchange',function(){if(!document.fullscreenElement&&on)exit()});
+  document.addEventListener('webkitfullscreenchange',function(){if(!document.webkitFullscreenElement&&on)exit()});
+  document.addEventListener('mousemove',function(){if(on)wake()});
+  document.addEventListener('keydown',function(e){
+    if(e.altKey||e.ctrlKey||e.metaKey)return;
+    var t=e.target,typing=t&&t.closest&&t.closest('input,textarea,select,[contenteditable],canvas');
+    if(!on){if((e.key==='p'||e.key==='P')&&!typing){e.preventDefault();enter()}return}
+    if(typing&&e.key!=='Escape'&&e.key!=='PageDown'&&e.key!=='PageUp')return;
+    var rtl=html.dir==='rtl',k=e.key,h=true;
+    if(k==='PageDown'||k===' '||k==='ArrowDown')forward(true);
+    else if(k==='PageUp'||k==='ArrowUp')back(true);
+    else if(k===(rtl?'ArrowLeft':'ArrowRight'))show(cur+1);
+    else if(k===(rtl?'ArrowRight':'ArrowLeft'))show(cur-1);
+    else if(k==='Home')show(0);else if(k==='End')show(slides.length-1);
+    else if(k==='Escape'||k==='p'||k==='P')exit();
+    else if(k==='q'||k==='Q')$('p-qr').click();
+    else h=false;
+    if(h){e.preventDefault();wake()}
+  });
+  /* swipe between slides on touch screens */
+  var sx=0,sy=0,st=0;
+  document.addEventListener('touchstart',function(e){if(!on||e.touches.length!==1)return;var t=e.touches[0];sx=t.clientX;sy=t.clientY;st=e.target.closest('canvas,input')?0:1},{passive:true});
+  document.addEventListener('touchend',function(e){
+    if(!on||!st)return;var t=e.changedTouches[0],dx=t.clientX-sx,dy=t.clientY-sy;
+    if(Math.abs(dx)>70&&Math.abs(dy)<60){var nxt=html.dir==='rtl'?dx>0:dx<0;show(cur+(nxt?1:-1));wake()}
+  },{passive:true});
+}
+
 /* ---------- quiz ---------- */
 function initQuiz(){
   var Q=[
@@ -1668,7 +1824,7 @@ function initHeader(){
   }
 }
 
-initHeader();initHero();initModel();initSizes();initLab();initJourney();initTimeline();initQuiz();
+initHeader();initHero();initModel();initSizes();initLab();initJourney();initTimeline();initQuiz();initPresent();
 if(LANG==='en')setLang('en');
 })();
 </script>
