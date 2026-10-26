@@ -9,6 +9,13 @@
 <meta property="og:title" content="الكيوبسات — قمر صناعي بحجم مكعب">
 <meta property="og:description" content="موقع تعليمي تفاعلي بالعربية عن الكيوبسات: مجسّم ثلاثي الأبعاد، الأحجام، رحلة القمر، وأقمار عربية.">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:url" content="https://itsak7m.github.io/cubesat-arabic/">
+<meta property="og:image" content="https://itsak7m.github.io/cubesat-arabic/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="الكيوبسات بالعربية: دليل تفاعلي">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2304060b'/%3E%3Cpath d='M16 5l9 5v11l-9 5-9-5V10z' fill='none' stroke='%23ffa23f' stroke-width='2' stroke-linejoin='round'/%3E%3Cpath d='M7 10l9 5 9-5M16 15v11' fill='none' stroke='%23ffa23f' stroke-width='1.5'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,7 +52,7 @@ a:hover{text-decoration-thickness:2px}
 @media(min-width:980px){.top nav{display:flex}}
 
 /* sections */
-section{position:relative;padding:56px 0}
+section{position:relative;padding:56px 0;scroll-margin-top:56px}
 @media(min-width:760px){section{padding:88px 0}}
 .eyebrow{font-family:var(--f-mono);direction:ltr;color:var(--acc);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;margin:0 0 10px;display:flex;align-items:center;gap:10px;justify-content:flex-end}
 .eyebrow::after{content:"";height:1px;width:40px;background:var(--acc);opacity:.6}
@@ -149,7 +156,7 @@ p{margin:0 0 14px}
 .steps h3{font-size:1.15rem;margin-bottom:2px}
 .steps p{margin:0;color:var(--mut);font-size:.98rem;line-height:1.85}
 .orbit-wrap{border:1px solid var(--line2);border-radius:12px;background:radial-gradient(ellipse at 50% 50%,#0c1626 0,#060a12 75%);padding:14px}
-#orbit-svg{display:block;width:100%;height:auto;max-height:440px}
+#orbit-svg{display:block;width:100%;height:auto;max-height:400px}
 .orbit-status{display:flex;align-items:center;gap:10px;justify-content:center;font-size:.92rem;color:var(--mut);margin-top:6px;min-height:32px}
 .dot{width:9px;height:9px;border-radius:50%;background:#44556b;flex:none}
 .dot.on{background:var(--acc);box-shadow:0 0 10px var(--acc)}
@@ -187,7 +194,104 @@ footer .by{color:var(--tx);font-size:1.1rem;font-family:var(--f-display)}
 footer .by .en{color:var(--acc)}
 footer small{display:block;margin-top:10px;font-size:.84rem;line-height:1.8}
 
+/* header extras */
+.progress{position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--acc);transform-origin:100% 50%;transform:scaleX(0);pointer-events:none}
+.top nav a.active{color:var(--acc)}
+.menu-btn{font:inherit;font-size:.92rem;color:var(--tx);background:transparent;border:1px solid var(--line2);border-radius:8px;min-height:40px;padding:4px 12px;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.menu-btn svg{width:18px;height:18px}
+@media(min-width:980px){.menu-btn{display:none}}
+.top .mnav{display:none;position:absolute;top:100%;left:0;right:0;background:#05080f;border-bottom:1px solid var(--line2);padding:10px 16px 16px;box-shadow:0 18px 30px -10px #000}
+.top .mnav.open{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+.mnav a{color:var(--tx);text-decoration:none;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:.95rem}
+.mnav a.active{border-color:var(--acc);color:var(--acc)}
+@media(min-width:980px){.top .mnav,.top .mnav.open{display:none}}
+
+/* model labels */
+.labels{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.lbl{position:absolute;left:0;top:0;pointer-events:none;font:inherit;font-size:.78rem;line-height:1.3;color:var(--tx);background:rgba(4,6,11,.88);border:1px solid var(--line2);border-radius:999px;padding:4px 10px;white-space:nowrap;cursor:pointer;opacity:0;transition:opacity .25s,border-color .2s,color .2s;display:flex;gap:6px;align-items:center}
+.lbl.show{opacity:1;pointer-events:auto}
+.lbl small{font-family:var(--f-mono);color:var(--acc);font-size:.66rem;direction:ltr}
+.lbl.on{border-color:var(--acc);color:var(--acc)}
+.lbl::before{content:"";position:absolute;top:50%;width:10px;height:1px;background:var(--acc);opacity:.8}
+.lbl.r::before{left:-11px}
+.lbl.l::before{right:-11px}
+@media(max-width:600px){.lbl .ar{display:none}.lbl{padding:3px 8px}}
+
+/* journey scenes */
+.steps li{cursor:pointer;border-radius:10px;transition:background .2s}
+.steps li:hover h3{color:var(--acc)}
+.steps li.on::before{background:var(--acc);color:#1a1004}
+.steps li.on h3{color:var(--acc)}
+.steps li.on p{color:var(--tx)}
+.steps .go{font:inherit;font-size:.86rem;margin-top:6px;color:var(--acc);background:transparent;border:1px solid rgba(255,162,63,.45);border-radius:6px;padding:3px 10px;cursor:pointer}
+.scene-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 2px 6px}
+.scene-head b{font-family:var(--f-display);font-size:1.05rem}
+.scene-head .mono{color:var(--acc);font-size:.8rem}
+.scene{display:none}
+.scene.on{display:inline}
+.sc-ctrl{display:flex;gap:8px;justify-content:center;margin-top:8px}
+.sc-ctrl button{font:inherit;font-size:.88rem;color:var(--tx);background:transparent;border:1px solid var(--line2);border-radius:8px;min-height:40px;padding:4px 14px;cursor:pointer}
+.sc-ctrl button[aria-pressed=true]{border-color:var(--acc);color:var(--acc);background:var(--acc-soft)}
+.draw{stroke-dasharray:640;animation:draw 4s ease-in-out infinite}
+@keyframes draw{0%{stroke-dashoffset:640}55%,100%{stroke-dashoffset:0}}
+.shake{animation:shake .14s linear infinite}
+@keyframes shake{0%,100%{transform:translateY(0)}25%{transform:translateY(-3px)}75%{transform:translateY(2.5px)}}
+.pulse{animation:pulse 1.2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.25}50%{opacity:.85}}
+.slide-in{animation:slidein 4.5s ease-in-out infinite}
+@keyframes slidein{0%{transform:translateX(250px)}45%,100%{transform:translateX(0)}}
+.door{transform-box:view-box;transform-origin:332px 112px;animation:door 4.5s ease-in-out infinite}
+@keyframes door{0%,48%{transform:rotate(-80deg)}62%,100%{transform:rotate(0)}}
+.stars-fall line{animation:fall 1.1s linear infinite}
+@keyframes fall{from{transform:translateY(-60px)}to{transform:translateY(60px)}}
+.flame{transform-box:view-box;transform-origin:200px 236px;animation:flame .18s ease-in-out infinite alternate}
+@keyframes flame{from{transform:scaleY(.8)}to{transform:scaleY(1.15)}}
+.rocket{animation:bob 2.4s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.eject{animation:eject 6s ease-in-out infinite}
+@keyframes eject{0%,8%{transform:translateX(-112px)}28%,100%{transform:translateX(0)}}
+.ant{transform-box:view-box;transform-origin:212px 100px;animation:ant 6s ease-in-out infinite}
+@keyframes ant{0%,32%{transform:scale(.08)}48%,100%{transform:scale(1)}}
+.wing-r{transform-box:view-box;transform-origin:232px 160px;animation:wingr 6s ease-in-out infinite}
+.wing-l{transform-box:view-box;transform-origin:192px 160px;animation:wingr 6s ease-in-out infinite}
+@keyframes wingr{0%,50%{transform:scaleX(-1)}72%,100%{transform:scaleX(1)}}
+
+.sv-mono{font-family:var(--f-mono);font-size:11px;fill:#93a3ba;letter-spacing:.06em}
+.sv-mono.acc{fill:var(--acc)}
+@media(max-width:979px){
+  .journey .orbit-wrap{order:-1;position:sticky;top:60px;z-index:5;padding:8px 10px;box-shadow:0 12px 24px -12px #000}
+  #orbit-svg{max-height:22vh}
+  .journey .scene-head{margin-bottom:2px}.journey .scene-head b{font-size:.95rem}
+  .journey .orbit-status{font-size:.84rem;margin-top:2px;min-height:26px}
+  .journey .sc-ctrl{margin-top:4px}.journey .sc-ctrl button{min-height:36px;font-size:.82rem;padding:2px 10px}
+  .journey .fig{display:none}
+}
+
+/* quiz + glossary */
+.quiz{display:grid;gap:14px}
+.q{border:1px solid var(--line2);border-radius:12px;background:var(--panel);padding:18px 20px;margin:0}
+.q legend{font-family:var(--f-display);font-size:1.12rem;padding:0;float:right;width:100%;margin-bottom:12px}
+.q legend .mono{color:var(--acc);font-size:.8rem;margin-inline-end:8px}
+.opts{display:grid;gap:8px;clear:both}
+@media(min-width:640px){.opts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.opts button{font:inherit;text-align:start;color:var(--tx);background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:10px 14px;min-height:46px;cursor:pointer}
+.opts button:hover:not(:disabled){border-color:var(--line2)}
+.opts button:disabled{cursor:default}
+.opts button.ok{border-color:#5fd39a;color:#8ff0bd;background:rgba(95,211,154,.1)}
+.opts button.no{border-color:#ff7a7a;color:#ffb0b0;background:rgba(255,122,122,.08)}
+.q .why{margin:10px 0 0;color:var(--mut);font-size:.94rem}
+.score{display:flex;flex-wrap:wrap;align-items:center;gap:12px;justify-content:space-between;border:1px solid var(--line);border-radius:10px;padding:12px 18px;background:var(--panel2)}
+.score b{color:var(--acc);font-family:var(--f-mono)}
+.gloss{display:grid;gap:10px;margin:0}
+@media(min-width:640px){.gloss{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:980px){.gloss{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.gloss div{border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:12px 16px}
+.gloss dt{font-family:var(--f-mono);direction:ltr;text-align:right;color:var(--acc);font-size:.95rem}
+.gloss dt small{display:block;color:var(--mut);font-size:.72rem}
+.gloss dd{margin:4px 0 0;font-size:.94rem;line-height:1.8;color:#cfd8e5}
+
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+@media print{#stars,.top,.ctrls,.hint,.sc-ctrl{display:none!important}body{background:#fff;color:#000}.stage,.orbit-wrap{break-inside:avoid}}
 </style>
 </head>
 <body>
@@ -206,9 +310,26 @@ footer small{display:block;margin-top:10px;font-size:.84rem;line-height:1.8}
       <a href="#journey">الرحلة</a>
       <a href="#arab">كيوبسات عربية</a>
       <a href="#start">كيف نبدأ؟</a>
+      <a href="#quiz">اختبر نفسك</a>
       <a href="#sources">المصادر</a>
     </nav>
+    <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="mnav">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      الأقسام
+    </button>
   </div>
+  <nav class="mnav" id="mnav" aria-label="أقسام الصفحة">
+    <a href="#what">ما هو؟</a>
+    <a href="#model">المجسّم</a>
+    <a href="#sizes">الأحجام</a>
+    <a href="#journey">الرحلة</a>
+    <a href="#arab">كيوبسات عربية</a>
+    <a href="#start">كيف نبدأ؟</a>
+    <a href="#quiz">اختبر نفسك</a>
+    <a href="#glossary">المصطلحات</a>
+    <a href="#sources">المصادر</a>
+  </nav>
+  <div class="progress" id="progress"></div>
 </header>
 
 <main id="top">
@@ -270,10 +391,12 @@ footer small{display:block;margin-top:10px;font-size:.84rem;line-height:1.8}
     <p class="stage-note" style="margin:-8px 0 14px">على الهاتف: اسحب بإصبع للتدوير وبإصبعين للتقريب. للتمرير في الصفحة اسحب من خارج المجسّم.</p>
     <div class="model">
       <div class="stage" id="stage">
-        <canvas id="model-canvas" aria-label="مجسّم ثلاثي الأبعاد لكيوبسات 3U، يمكن تدويره وتكبيره"></canvas>
+        <canvas id="model-canvas" tabindex="0" aria-label="مجسّم ثلاثي الأبعاد لكيوبسات 3U. بلوحة المفاتيح: الأسهم للتدوير، و+ و− للتقريب، وE للتفكيك، وEsc لإلغاء التحديد."></canvas>
+        <div class="labels" id="labels"></div>
         <div class="hint"><span id="hint">اسحب للتدوير · اقرص أو مرّر العجلة للتقريب · اضغط على جزء</span><button class="mini" id="goinfo" type="button">التفاصيل ↓</button></div>
         <div class="ctrls">
           <button class="btn" id="b-explode" type="button" aria-pressed="false">تفكيك / <bdi class="en">Exploded view</bdi></button>
+          <button class="btn" id="b-deploy" type="button">طيّ الألواح والهوائيات</button>
           <button class="btn" id="b-xray" type="button" aria-pressed="false">إظهار الداخل</button>
           <button class="btn" id="b-reset" type="button">إعادة ضبط</button>
         </div>
@@ -316,20 +439,108 @@ footer small{display:block;margin-top:10px;font-size:.84rem;line-height:1.8}
     <h2 id="h-journey">رحلة القمر الصناعي</h2>
     <p class="lead" style="margin-bottom:28px">من الفكرة إلى العودة إلى الغلاف الجوي، سبع مراحل متتابعة.</p>
     <div class="journey">
-      <ol class="steps">
+      <ol class="steps" id="steps">
         <li><h3>التصميم <bdi class="en">Design</bdi></h3><p>تحديد هدف المهمة والمتطلبات، واختيار المكوّنات، وتوزيع الكتلة والطاقة بين الأنظمة.</p></li>
         <li><h3>البناء والاختبار <bdi class="en">Build &amp; Test</bdi></h3><p>تجميع القمر واختباره على الأرض، مثل اختبارات الاهتزاز والحرارة والفراغ، للتأكد أنه يتحمّل الإطلاق والمدار.</p></li>
         <li><h3>الدمج في أداة الإطلاق <bdi class="en">P-POD</bdi></h3><p>يوضع القمر داخل أداة إطلاق قياسية <bdi class="en">(deployer)</bdi> تحميه أثناء الصعود، ثم تدفعه إلى الخارج عند الإشارة.</p></li>
         <li><h3>الإطلاق</h3><p>يُطلق غالبًا حمولةً ثانوية <bdi class="en">(rideshare)</bdi> على صاروخ يحمل أقمارًا أخرى، أو يُنقل إلى المحطة الفضائية الدولية ويُطلق منها.</p></li>
-        <li><h3>الانفصال وفتح الهوائيات والألواح</h3><p>بعد خروجه من أداة الإطلاق يبدأ القمر عمله، وتنفتح الهوائيات والألواح الشمسية القابلة للنشر.</p></li>
+        <li><h3>الانفصال وفتح الهوائيات والألواح</h3><p>بعد خروجه من أداة الإطلاق يبدأ القمر عمله، وتنفتح الهوائيات والألواح الشمسية القابلة للنشر.</p><button class="go" type="button" id="see-deploy">شاهد ذلك على المجسّم ↑</button></li>
         <li><h3>التشغيل في المدار الأرضي المنخفض <bdi class="en">LEO</bdi></h3><p>يدور القمر حول الأرض، ويتصل بالمحطة الأرضية في كل مرة يمرّ فيها فوقها، لبضع دقائق في كل مرور، فيرسل بياناته ويستقبل الأوامر.</p></li>
         <li><h3>نهاية العمر والعودة</h3><p>مع الوقت يفقد القمر ارتفاعه بفعل الاحتكاك مع الغلاف الجوي الرقيق، ثم يعود إلى الغلاف الجوي ويحترق.</p></li>
       </ol>
-      <div class="orbit-wrap">
-        <svg id="orbit-svg" viewBox="0 0 400 400" role="img" aria-label="رسم متحرك لقمر صناعي يدور حول الأرض ويتصل بمحطة أرضية عند مروره فوقها">
+      <div class="orbit-wrap" id="scene-panel">
+        <div class="scene-head"><b id="sc-t">التصميم</b><span class="mono" id="sc-n">01 / 07</span></div>
+        <svg id="orbit-svg" viewBox="0 0 400 320" role="img" aria-label="رسم توضيحي متحرك لمرحلة الرحلة المحددة">
           <defs>
             <radialGradient id="earthG" cx="40%" cy="35%" r="75%"><stop offset="0" stop-color="#1c3a5a"/><stop offset="1" stop-color="#0a1626"/></radialGradient>
+            <radialGradient id="glowG"><stop offset="0" stop-color="#fff2c8"/><stop offset=".35" stop-color="#ffa23f" stop-opacity=".9"/><stop offset="1" stop-color="#ffa23f" stop-opacity="0"/></radialGradient>
+            <pattern id="bp" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="rgba(160,185,215,.12)"/></pattern>
           </defs>
+
+          <!-- 0 design -->
+          <g class="scene on" data-i="0">
+            <rect width="400" height="320" fill="url(#bp)"/>
+            <path d="M168 45V255M232 45V255" stroke="rgba(160,185,215,.45)"/>
+            <path d="M172 72H228M172 100H228M172 142H228M172 168H228M172 214H228" stroke="rgba(160,185,215,.5)" stroke-dasharray="4 4"/>
+            <rect class="draw" x="165" y="45" width="70" height="210" fill="none" stroke="#ffa23f" stroke-width="1.6"/>
+            <path class="draw" d="M165 115H235M235 185H165" fill="none" stroke="#ffa23f" stroke-width="1"/>
+            <path d="M165 268V282M235 268V282M165 275H235M138 45H152M138 255H152M145 45V255" stroke="#93a3ba"/>
+            <text x="200" y="298" text-anchor="middle" class="sv-mono">10 cm</text>
+            <text x="128" y="154" text-anchor="middle" class="sv-mono">3U</text>
+            <path d="M236 72H262M236 100H262M236 142H262M236 214H262" stroke="rgba(255,162,63,.5)"/>
+            <text x="268" y="76" class="sv-mono">PAYLOAD</text><text x="268" y="104" class="sv-mono">OBC</text><text x="268" y="146" class="sv-mono">ADCS</text><text x="268" y="218" class="sv-mono">EPS</text>
+            <text x="16" y="24" class="sv-mono acc">REQUIREMENTS → DESIGN</text>
+          </g>
+
+          <!-- 1 build & test -->
+          <g class="scene" data-i="1">
+            <text x="200" y="34" text-anchor="middle" class="sv-mono acc">VIBRATION TEST</text>
+            <text x="200" y="54" text-anchor="middle" class="sv-mono">+ THERMAL · VACUUM</text>
+            <path class="pulse" d="M74 140q-14 30 0 60M90 130q-20 40 0 80M106 120q-26 50 0 100" fill="none" stroke="#ffa23f" stroke-width="1.4"/>
+            <path class="pulse" d="M326 140q14 30 0 60M310 130q20 40 0 80M294 120q26 50 0 100" fill="none" stroke="#ffa23f" stroke-width="1.4"/>
+            <g class="shake">
+              <rect x="178" y="112" width="44" height="138" fill="#13253b" stroke="#ffa23f" stroke-width="1.4"/>
+              <path d="M178 158H222M178 204H222" stroke="#ffa23f" stroke-opacity=".6"/>
+              <path d="M192 114V248M208 114V248" stroke="rgba(160,185,215,.3)"/>
+              <path d="M200 112L186 86M200 112L214 86" stroke="#ffa23f" stroke-opacity=".5"/>
+              <rect x="140" y="250" width="120" height="12" fill="#1a2433" stroke="rgba(160,185,215,.5)"/>
+            </g>
+            <rect x="110" y="262" width="180" height="24" rx="3" fill="#0d1522" stroke="rgba(160,185,215,.5)"/>
+            <text x="200" y="279" text-anchor="middle" class="sv-mono">SHAKER</text>
+          </g>
+
+          <!-- 2 P-POD -->
+          <g class="scene" data-i="2">
+            <text x="196" y="88" text-anchor="middle" class="sv-mono acc">P-POD · DEPLOYER</text>
+            <rect x="60" y="112" width="272" height="96" rx="4" fill="#0b1422" stroke="rgba(160,185,215,.6)"/>
+            <path d="M66 118H330M66 202H330" stroke="rgba(160,185,215,.3)"/>
+            <polyline points="66,160 70,146 76,174 82,146 88,174 94,146 98,160" fill="none" stroke="#93a3ba" stroke-width="1.4"/>
+            <rect x="98" y="122" width="4" height="76" fill="#93a3ba"/>
+            <g class="slide-in">
+              <rect x="103" y="122" width="222" height="76" fill="#13253b" stroke="#ffa23f" stroke-width="1.4"/>
+              <path d="M177 122V198M251 122V198" stroke="#ffa23f" stroke-opacity=".6"/>
+              <path d="M103 141H325M103 179H325" stroke="rgba(160,185,215,.25)"/>
+            </g>
+            <line class="door" x1="332" y1="112" x2="332" y2="208" stroke="#ffa23f" stroke-width="3" stroke-linecap="round"/>
+            <text x="82" y="232" class="sv-mono">SPRING</text>
+            <text x="214" y="232" text-anchor="middle" class="sv-mono">3U · 3 × 1U</text>
+          </g>
+
+          <!-- 3 launch -->
+          <g class="scene" data-i="3">
+            <g class="stars-fall" stroke="rgba(220,230,245,.5)">
+              <line x1="70" y1="40" x2="70" y2="58"/><line x1="120" y1="150" x2="120" y2="164"/><line x1="320" y1="70" x2="320" y2="90"/><line x1="290" y1="210" x2="290" y2="224"/><line x1="90" y1="250" x2="90" y2="266"/><line x1="350" y1="160" x2="350" y2="172"/><line x1="40" y1="130" x2="40" y2="146"/>
+            </g>
+            <g class="rocket">
+              <path class="flame" d="M190 236Q200 300 210 236Z" fill="#ffa23f"/>
+              <path class="flame" d="M195 236Q200 274 205 236Z" fill="#fff2c8"/>
+              <path d="M186 205L168 238L186 230ZM214 205L232 238L214 230Z" fill="#8e99a8"/>
+              <rect x="186" y="80" width="28" height="156" rx="3" fill="#cfd8e5"/>
+              <path d="M186 80Q200 32 214 80Z" fill="#e9eef6"/>
+              <rect x="186" y="118" width="28" height="4" fill="#ffa23f"/>
+              <rect x="193" y="88" width="6" height="6" fill="none" stroke="#ffa23f"/><rect x="201" y="88" width="6" height="6" fill="none" stroke="#ffa23f"/><rect x="197" y="98" width="6" height="12" fill="none" stroke="#ffa23f"/>
+            </g>
+            <path d="M120 96H184" stroke="rgba(255,162,63,.5)"/>
+            <text x="114" y="100" text-anchor="end" class="sv-mono acc">RIDESHARE</text>
+          </g>
+
+          <!-- 4 deployment -->
+          <g class="scene" data-i="4">
+            <rect x="72" y="92" width="58" height="136" rx="3" fill="#0b1422" stroke="rgba(160,185,215,.6)"/>
+            <text x="101" y="250" text-anchor="middle" class="sv-mono">DEPLOYER</text>
+            <g class="eject">
+              <g class="ant" stroke="#ffa23f" stroke-width="1.6"><path d="M212 100L168 60M212 100L256 60M212 100L194 36M212 100L230 36"/></g>
+              <g class="wing-l"><rect x="152" y="102" width="40" height="116" fill="#16304f" stroke="#ffa23f" stroke-opacity=".6"/><path d="M152 141H192M152 180H192M172 102V218" stroke="rgba(255,190,100,.35)"/></g>
+              <g class="wing-r"><rect x="232" y="102" width="40" height="116" fill="#16304f" stroke="#ffa23f" stroke-opacity=".6"/><path d="M232 141H272M232 180H272M252 102V218" stroke="rgba(255,190,100,.35)"/></g>
+              <rect x="192" y="100" width="40" height="120" fill="#13253b" stroke="#ffa23f" stroke-width="1.4"/>
+              <path d="M192 140H232M192 180H232" stroke="#ffa23f" stroke-opacity=".6"/>
+            </g>
+            <text x="212" y="24" text-anchor="middle" class="sv-mono acc">ANTENNAS</text>
+            <text x="300" y="250" text-anchor="middle" class="sv-mono">SOLAR PANELS</text>
+          </g>
+
+          <!-- 5 operations (orbit) -->
+          <g class="scene" data-i="5" transform="translate(0 -40)">
           <circle cx="200" cy="200" r="120" fill="none" stroke="rgba(160,185,215,.35)" stroke-dasharray="3 6"/>
           <circle cx="200" cy="200" r="70" fill="url(#earthG)" stroke="rgba(160,185,215,.5)"/>
           <ellipse cx="200" cy="200" rx="70" ry="26" fill="none" stroke="rgba(160,185,215,.2)"/>
@@ -340,9 +551,28 @@ footer small{display:block;margin-top:10px;font-size:.84rem;line-height:1.8}
           <g id="o-gs"><path d="M0 -9 L7 4 L-7 4 Z" fill="#ffa23f"/><line x1="0" y1="4" x2="0" y2="9" stroke="#ffa23f"/></g>
           <g id="o-sat"><rect x="-5" y="-5" width="10" height="10" fill="#e9eef6" stroke="#ffa23f" stroke-width="1.5"/><rect x="-16" y="-2.5" width="9" height="5" fill="#2a5a8a"/><rect x="7" y="-2.5" width="9" height="5" fill="#2a5a8a"/></g>
           <text x="200" y="204" text-anchor="middle" font-size="12" fill="#93a3ba" font-family="IBM Plex Sans Arabic, Tahoma, sans-serif">الأرض</text>
+          <text x="200" y="344" text-anchor="middle" class="sv-mono acc">LEO · GROUND STATION PASS</text>
+          </g>
+
+          <!-- 6 re-entry -->
+          <g class="scene" data-i="6">
+            <circle cx="200" cy="180" r="92" fill="none" stroke="#ffa23f" stroke-opacity=".18" stroke-width="10"/>
+            <circle cx="200" cy="180" r="80" fill="url(#earthG)" stroke="rgba(160,185,215,.5)"/>
+            <ellipse cx="200" cy="180" rx="80" ry="30" fill="none" stroke="rgba(160,185,215,.2)"/>
+            <path id="r-path" d="" fill="none" stroke="rgba(160,185,215,.35)" stroke-dasharray="3 6"/>
+            <circle id="r-glow" cx="0" cy="0" r="16" fill="url(#glowG)" opacity="0"/>
+            <rect id="r-sat" x="-4" y="-4" width="8" height="8" fill="#e9eef6" stroke="#ffa23f" stroke-width="1.2"/>
+            <text x="200" y="184" text-anchor="middle" font-size="12" fill="#93a3ba" font-family="IBM Plex Sans Arabic, Tahoma, sans-serif">الأرض</text>
+            <text x="16" y="24" class="sv-mono acc">ORBIT DECAY → RE-ENTRY</text>
+          </g>
         </svg>
-        <div class="orbit-status"><span class="dot" id="o-dot"></span><span id="o-text">خارج نطاق المحطة الأرضية</span></div>
-        <p class="fig">رسم توضيحي: المدار والمسافات ليست بمقياس رسم.</p>
+        <div class="orbit-status"><span class="dot" id="o-dot"></span><span id="o-text">تحديد المتطلبات ورسم التصميم</span></div>
+        <div class="sc-ctrl">
+          <button type="button" id="sc-prev" aria-label="المرحلة السابقة">→ السابق</button>
+          <button type="button" id="sc-play" aria-pressed="false">تشغيل تلقائي</button>
+          <button type="button" id="sc-next" aria-label="المرحلة التالية">التالي ←</button>
+        </div>
+        <p class="fig">رسوم توضيحية مبسّطة، وليست بمقياس رسم.</p>
       </div>
     </div>
   </div>
@@ -421,6 +651,42 @@ footer small{display:block;margin-top:10px;font-size:.84rem;line-height:1.8}
     <h2 id="h-why">لماذا يهمّ هذا للعالم العربي؟</h2>
     <p class="lead">تُظهر تجارب الأردن والإمارات وتونس أن الكيوبسات منصة عملية لبناء الخبرة: طلاب جامعيون يصمّمون قمرًا ويشغّلونه، وشركة محلية تبني قمرًا كاملًا.</p>
     <p class="lead">وكل فريق جديد يضيف مهندسين يعرفون الأنظمة الفضائية والاتصالات والبرمجيات، وهي أساس القدرات الفضائية المحلية على المدى الطويل.</p>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- QUIZ -->
+<section id="quiz" aria-labelledby="h-quiz">
+  <div class="wrap">
+    <p class="eyebrow">Quiz</p>
+    <h2 id="h-quiz">اختبر معلوماتك</h2>
+    <p class="lead" style="margin-bottom:24px">ستة أسئلة سريعة من محتوى هذه الصفحة.</p>
+    <div class="quiz" id="quiz-box"></div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- GLOSSARY -->
+<section id="glossary" aria-labelledby="h-gloss">
+  <div class="wrap">
+    <p class="eyebrow">Glossary</p>
+    <h2 id="h-gloss">مسرد المصطلحات</h2>
+    <dl class="gloss">
+      <div><dt>CubeSat</dt><dd>قمر صناعي صغير مبني من وحدات قياسية مكعبة.</dd></div>
+      <div><dt>1U</dt><dd>الوحدة الأساسية في المعيار: مكعب أبعاده 10 × 10 × 10 سم.</dd></div>
+      <div><dt>CDS<small>CubeSat Design Specification</small></dt><dd>الوثيقة التي تحدّد مواصفات الكيوبسات وأبعاده.</dd></div>
+      <div><dt>P-POD<small>Poly-Picosatellite Orbital Deployer</small></dt><dd>أداة إطلاق قياسية تحمل الكيوبسات أثناء الصعود ثم تدفعه إلى المدار.</dd></div>
+      <div><dt>LEO<small>Low Earth Orbit</small></dt><dd>المدار الأرضي المنخفض، حيث تعمل معظم أقمار الكيوبسات.</dd></div>
+      <div><dt>ADCS<small>Attitude Determination &amp; Control System</small></dt><dd>نظام تحديد اتجاه القمر والتحكم فيه.</dd></div>
+      <div><dt>EPS<small>Electrical Power System</small></dt><dd>نظام توليد الطاقة الكهربائية وتخزينها وتوزيعها.</dd></div>
+      <div><dt>OBC<small>On-Board Computer</small></dt><dd>الحاسوب الذي يدير القمر وينفّذ أوامره.</dd></div>
+      <div><dt>COTS<small>Commercial Off-The-Shelf</small></dt><dd>مكوّنات تجارية جاهزة تُشترى بدل تصنيعها خصيصًا.</dd></div>
+      <div><dt>Rideshare</dt><dd>إطلاق قمر حمولةً ثانوية مع أقمار أخرى على الصاروخ نفسه.</dd></div>
+      <div><dt>Transponder</dt><dd>جهاز يستقبل إشارة لاسلكية ويعيد بثّها، مثل جهاز FUNcube على JY1-SAT.</dd></div>
+      <div><dt>IoT · LoRaWAN<small>Internet of Things · Long Range Wide Area Network</small></dt><dd>إنترنت الأشياء، وبروتوكول اتصال بعيد المدى منخفض الاستهلاك استخدمه Challenge One.</dd></div>
+    </dl>
   </div>
 </section>
 
@@ -623,10 +889,10 @@ function initModel(){
     obj.traverse(function(o){if(o.isMesh){o.userData.part=key;(meshesByPart[key]=meshesByPart[key]||[]).push(o);allMeshes.push(o)}});
   }
   var tex=solarTex();
-  var metal=0xaeb7c4;
+  var metal=0xaeb7c4,wings=[],antP=[],anchors={};
 
   /* structure */
-  [[-1,-1],[1,-1],[-1,1],[1,1]].forEach(function(p){add('structure',box(.07,3,.07,M(metal,{m:.5,r:.35})),[p[0]*.465,0,p[1]*.465],[p[0]*.25,0,p[1]*.25])});
+  [[-1,-1],[1,-1],[-1,1],[1,1]].forEach(function(p,i){var rl=box(.07,3,.07,M(metal,{m:.5,r:.35}));add('structure',rl,[p[0]*.465,0,p[1]*.465],[p[0]*.25,0,p[1]*.25]);if(i===1)anchors.structure={o:rl,dy:1.2}});
   add('structure',box(1,.05,1,M(0x8e99a8,{m:.5})),[0,1.475,0],[0,1.3,0]);
   add('structure',box(1,.05,1,M(0x8e99a8,{m:.5})),[0,-1.475,0],[0,-1.2,0]);
 
@@ -634,8 +900,12 @@ function initModel(){
   [-1,1].forEach(function(s){
     add('solar',box(.02,2.8,.9,M(0xffffff,{map:tex,m:.3})),[s*.52,0,0],[s*.9,0,0]);
     add('solar',box(.9,2.8,.02,M(0xffffff,{map:tex,m:.3})),[0,0,s*.52],[0,0,s*.9]);
-    add('solar',box(1,2.8,.02,M(0xffffff,{map:tex,m:.3,side:THREE.DoubleSide})),[s*1.05,0,0],[s*.95,0,0]);
-    [-1,1].forEach(function(h){add('solar',box(.06,.12,.06,M(0x6b7686,{m:.5})),[s*.55,h*1.1,0],[s*.92,0,0])});
+    /* deployable wing: hinged at the body edge, swings from folded (-180deg) to open (0deg) */
+    var pv=new THREE.Group(),wg=box(1,2.8,.02,M(0xffffff,{map:tex,m:.3,side:THREE.DoubleSide}));
+    wg.position.x=s*.5;pv.add(wg);
+    [-1,1].forEach(function(h){var hg=box(.05,.12,.05,M(0x6b7686,{m:.5}));hg.position.y=h*1.1;pv.add(hg)});
+    add('solar',pv,[s*.55,0,s*.555],[s*.95,0,s*.9]);
+    wings.push(pv);if(s===1)anchors.solar={o:wg,dy:1.1};
   });
 
   /* EPS */
@@ -645,7 +915,7 @@ function initModel(){
       var st=cyl(.0765,.1,M(ACC,{m:.2}),20);st.rotation.z=Math.PI/2;st.position.set(.2,.04,z);g.add(st)});
     var c1=box(.16,.04,.1,M(0x12161c));c1.position.set(-.3,-.02,-.35);g.add(c1);
     var c2=box(.12,.04,.1,M(0x12161c));c2.position.set(.3,-.02,.38);g.add(c2);
-    add('eps',g,[0,-1,0],[0,-1,0]);
+    add('eps',g,[0,-1,0],[0,-1,0]);anchors.eps={o:g,dy:0};
   })();
 
   /* OBC */
@@ -654,7 +924,7 @@ function initModel(){
     var chip=box(.24,.04,.24,M(0x12161c));chip.position.y=.035;g.add(chip);
     [[-.3,-.3],[.3,-.28],[-.28,.25]].forEach(function(p){var c=box(.12,.03,.09,M(0x12161c));c.position.set(p[0],.03,p[1]);g.add(c)});
     var cn=box(.7,.04,.05,M(0xc9a24b,{m:.6}));cn.position.set(0,.035,.4);g.add(cn);
-    add('obc',g,[0,.2,0],[0,.2,0]);
+    add('obc',g,[0,.2,0],[0,.2,0]);anchors.obc={o:g,dy:0};
   })();
 
   /* ADCS */
@@ -667,7 +937,7 @@ function initModel(){
     var ring=new THREE.Mesh(new THREE.TorusGeometry(.4,.014,6,32),M(0xb87333,{m:.6}));ring.rotation.x=Math.PI/2;ring.position.y=-.06;g.add(ring);
     var rod=cyl(.03,.8,M(0xb87333,{m:.6}),10);rod.rotation.z=Math.PI/2;rod.position.set(0,-.06,-.36);g.add(rod);
     var mg=box(.09,.03,.09,M(0xe8ecf2));mg.position.set(.38,.035,.38);g.add(mg);
-    add('adcs',g,[0,-.35,0],[0,-.35,0]);
+    add('adcs',g,[0,-.35,0],[0,-.35,0]);anchors.adcs={o:g,dy:.05};
     [-1,1].forEach(function(s){
       var sg=new THREE.Group();sg.add(box(.18,.03,.12,M(0x0d1117)));var win=box(.1,.032,.06,M(0xc9a24b,{m:.6}));win.position.y=.003;sg.add(win);
       sg.rotation.x=Math.PI/2;
@@ -681,7 +951,7 @@ function initModel(){
     var bd=box(.9,.03,.9,M(0x232b36));bd.position.y=.17;g.add(bd);
     var lens=cyl(.13,.2,M(0x0d1117,{m:.5}),24);lens.position.y=-.25;g.add(lens);
     var glass=cyl(.1,.02,M(0x1a3a5c,{m:.8,r:.1}),24);glass.position.y=-.36;g.add(glass);
-    add('payload',g,[0,.7,0],[0,.7,0]);
+    add('payload',g,[0,.7,0],[0,.7,0]);anchors.payload={o:g,dy:0};
   })();
 
   /* comms */
@@ -689,11 +959,11 @@ function initModel(){
     g.add(box(.9,.03,.9,M(0x1d3b3f)));
     var sh=box(.4,.1,.3,M(0x9aa5b3,{m:.5}));sh.position.set(-.15,.07,0);g.add(sh);
     var sma=cyl(.03,.1,M(0xc9a24b,{m:.6}),10);sma.position.set(.3,.07,.3);g.add(sma);
-    add('comms',g,[0,1.2,0],[0,1.2,0]);
+    add('comms',g,[0,1.2,0],[0,1.2,0]);anchors.comms={o:g,dy:0};
     var an=new THREE.Group();
     var bs=box(.12,.04,.12,M(0x9aa5b3,{m:.5}));an.add(bs);
     for(var i=0;i<4;i++){var pv=new THREE.Group();pv.rotation.y=i*Math.PI/2+.4;pv.rotation.z=.55;
-      var w=cyl(.009,.9,M(ACC,{m:.2}),6);w.position.y=.45;pv.add(w);an.add(pv)}
+      var w=cyl(.009,.9,M(ACC,{m:.2}),6);w.position.y=.45;pv.add(w);an.add(pv);antP.push({pv:pv,w:w})}
     add('comms',an,[0,1.52,0],[0,1.6,0]);
   })();
 
@@ -702,7 +972,8 @@ function initModel(){
   root.add(env);
 
   /* camera state */
-  var T={x:0,y:.35,z:0},th=.7,ph=1.28,userR=8.4,exploded=false,e=0,eTarget=0,xray=false,auto=!reduce,dirty=true;
+  var T=new THREE.Vector3(0,.35,0),T0=T.clone(),goal=T.clone(),bb=new THREE.Box3();
+  var th=.7,ph=1.28,userR=8.4,exploded=false,e=0,eTarget=0,xray=false,auto=!reduce,dirty=true,dp=1,dpT=1,hov=null;
   var DEF={th:.7,ph:1.28,r:8.4};
   function place(){
     var R=userR*(1+.45*e),sp=Math.sin(ph);
@@ -711,13 +982,54 @@ function initModel(){
   }
   function applyVisuals(){
     allMeshes.forEach(function(m){
-      var part=m.userData.part,mat=m.material;
+      var part=m.userData.part,mat=m.material,isSel=sel&&part===sel,isHov=hov&&part===hov&&!isSel;
       var base=(xray&&part==='solar')?.16:1,op=base;
-      if(sel&&part!==sel)op=Math.min(base,.14);
+      if(sel&&!isSel)op=Math.min(base,.14);
+      if(isHov&&op<1)op=.45;
       mat.opacity=op;mat.depthWrite=op>.99;
-      if(sel&&part===sel){mat.emissive.setHex(ACC);mat.emissiveIntensity=.38}else{mat.emissive.setHex(0);mat.emissiveIntensity=0}
+      mat.emissive.setHex(isSel||isHov?ACC:0);mat.emissiveIntensity=isSel?.38:isHov?.16:0;
     });
+    for(var k in LBL)LBL[k].classList.toggle('on',k===sel);
     dirty=true;
+  }
+  function ease(x){return x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2}
+  function applyDeploy(){
+    var a=ease(Math.min(1,dp*2)),b=ease(Math.max(0,dp*2-1));
+    antP.forEach(function(o){o.pv.rotation.z=Math.PI/2+(.55-Math.PI/2)*a;o.w.scale.y=.12+.88*a;o.w.position.y=.45*o.w.scale.y});
+    wings.forEach(function(pv){pv.rotation.y=-Math.PI*(1-b)});
+    dirty=true;
+  }
+  /* floating labels (exploded view) */
+  var LBL={},lblWrap=$('labels'),vA=new THREE.Vector3(),vR=new THREE.Vector3();
+  PARTS.forEach(function(p){
+    var b=document.createElement('button');b.type='button';b.className='lbl r';b.tabIndex=-1;
+    b.innerHTML='<span class="ar">'+p.ar+'</span><small>'+p.acr+'</small>';
+    b.addEventListener('click',function(){setSel(sel===p.k?null:p.k)});
+    lblWrap.appendChild(b);LBL[p.k]=b;
+  });
+  function updateLabels(){
+    var show=e>.6,W=stage.clientWidth,H=stage.clientHeight,pos=[];
+    cam.updateMatrixWorld();vR.setFromMatrixColumn(cam.matrixWorld,0);
+    PARTS.forEach(function(p){
+      var el=LBL[p.k],a=anchors[p.k];
+      if(!show||!a){el.classList.remove('show');return}
+      var side=1;
+      a.o.getWorldPosition(vA);vA.y+=a.dy;
+      var c=vA.clone().addScaledVector(vR,.62).project(cam),x=(c.x+1)/2*W,y=(1-c.y)/2*H,w=el.offsetWidth;
+      if(x+w>W-6){c=vA.clone().addScaledVector(vR,-.62).project(cam);x=(c.x+1)/2*W-w;side=-1}
+      pos.push({el:el,x:Math.max(4,x),y:y,side:side,z:c.z,h:el.offsetHeight||24});
+    });
+    /* keep labels on the same side from overlapping */
+    [1,-1].forEach(function(sd){
+      var list=pos.filter(function(q){return q.side===sd}).sort(function(a,b){return a.y-b.y}),prev=-1e9;
+      list.forEach(function(q){if(q.y<prev+q.h+4)q.y=prev+q.h+4;prev=q.y});
+    });
+    var hn=stage.querySelector('.hint'),cn=stage.querySelector('.ctrls'),top=hn.offsetTop+hn.offsetHeight+6,bot=cn.offsetTop-6;
+    pos.forEach(function(q){
+      q.el.classList.toggle('r',q.side===1);q.el.classList.toggle('l',q.side===-1);
+      q.el.style.transform='translate('+Math.round(q.x)+'px,'+Math.round(q.y)+'px) translateY(-50%)';
+      q.el.classList.toggle('show',q.z<1&&q.y-q.h/2>top&&q.y+q.h/2<bot);
+    });
   }
   onSel=applyVisuals;
   function applyExplode(){
@@ -733,10 +1045,22 @@ function initModel(){
     if(reduce){e=eTarget;applyExplode()}
   });
   bXr.addEventListener('click',function(){xray=!xray;bXr.setAttribute('aria-pressed',String(xray));applyVisuals()});
+  var bDp=$('b-deploy');
+  function setDeploy(t,instant){
+    dpT=t;bDp.textContent=t?'طيّ الألواح والهوائيات':'نشر الألواح والهوائيات';
+    if(instant||reduce){dp=t;applyDeploy()}
+  }
+  bDp.addEventListener('click',function(){auto=false;setDeploy(dpT?0:1)});
+  model.playDeploy=function(){
+    exploded=false;eTarget=0;bEx.setAttribute('aria-pressed','false');setSel(null);
+    setDeploy(0,true);
+    stage.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'});
+    setTimeout(function(){setDeploy(1)},900);
+  };
   bRs.addEventListener('click',function(){
     th=DEF.th;ph=DEF.ph;userR=DEF.r;exploded=false;eTarget=0;xray=false;
     bEx.setAttribute('aria-pressed','false');bXr.setAttribute('aria-pressed','false');
-    if(reduce)e=0;setSel(null);applyExplode();applyVisuals();
+    if(reduce)e=0;setSel(null);setDeploy(1,true);T.copy(T0);applyExplode();applyVisuals();
   });
 
   var ptrs=new Map(),down=null,pinch=0,ray=new THREE.Raycaster(),mouse=new THREE.Vector2();
@@ -758,7 +1082,7 @@ function initModel(){
   });
   cv.addEventListener('pointermove',function(ev){
     var p=ptrs.get(ev.pointerId);
-    if(!p){if(ev.pointerType==='mouse'){cv.style.cursor=pick(ev.clientX,ev.clientY)?'pointer':'grab'}return}
+    if(!p){if(ev.pointerType==='mouse'){var hk=pick(ev.clientX,ev.clientY);cv.style.cursor=hk?'pointer':'grab';if(hk!==hov){hov=hk;applyVisuals()}}return}
     var dx=ev.clientX-p.x,dy=ev.clientY-p.y;p.x=ev.clientX;p.y=ev.clientY;
     if(ptrs.size===1){
       if(down&&Math.hypot(ev.clientX-down.x,ev.clientY-down.y)>6)down.moved=true;
@@ -775,6 +1099,15 @@ function initModel(){
     if(ptrs.size===0)down=null;if(ptrs.size<2)pinch=0;
   }
   cv.addEventListener('pointerup',up);cv.addEventListener('pointercancel',up);
+  cv.addEventListener('pointerleave',function(){if(hov){hov=null;applyVisuals()}});
+  cv.addEventListener('keydown',function(ev){
+    var k=ev.key,h=true;
+    if(k==='ArrowLeft')th-=.12;else if(k==='ArrowRight')th+=.12;
+    else if(k==='ArrowUp')ph=Math.max(.15,ph-.1);else if(k==='ArrowDown')ph=Math.min(Math.PI-.15,ph+.1);
+    else if(k==='+'||k==='=')userR=Math.max(3.4,userR*.9);else if(k==='-'||k==='_')userR=Math.min(14,userR*1.1);
+    else if(k==='e'||k==='E')bEx.click();else if(k==='Escape')setSel(null);else h=false;
+    if(h){ev.preventDefault();auto=false;place();dirty=true}
+  });
   cv.addEventListener('wheel',function(ev){ev.preventDefault();auto=false;userR=Math.max(3.4,Math.min(14,userR*Math.exp(ev.deltaY*.0012)));place();dirty=true},{passive:false});
 
   var s={el:stage,visible:true,dirty:true,update:function(dt){
@@ -782,8 +1115,11 @@ function initModel(){
       var k=1-Math.pow(.0008,dt);e+=(eTarget-e)*Math.min(1,k*1.6);if(Math.abs(e-eTarget)<=.002)e=eTarget;
       applyExplode();
     }
+    if(dp!==dpT){dp+=(dpT>dp?1:-1)*dt/1.8;if(Math.abs(dp-dpT)<dt/1.8)dp=dpT;applyDeploy()}
+    if(sel&&sel!=='structure'&&sel!=='solar'){bb.makeEmpty();meshesByPart[sel].forEach(function(m){bb.expandByObject(m)});bb.getCenter(goal)}else goal.copy(T0);
+    if(T.distanceToSquared(goal)>1e-6){T.lerp(goal,Math.min(1,dt*3.5));place();dirty=true}
     if(auto){th+=dt*.22;place();dirty=true}
-    if(dirty||s.dirty){r.render(scene,cam);dirty=false;s.dirty=false}
+    if(dirty||s.dirty){r.render(scene,cam);updateLabels();dirty=false;s.dirty=false}
   }};
   function size(){
     var w=stage.clientWidth,h=stage.clientHeight;if(!w||!h)return;
@@ -852,27 +1188,141 @@ function initSizes(){
   show();
 }
 
-/* ---------- orbit animation ---------- */
-function initOrbit(){
-  var svg=$('orbit-svg'),sat=$('o-sat'),gs=$('o-gs'),link=$('o-link'),dot=$('o-dot'),txt=$('o-text');
-  var cx=200,cy=200,R=120,Re=70,gsA=-Math.PI/2-.45,ang=gsA-1.6,on=null;
+/* ---------- journey: steps + scenes ---------- */
+function initJourney(){
+  var svg=$('orbit-svg'),steps=Array.prototype.slice.call($('steps').children);
+  var scenes=svg.querySelectorAll('.scene'),dot=$('o-dot'),txt=$('o-text'),tEl=$('sc-t'),nEl=$('sc-n');
+  var CAP=['تحديد المتطلبات ورسم التصميم','اختبار الاهتزاز يحاكي ظروف الإطلاق','القمر داخل أداة الإطلاق قبل الصعود','الصعود على صاروخ مع حمولات أخرى','الخروج من أداة الإطلاق ثم فتح الهوائيات والألواح',null,'انخفاض المدار تدريجيًا ثم الاحتراق في الغلاف الجوي'];
+  var TITLES=steps.map(function(li){return li.querySelector('h3').childNodes[0].textContent.trim()});
+  var cur=0,on=null,timer=null,lockScroll=0;
+
+  /* orbit (scene 5) */
+  var sat=$('o-sat'),gs=$('o-gs'),link=$('o-link');
+  var cx=200,cy=200,R=120,Re=70,gsA=-Math.PI/2-.45,ang=gsA-1.6;
   var gx=cx+Re*Math.cos(gsA),gy=cy+Re*Math.sin(gsA);
   gs.setAttribute('transform','translate('+gx.toFixed(1)+' '+gy.toFixed(1)+') rotate('+(gsA*180/Math.PI+90).toFixed(1)+')');
   function wrap(a){while(a>Math.PI)a-=2*Math.PI;while(a<-Math.PI)a+=2*Math.PI;return a}
-  function draw(){
+  function drawOrbit(){
     var sx=cx+R*Math.cos(ang),sy=cy+R*Math.sin(ang);
     sat.setAttribute('transform','translate('+sx.toFixed(1)+' '+sy.toFixed(1)+') rotate('+(ang*180/Math.PI+90).toFixed(1)+')');
     var c=Math.abs(wrap(ang-gsA))<.62;
-    link.setAttribute('x1',gx);link.setAttribute('y1',gy);link.setAttribute('x2',sx);link.setAttribute('y2',sy);
+    link.setAttribute('x1',gx);link.setAttribute('y1',gy);link.setAttribute('x2',sx.toFixed(1));link.setAttribute('y2',sy.toFixed(1));
     link.setAttribute('opacity',c?1:0);
     if(c!==on){on=c;dot.classList.toggle('on',c);txt.textContent=c?'اتصال بالمحطة الأرضية: القمر فوق الأفق':'خارج نطاق المحطة الأرضية'}
   }
-  if(reduce){ang=gsA+.25;draw();return}
-  draw();
-  register({el:svg,visible:true,dirty:true,update:function(dt){ang+=dt*.55;draw()}});
+
+  /* re-entry (scene 6) */
+  var rs=$('r-sat'),rg=$('r-glow'),rt=0,RC={x:200,y:180};
+  function spiral(t){var r=135-45*t,a=-Math.PI/2+t*Math.PI*3.4;return[RC.x+r*Math.cos(a),RC.y+r*Math.sin(a)]}
+  (function(){var d='';for(var i=0;i<=120;i++){var q=spiral(i/120);d+=(i?'L':'M')+q[0].toFixed(1)+' '+q[1].toFixed(1)}$('r-path').setAttribute('d',d)})();
+  function drawReentry(){
+    var q=spiral(rt),heat=Math.max(0,(rt-.72)/.28);
+    rs.setAttribute('transform','translate('+q[0].toFixed(1)+' '+q[1].toFixed(1)+')');
+    rs.setAttribute('opacity',rt>.97?0:1);
+    rg.setAttribute('cx',q[0].toFixed(1));rg.setAttribute('cy',q[1].toFixed(1));
+    rg.setAttribute('r',(6+heat*14).toFixed(1));rg.setAttribute('opacity',heat.toFixed(2));
+  }
+
+  function show(i,fromScroll){
+    cur=(i+steps.length)%steps.length;
+    Array.prototype.forEach.call(scenes,function(g){g.classList.toggle('on',+g.dataset.i===cur)});
+    steps.forEach(function(li,j){li.classList.toggle('on',j===cur);if(j===cur)li.setAttribute('aria-current','step');else li.removeAttribute('aria-current')});
+    tEl.textContent=TITLES[cur];nEl.textContent=('0'+(cur+1)).slice(-2)+' / '+('0'+steps.length).slice(-2);
+    if(cur===5){on=null;drawOrbit()}else{dot.classList.remove('on');txt.textContent=CAP[cur]}
+    if(cur===6){rt=reduce?.85:0;drawReentry()}
+    if(!fromScroll)lockScroll=performance.now();
+  }
+  function stopAuto(){if(timer){clearInterval(timer);timer=null;$('sc-play').setAttribute('aria-pressed','false');$('sc-play').textContent='تشغيل تلقائي'}}
+  $('sc-prev').addEventListener('click',function(){stopAuto();show(cur-1)});
+  $('sc-next').addEventListener('click',function(){stopAuto();show(cur+1)});
+  $('sc-play').addEventListener('click',function(){
+    if(timer){stopAuto();return}
+    this.setAttribute('aria-pressed','true');this.textContent='إيقاف';
+    show(cur+1);timer=setInterval(function(){show(cur+1)},6000);
+  });
+  steps.forEach(function(li,j){
+    li.tabIndex=0;
+    li.addEventListener('click',function(){stopAuto();show(j)});
+    li.addEventListener('keydown',function(ev){if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();stopAuto();show(j)}});
+  });
+  var sd=$('see-deploy');
+  if(sd)sd.addEventListener('click',function(ev){ev.stopPropagation();if(model.playDeploy)model.playDeploy();else $('model').scrollIntoView()});
+
+  /* follow scroll: the step crossing the reading line becomes active */
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      if(timer||performance.now()-lockScroll<1200)return;
+      es.forEach(function(en){if(en.isIntersecting)show(steps.indexOf(en.target),true)});
+    },{rootMargin:innerWidth<980?'-62% 0px -30% 0px':'-45% 0px -45% 0px'});
+    steps.forEach(function(li){io.observe(li)});
+  }
+
+  show(0);
+  if(reduce){ang=gsA+.25;return}
+  register({el:svg,visible:true,dirty:true,update:function(dt){
+    if(cur===5){ang+=dt*.55;drawOrbit()}
+    else if(cur===6){rt+=dt/7;if(rt>1.12)rt=0;drawReentry()}
+  }});
 }
 
-initHero();initModel();initSizes();initOrbit();
+/* ---------- quiz ---------- */
+function initQuiz(){
+  var Q=[
+    {q:'ما أبعاد الوحدة الأساسية <bdi class="en">1U</bdi>؟',o:['10 × 10 × 10 سم','30 × 30 × 30 سم','1 × 1 × 1 م','10 × 20 × 30 سم'],a:0,w:'الوحدة <bdi class="en">1U</bdi> مكعب طول ضلعه 10 سم، والأحجام الأكبر مضاعفات لها.'},
+    {q:'في أي عام اقتُرح معيار الكيوبسات؟',o:['1987','2008','1999','2018'],a:2,w:'اقترحه عام 1999 البروفيسور <bdi class="en">Jordi Puig-Suari</bdi> والبروفيسور <bdi class="en">Bob Twiggs</bdi>.'},
+    {q:'أي نظام فرعي يستخدم العجلات التفاعلية والملفات المغناطيسية؟',o:['EPS','ADCS','COMMS','OBC'],a:1,w:'نظام التحكم بالاتجاه <bdi class="en">(ADCS)</bdi> يحدّد اتجاه القمر ويوجّهه.'},
+    {q:'ما اسم أول قمر صناعي أردني؟',o:['MYSat-1','DhabiSat','Challenge One','JY1-SAT'],a:3,w:'<bdi class="en">JY1-SAT</bdi> كيوبسات <bdi class="en">1U</bdi> أُطلق في 3 ديسمبر 2018.'},
+    {q:'ما بروتوكول الاتصال الذي يعتمده القمر التونسي <bdi class="en">Challenge One</bdi>؟',o:['LoRaWAN','Wi-Fi','Bluetooth','5G'],a:0,w:'<bdi class="en">Challenge One</bdi> قمر لإنترنت الأشياء يعتمد بروتوكول <bdi class="en">LoRaWAN</bdi>.'},
+    {q:'كيف ينتهي عمر قمر في المدار الأرضي المنخفض عادةً؟',o:['يبقى في مداره إلى الأبد','يعود إلى الغلاف الجوي ويحترق','يهبط على الأرض بمظلة','ينتقل إلى مدار القمر'],a:1,w:'يفقد القمر ارتفاعه تدريجيًا بفعل الاحتكاك مع الغلاف الجوي الرقيق، ثم يحترق عند عودته.'}
+  ];
+  var box=$('quiz-box'),score=0,done=0;
+  function render(){
+  score=0;done=0;var html='';
+  Q.forEach(function(it,i){
+    html+='<fieldset class="q" data-i="'+i+'"><legend><span class="mono">'+(i+1)+'/'+Q.length+'</span>'+it.q+'</legend><div class="opts">'+
+      it.o.map(function(o,j){return'<button type="button" data-j="'+j+'">'+(/^[A-Za-z0-9 .\-]+$/.test(o)?'<bdi class="en">'+o+'</bdi>':o)+'</button>'}).join('')+
+      '</div><p class="why" hidden></p></fieldset>';
+  });
+  html+='<div class="score" aria-live="polite"><span id="q-score">أجب عن الأسئلة لترى نتيجتك.</span><button class="btn" type="button" id="q-reset">إعادة الاختبار</button></div>';
+  box.innerHTML=html;
+  }
+  render();
+  box.addEventListener('click',function(ev){
+    if(ev.target.closest('#q-reset')){render();$('quiz').scrollIntoView({behavior:reduce?'auto':'smooth'});return}
+    var b=ev.target.closest('.opts button');if(!b||b.disabled)return;
+    var fs=b.closest('.q'),it=Q[+fs.dataset.i],j=+b.dataset.j,btns=fs.querySelectorAll('.opts button');
+    Array.prototype.forEach.call(btns,function(x){x.disabled=true;if(+x.dataset.j===it.a)x.classList.add('ok')});
+    if(j!==it.a)b.classList.add('no');else score++;
+    done++;
+    var why=fs.querySelector('.why');why.innerHTML=(j===it.a?'<b style="color:#8ff0bd">إجابة صحيحة.</b> ':'<b style="color:#ffb0b0">الإجابة الصحيحة مظلّلة.</b> ')+it.w;why.hidden=false;
+    $('q-score').innerHTML=done<Q.length?'النتيجة حتى الآن: <b>'+score+' / '+done+'</b>':'النتيجة النهائية: <b>'+score+' / '+Q.length+'</b>'+(score===Q.length?' — ممتاز!':'');
+  });
+}
+
+/* ---------- header: progress, active section, mobile menu ---------- */
+function initHeader(){
+  var bar=$('progress'),btn=$('menu-btn'),mn=$('mnav');
+  var links=document.querySelectorAll('.top nav a, .mnav a'),ticking=false;
+  function onScroll(){
+    ticking=false;
+    var h=document.documentElement,max=h.scrollHeight-h.clientHeight;
+    bar.style.transform='scaleX('+(max>0?Math.min(1,h.scrollTop/max):0).toFixed(4)+')';
+  }
+  addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(onScroll)}},{passive:true});
+  onScroll();
+  btn.addEventListener('click',function(){var o=mn.classList.toggle('open');btn.setAttribute('aria-expanded',String(o))});
+  mn.addEventListener('click',function(ev){if(ev.target.closest('a')){mn.classList.remove('open');btn.setAttribute('aria-expanded','false')}});
+  document.addEventListener('keydown',function(ev){if(ev.key==='Escape'&&mn.classList.contains('open')){mn.classList.remove('open');btn.setAttribute('aria-expanded','false');btn.focus()}});
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(en){if(!en.isIntersecting)return;var id=en.target.id;
+        Array.prototype.forEach.call(links,function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+id)})});
+    },{rootMargin:'-40% 0px -55% 0px'});
+    document.querySelectorAll('main section[id]').forEach(function(sec){io.observe(sec)});
+  }
+}
+
+initHeader();initHero();initModel();initSizes();initJourney();initQuiz();
 })();
 </script>
 </body>
