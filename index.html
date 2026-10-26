@@ -6,6 +6,7 @@
 <title>الكيوبسات — قمر صناعي بحجم مكعب</title>
 <meta name="description" content="موقع تعليمي تفاعلي بالعربية عن الكيوبسات (CubeSat): مجسّم ثلاثي الأبعاد قابل للتفكيك، مقارنة الأحجام، رحلة القمر الصناعي، وأقمار عربية.">
 <meta name="theme-color" content="#04060b">
+<script>try{var l=new URLSearchParams(location.search).get('lang')||localStorage.getItem('lang');if(l==='en'){document.documentElement.lang='en';document.documentElement.dir='ltr'}}catch(e){}</script>
 <meta property="og:title" content="الكيوبسات — قمر صناعي بحجم مكعب">
 <meta property="og:description" content="موقع تعليمي تفاعلي بالعربية عن الكيوبسات: مجسّم ثلاثي الأبعاد، الأحجام، رحلة القمر، وأقمار عربية.">
 <meta property="og:type" content="website">
@@ -46,10 +47,10 @@ a:hover{text-decoration-thickness:2px}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;height:56px;gap:16px}
 .brand{font-family:var(--f-display);font-weight:700;font-size:1.25rem;color:var(--tx);text-decoration:none;display:flex;align-items:center;gap:10px}
 .brand svg{width:22px;height:22px}
-.top nav{display:none;gap:4px}
-.top nav a{color:var(--mut);text-decoration:none;font-size:.9rem;padding:6px 10px;border-radius:6px;white-space:nowrap}
-.top nav a:hover{color:var(--tx);background:var(--acc-soft)}
-@media(min-width:980px){.top nav{display:flex}}
+.top .dnav{display:none;gap:2px}
+.top .dnav a{color:var(--mut);text-decoration:none;font-size:.88rem;padding:6px 9px;border-radius:6px;white-space:nowrap}
+.top .dnav a:hover{color:var(--tx);background:var(--acc-soft)}
+@media(min-width:1100px){.top .dnav{display:flex}}
 
 /* sections */
 section{position:relative;padding:56px 0;scroll-margin-top:56px}
@@ -120,7 +121,7 @@ p{margin:0 0 14px}
 .info h3{font-size:1.5rem;margin-bottom:2px}
 .info .en-name{color:var(--mut);font-family:var(--f-mono);direction:ltr;font-size:.82rem;margin-bottom:12px;text-align:right}
 .info h4{margin:14px 0 6px;font-size:.95rem;color:var(--acc);font-weight:500}
-.info ul{margin:0;padding:0 18px 0 0;color:var(--tx)}
+.info ul{margin:0;padding-block:0;padding-inline:18px 0;color:var(--tx)}
 .info li{margin:2px 0;line-height:1.8}
 .info .empty{color:var(--mut)}
 .parts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
@@ -151,7 +152,7 @@ p{margin:0 0 14px}
 @media(min-width:980px){.journey{grid-template-columns:1.1fr 1fr;align-items:start}.orbit-wrap{position:sticky;top:90px}}
 .steps{list-style:none;margin:0;padding:0;position:relative;counter-reset:s}
 .steps::before{content:"";position:absolute;top:10px;bottom:10px;inset-inline-start:19px;width:1px;background:var(--line2)}
-.steps li{position:relative;padding:0 62px 22px 0;counter-increment:s}
+.steps li{position:relative;padding-block:0 22px;padding-inline:62px 0;counter-increment:s}
 .steps li::before{content:counter(s);position:absolute;inset-inline-start:0;top:0;width:40px;height:40px;border-radius:50%;background:var(--bg);border:1px solid var(--acc);color:var(--acc);font-family:var(--f-mono);display:grid;place-items:center;font-size:.95rem}
 .steps h3{font-size:1.15rem;margin-bottom:2px}
 .steps p{margin:0;color:var(--mut);font-size:.98rem;line-height:1.85}
@@ -194,17 +195,102 @@ footer .by{color:var(--tx);font-size:1.1rem;font-family:var(--f-display)}
 footer .by .en{color:var(--acc)}
 footer small{display:block;margin-top:10px;font-size:.84rem;line-height:1.8}
 
+/* language */
+html[lang=ar] [data-l=en],html[lang=en] [data-l=ar]{display:none!important}
+html[dir=ltr] .eyebrow{justify-content:flex-start}
+html[dir=ltr] .stat .k,html[dir=ltr] .info .en-name,html[dir=ltr] .parts small,html[dir=ltr] .size-card .dim,html[dir=ltr] .tile .t,html[dir=ltr] .gloss dt{text-align:left}
+html[lang=en] body{line-height:1.7}
+html[lang=en] :is(h1,h2,h3,.myth b,.scene-head b,.q legend,.lab legend,footer .by){word-spacing:.16em}
+html[lang=ar] .sv-mono.loc{font-family:var(--f-body);letter-spacing:0;font-size:12px}
+.top-act{display:flex;align-items:center;gap:8px}
+.lang-btn{font:inherit;font-size:.86rem;font-weight:600;color:var(--acc);background:transparent;border:1px solid rgba(255,162,63,.5);border-radius:8px;min-height:40px;min-width:52px;padding:4px 10px;cursor:pointer}
+.lang-btn:hover{background:var(--acc-soft)}
+
+/* design lab */
+.myth{border:1px solid rgba(255,162,63,.45);background:var(--acc-soft);border-radius:12px;padding:16px 20px;margin-bottom:22px}
+.myth b{font-family:var(--f-display);font-size:1.12rem;color:var(--acc);display:block;margin-bottom:4px}
+.myth p{margin:0;font-size:.98rem}
+.lab{display:grid;gap:18px}
+@media(min-width:980px){.lab{grid-template-columns:1fr 1.05fr;align-items:start}.lab-out{position:sticky;top:76px}}
+.lab-in{display:grid;gap:14px}
+.lab fieldset{border:1px solid var(--line2);border-radius:12px;background:var(--panel);padding:14px 16px 16px;margin:0;min-width:0}
+.lab legend{font-family:var(--f-display);font-size:1.02rem;padding:0 6px;color:var(--tx)}
+.lab .row{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-top:8px}
+.lab .row > span{color:var(--mut);font-size:.9rem;min-width:7.5em}
+.pills{display:flex;flex-wrap:wrap;gap:6px}
+.pills button{font:inherit;font-size:.88rem;cursor:pointer;background:transparent;color:var(--mut);border:1px solid var(--line2);border-radius:6px;padding:5px 12px;min-height:38px}
+.pills button[aria-pressed=true]{background:var(--acc);border-color:var(--acc);color:#1a1004}
+.lab input[type=range]{flex:1 1 160px;accent-color:var(--acc);min-width:0}
+.lab output{font-family:var(--f-mono);direction:ltr;color:var(--acc);min-width:5.5em;text-align:center}
+.comps{display:grid;gap:6px;margin-top:6px}
+@media(min-width:560px){.comps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.comp{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:8px;padding:8px 10px;cursor:pointer;background:var(--panel2);line-height:1.5}
+.comp:has(input:checked){border-color:rgba(255,162,63,.6)}
+.comp input{accent-color:var(--acc);margin-top:5px;flex:none;width:18px;height:18px}
+.comp b{font-weight:500;font-size:.92rem;display:block}
+.comp small{font-family:var(--f-mono);direction:ltr;unicode-bidi:isolate;color:var(--mut);font-size:.72rem;display:block}
+.bar{height:10px;border-radius:5px;background:#1a2433;overflow:hidden;margin-top:6px}
+.bar i{display:block;height:100%;background:var(--acc);transition:width .3s}
+.bar.over i{background:#ff7a7a}
+.lab-out{display:grid;gap:12px}
+.orb-box{border:1px solid var(--line2);border-radius:12px;background:radial-gradient(ellipse at 50% 50%,#0c1626 0,#060a12 75%);padding:10px}
+#lab-svg{display:block;width:100%;height:auto;max-height:300px}
+.orb-state{display:flex;align-items:center;justify-content:center;gap:8px;font-size:.9rem;color:var(--mut);min-height:28px}
+.kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+@media(min-width:560px){.kpis{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.kpi{border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:9px 12px;min-width:0}
+.kpi .v{font-family:var(--f-mono);direction:ltr;unicode-bidi:isolate;color:var(--tx);font-size:1.08rem;display:block}
+html[dir=rtl] .kpi .v{text-align:right}
+.kpi .l{color:var(--mut);font-size:.8rem;line-height:1.5;display:block}
+.kpi.hl{border-color:rgba(255,162,63,.55)}
+.kpi.hl .v{color:var(--acc)}
+.verdict{border-radius:10px;padding:12px 16px;font-size:.95rem;border:1px solid}
+.verdict.ok{border-color:#5fd39a;background:rgba(95,211,154,.08)}
+.verdict.no{border-color:#ff7a7a;background:rgba(255,122,122,.08)}
+.verdict b{display:block;font-family:var(--f-display);font-size:1.05rem}
+.warn{color:#ffb0b0;font-size:.86rem;margin:6px 0 0}
+.lab-fig{text-align:start;margin-top:14px}
+.lab-sum{position:sticky;bottom:0;z-index:4;display:flex;justify-content:space-between;gap:10px;background:#05080f;box-shadow:0 -10px 20px -6px #000;border:1px solid var(--line2);border-radius:10px;padding:8px 12px;font-size:.84rem;color:var(--mut)}
+.lab-sum b{font-family:var(--f-mono);color:var(--acc);font-weight:500}
+@media(min-width:980px){.lab-sum{display:none}}
+
+/* arab timeline */
+.tline{list-style:none;margin:0 0 26px;padding:0;display:grid;gap:0;position:relative}
+.tline li{position:relative;padding-block:0 16px;padding-inline:28px 0}
+.tline li::before{content:"";position:absolute;inset-inline-start:5px;top:8px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--acc)}
+.tline li.dep::before{background:var(--acc)}
+.tline li::after{content:"";position:absolute;inset-inline-start:10px;top:22px;bottom:-6px;width:1px;background:var(--line2)}
+.tline li:last-child::after{display:none}
+.tline .d{color:var(--acc);font-size:.84rem;font-weight:500;display:block}
+.tl-key{display:flex;flex-wrap:wrap;gap:16px;color:var(--mut);font-size:.84rem;margin:-14px 0 22px}
+.tl-key i{display:inline-block;width:10px;height:10px;border-radius:50%;border:2px solid var(--acc);margin-inline-end:6px;vertical-align:middle}
+.tl-key i.f{background:var(--acc)}
+.tline .n{font-weight:500}
+.tline .x{color:var(--mut);font-size:.88rem;display:block;line-height:1.6}
+.tline .yr{padding-block:2px 10px}
+.tline .yr::before,.tline .yr::after{display:none}
+.tline .yr span{font-family:var(--f-mono);color:var(--mut);font-size:.78rem;border:1px solid var(--line2);border-radius:4px;padding:1px 8px}
+@media(min-width:900px){
+  .tline{grid-auto-flow:column;grid-auto-columns:1fr;padding-top:6px}
+  .tline li{padding:26px 10px 0}
+  .tline li::before{top:0;inset-inline-start:10px}
+  .tline li::after{top:5px;bottom:auto;inset-inline-start:24px;inset-inline-end:-10px;width:auto;height:1px}
+  .tline li:last-child::after{display:none}
+  .tline .yr{padding:20px 10px 0}
+  .tline .yr span{display:inline-block}
+}
+
 /* header extras */
 .progress{position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--acc);transform-origin:100% 50%;transform:scaleX(0);pointer-events:none}
-.top nav a.active{color:var(--acc)}
+.top .dnav a.active{color:var(--acc)}
 .menu-btn{font:inherit;font-size:.92rem;color:var(--tx);background:transparent;border:1px solid var(--line2);border-radius:8px;min-height:40px;padding:4px 12px;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
 .menu-btn svg{width:18px;height:18px}
-@media(min-width:980px){.menu-btn{display:none}}
+@media(min-width:1100px){.menu-btn{display:none}}
 .top .mnav{display:none;position:absolute;top:100%;left:0;right:0;background:#05080f;border-bottom:1px solid var(--line2);padding:10px 16px 16px;box-shadow:0 18px 30px -10px #000}
 .top .mnav.open{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
 .mnav a{color:var(--tx);text-decoration:none;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:.95rem}
 .mnav a.active{border-color:var(--acc);color:var(--acc)}
-@media(min-width:980px){.top .mnav,.top .mnav.open{display:none}}
+@media(min-width:1100px){.top .mnav,.top .mnav.open{display:none}}
 
 /* model labels */
 .labels{position:absolute;inset:0;pointer-events:none;overflow:hidden}
@@ -270,7 +356,7 @@ footer small{display:block;margin-top:10px;font-size:.84rem;line-height:1.8}
 /* quiz + glossary */
 .quiz{display:grid;gap:14px}
 .q{border:1px solid var(--line2);border-radius:12px;background:var(--panel);padding:18px 20px;margin:0}
-.q legend{font-family:var(--f-display);font-size:1.12rem;padding:0;float:right;width:100%;margin-bottom:12px}
+.q legend{font-family:var(--f-display);font-size:1.12rem;padding:0;display:block;width:100%;margin-bottom:12px}
 .q legend .mono{color:var(--acc);font-size:.8rem;margin-inline-end:8px}
 .opts{display:grid;gap:8px;clear:both}
 @media(min-width:640px){.opts{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -299,35 +385,39 @@ footer small{display:block;margin-top:10px;font-size:.84rem;line-height:1.8}
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="الكيوبسات — أعلى الصفحة">
+    <a class="brand" href="#top">
       <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4l10 5.5v12L16 27 6 21.5v-12z" fill="none" stroke="#ffa23f" stroke-width="2" stroke-linejoin="round"/><path d="M6 9.5L16 15l10-5.5M16 15v12" fill="none" stroke="#ffa23f" stroke-width="1.5"/></svg>
-      <span>كيوبسات</span>
+      <span data-l="ar">كيوبسات</span><span data-l="en">CubeSat</span>
     </a>
-    <nav aria-label="أقسام الصفحة">
-      <a href="#what">ما هو؟</a>
-      <a href="#model">المجسّم</a>
-      <a href="#sizes">الأحجام</a>
-      <a href="#journey">الرحلة</a>
-      <a href="#arab">كيوبسات عربية</a>
-      <a href="#start">كيف نبدأ؟</a>
-      <a href="#quiz">اختبر نفسك</a>
-      <a href="#sources">المصادر</a>
+    <nav class="dnav" aria-label="Sections">
+      <a href="#what"><span data-l="ar">ما هو؟</span><span data-l="en">What</span></a>
+      <a href="#model"><span data-l="ar">المجسّم</span><span data-l="en">3D model</span></a>
+      <a href="#sizes"><span data-l="ar">الأحجام</span><span data-l="en">Sizes</span></a>
+      <a href="#lab"><span data-l="ar">مختبر التصميم</span><span data-l="en">Design lab</span></a>
+      <a href="#journey"><span data-l="ar">الرحلة</span><span data-l="en">Journey</span></a>
+      <a href="#arab"><span data-l="ar">كيوبسات عربية</span><span data-l="en">Arab CubeSats</span></a>
+      <a href="#start"><span data-l="ar">كيف نبدأ؟</span><span data-l="en">Get started</span></a>
+      <a href="#quiz"><span data-l="ar">اختبر نفسك</span><span data-l="en">Quiz</span></a>
     </nav>
-    <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="mnav">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-      الأقسام
-    </button>
+    <div class="top-act">
+      <button class="lang-btn" id="lang-btn" type="button"><span data-l="ar" lang="en">EN</span><span data-l="en" lang="ar">عربي</span></button>
+      <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="mnav">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <span data-l="ar">الأقسام</span><span data-l="en">Menu</span>
+      </button>
+    </div>
   </div>
-  <nav class="mnav" id="mnav" aria-label="أقسام الصفحة">
-    <a href="#what">ما هو؟</a>
-    <a href="#model">المجسّم</a>
-    <a href="#sizes">الأحجام</a>
-    <a href="#journey">الرحلة</a>
-    <a href="#arab">كيوبسات عربية</a>
-    <a href="#start">كيف نبدأ؟</a>
-    <a href="#quiz">اختبر نفسك</a>
-    <a href="#glossary">المصطلحات</a>
-    <a href="#sources">المصادر</a>
+  <nav class="mnav" id="mnav" aria-label="Sections">
+    <a href="#what"><span data-l="ar">ما هو؟</span><span data-l="en">What is it?</span></a>
+    <a href="#model"><span data-l="ar">المجسّم</span><span data-l="en">3D model</span></a>
+    <a href="#sizes"><span data-l="ar">الأحجام</span><span data-l="en">Sizes</span></a>
+    <a href="#lab"><span data-l="ar">مختبر التصميم</span><span data-l="en">Design lab</span></a>
+    <a href="#journey"><span data-l="ar">الرحلة</span><span data-l="en">Journey</span></a>
+    <a href="#arab"><span data-l="ar">كيوبسات عربية</span><span data-l="en">Arab CubeSats</span></a>
+    <a href="#start"><span data-l="ar">كيف نبدأ؟</span><span data-l="en">Get started</span></a>
+    <a href="#quiz"><span data-l="ar">اختبر نفسك</span><span data-l="en">Quiz</span></a>
+    <a href="#glossary"><span data-l="ar">المصطلحات</span><span data-l="en">Glossary</span></a>
+    <a href="#sources"><span data-l="ar">المصادر</span><span data-l="en">Sources</span></a>
   </nav>
   <div class="progress" id="progress"></div>
 </header>
@@ -339,19 +429,20 @@ footer small{display:block;margin-top:10px;font-size:.84rem;line-height:1.8}
   <div class="wrap hero-grid">
     <div>
       <p class="eyebrow">CubeSat · 1U</p>
-      <h1 id="h-hero">قمر صناعي يبدأ بحجم <em>مكعب طول ضلعه <span class="nw">10 سم</span></em></h1>
-      <p class="lead">الكيوبسات <bdi class="en">(CubeSat)</bdi> قمر صناعي صغير يُبنى من وحدات مكعبة قياسية. أتاح للجامعات الوصول إلى الفضاء بتكلفة منخفضة نسبيًا، فصار الطلاب يصمّمون أقمارًا حقيقية ويشغّلونها.</p>
+      <h1 id="h-hero"><span data-l="ar">قمر صناعي يبدأ بحجم <em>مكعب طول ضلعه <span class="nw">10 سم</span></em></span><span data-l="en">A satellite that starts as <em>a 10&nbsp;cm cube</em></span></h1>
+      <p class="lead" data-l="ar">الكيوبسات <bdi class="en">(CubeSat)</bdi> قمر صناعي صغير يُبنى من وحدات مكعبة قياسية. أتاح للجامعات الوصول إلى الفضاء بتكلفة منخفضة نسبيًا، فصار الطلاب يصمّمون أقمارًا حقيقية ويشغّلونها.</p>
+      <p class="lead" data-l="en">A CubeSat is a small satellite built from standard cube-shaped units. It gave universities a relatively low-cost way into space, so students now design and operate real satellites.</p>
       <div class="cta">
-        <a class="btn primary" href="#model">جرّب المجسّم ثلاثي الأبعاد</a>
-        <a class="btn" href="#arab">أقمار عربية</a>
+        <a class="btn primary" href="#model"><span data-l="ar">جرّب المجسّم ثلاثي الأبعاد</span><span data-l="en">Explore the 3D model</span></a>
+        <a class="btn" href="#lab"><span data-l="ar">صمّم قمرك</span><span data-l="en">Design your own</span></a>
       </div>
-      <div class="specs" aria-label="معلومات سريعة">
+      <div class="specs">
         <span class="spec"><b>1U</b> = 10 × 10 × 10 cm</span>
         <span class="spec">CDS <b>Rev. 14</b></span>
         <span class="spec">Standard · <b>1999</b></span>
       </div>
     </div>
-    <div class="hero-view" id="hero-view" role="img" aria-label="مجسّم ثلاثي الأبعاد دوّار لقمر كيوبسات من وحدة واحدة">
+    <div class="hero-view" id="hero-view" role="img" aria-label="Rotating 3D model of a 1U CubeSat">
       <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
       <canvas id="hero-canvas"></canvas>
       <span class="tag">1U · 10 × 10 × 10 cm</span>
@@ -366,16 +457,24 @@ footer small{display:block;margin-top:10px;font-size:.84rem;line-height:1.8}
   <div class="wrap two">
     <div>
       <p class="eyebrow">01 — Definition</p>
-      <h2 id="h-what">ما هو الكيوبسات؟</h2>
-      <p>الكيوبسات <bdi class="en">(CubeSat)</bdi> قمر صناعي صغير مبني على وحدة قياسية تُسمّى <bdi class="en">1U</bdi>، وهي مكعب أبعاده 10 × 10 × 10 سم. تُجمع عدة وحدات لتكوين أقمار أكبر، مثل <bdi class="en">3U</bdi> و<bdi class="en">6U</bdi>.</p>
-      <p>في عام 1999 اقترح البروفيسور <bdi class="en">Jordi Puig-Suari</bdi> من جامعة <bdi class="en">Cal Poly</bdi> والبروفيسور <bdi class="en">Bob Twiggs</bdi> من جامعة <bdi class="en">Stanford</bdi> هذا المعيار، ليمنحا الجامعات طريقًا منخفض التكلفة إلى الفضاء.</p>
-      <p>المعيار يحدّد الشكل والأبعاد وطريقة الخروج من أداة الإطلاق، ولا يحدّد مهمة بعينها. لذلك يمكن للفِرق المختلفة أن تبني مهامّ مختلفة داخل الإطار نفسه.</p>
-      <p class="note">تُنشر المواصفات الرسمية في وثيقة <bdi class="en">CubeSat Design Specification (CDS)</bdi>، والإصدار المعتمد هنا هو <bdi class="en">Rev. 14</bdi>.</p>
+      <h2 id="h-what"><span data-l="ar">ما هو الكيوبسات؟</span><span data-l="en">What is a CubeSat?</span></h2>
+      <div data-l="ar">
+        <p>الكيوبسات <bdi class="en">(CubeSat)</bdi> قمر صناعي صغير مبني على وحدة قياسية تُسمّى <bdi class="en">1U</bdi>، وهي مكعب أبعاده 10 × 10 × 10 سم. تُجمع عدة وحدات لتكوين أقمار أكبر، مثل <bdi class="en">3U</bdi> و<bdi class="en">6U</bdi>.</p>
+        <p>في عام 1999 اقترح البروفيسور <bdi class="en">Jordi Puig-Suari</bdi> من جامعة <bdi class="en">Cal Poly</bdi> والبروفيسور <bdi class="en">Bob Twiggs</bdi> من جامعة <bdi class="en">Stanford</bdi> هذا المعيار، ليمنحا الجامعات طريقًا منخفض التكلفة إلى الفضاء.</p>
+        <p>المعيار يحدّد الشكل والأبعاد وطريقة الخروج من أداة الإطلاق، ولا يحدّد مهمة بعينها. لذلك يمكن للفِرق المختلفة أن تبني مهامّ مختلفة داخل الإطار نفسه.</p>
+        <p class="note">تُنشر المواصفات الرسمية في وثيقة <bdi class="en">CubeSat Design Specification (CDS)</bdi>، والإصدار المعتمد هنا هو <bdi class="en">Rev. 14</bdi>.</p>
+      </div>
+      <div data-l="en">
+        <p>A CubeSat is a small satellite built on a standard unit called <b>1U</b>: a cube measuring 10 × 10 × 10 cm. Several units can be combined into larger satellites, such as 3U or 6U.</p>
+        <p>In 1999, Prof. Jordi Puig-Suari of Cal Poly and Prof. Bob Twiggs of Stanford proposed the standard to give universities a low-cost path to space.</p>
+        <p>The standard defines the shape, the dimensions and how the satellite leaves its launch deployer. It does not define a mission, so different teams can fly very different missions inside the same frame.</p>
+        <p class="note">The official requirements are published in the CubeSat Design Specification (CDS); this page refers to Rev. 14.</p>
+      </div>
     </div>
     <div class="stats">
-      <div class="stat"><div class="k">10 × 10 × 10 cm</div><p class="v">أبعاد الوحدة الأساسية 1U</p></div>
-      <div class="stat"><div class="k">1999</div><p class="v">اقتراح المعيار في Cal Poly وStanford</p></div>
-      <div class="stat"><div class="k">CDS Rev. 14</div><p class="v">الوثيقة الحالية للمواصفات</p></div>
+      <div class="stat"><div class="k">10 × 10 × 10 cm</div><p class="v"><span data-l="ar">أبعاد الوحدة الأساسية 1U</span><span data-l="en">Size of the basic 1U unit</span></p></div>
+      <div class="stat"><div class="k">1999</div><p class="v"><span data-l="ar">اقتراح المعيار في Cal Poly وStanford</span><span data-l="en">Standard proposed at Cal Poly and Stanford</span></p></div>
+      <div class="stat"><div class="k">CDS Rev. 14</div><p class="v"><span data-l="ar">الوثيقة الحالية للمواصفات</span><span data-l="en">Current specification document</span></p></div>
     </div>
   </div>
 </section>
@@ -386,24 +485,24 @@ footer small{display:block;margin-top:10px;font-size:.84rem;line-height:1.8}
 <section id="model" aria-labelledby="h-model">
   <div class="wrap">
     <p class="eyebrow">02 — Interactive 3D</p>
-    <h2 id="h-model">المجسّم التفاعلي: كيوبسات <bdi class="en">3U</bdi></h2>
-    <p class="lead" style="margin-bottom:24px">دوّر المجسّم وقرّبه، ثم اضغط «تفكيك» لترى الأنظمة الفرعية منفصلة. اضغط على أي جزء لتعرف وظيفته ومكوّناته.</p>
-    <p class="stage-note" style="margin:-8px 0 14px">على الهاتف: اسحب بإصبع للتدوير وبإصبعين للتقريب. للتمرير في الصفحة اسحب من خارج المجسّم.</p>
+    <h2 id="h-model"><span data-l="ar">المجسّم التفاعلي: كيوبسات <bdi class="en">3U</bdi></span><span data-l="en">Interactive model: a 3U CubeSat</span></h2>
+    <p class="lead" style="margin-bottom:24px"><span data-l="ar">دوّر المجسّم وقرّبه، ثم اضغط «تفكيك» لترى الأنظمة الفرعية منفصلة. اضغط على أي جزء لتعرف وظيفته ومكوّناته.</span><span data-l="en">Rotate and zoom the model, then press “Exploded view” to separate the subsystems. Tap any part to see what it does and what it contains.</span></p>
+    <p class="stage-note" style="margin:-8px 0 14px"><span data-l="ar">على الهاتف: اسحب بإصبع للتدوير وبإصبعين للتقريب. للتمرير في الصفحة اسحب من خارج المجسّم.</span><span data-l="en">On a phone: drag with one finger to rotate, pinch to zoom. To scroll the page, swipe outside the model.</span></p>
     <div class="model">
       <div class="stage" id="stage">
-        <canvas id="model-canvas" tabindex="0" aria-label="مجسّم ثلاثي الأبعاد لكيوبسات 3U. بلوحة المفاتيح: الأسهم للتدوير، و+ و− للتقريب، وE للتفكيك، وEsc لإلغاء التحديد."></canvas>
+        <canvas id="model-canvas" tabindex="0" aria-label="3D model of a 3U CubeSat. Keyboard: arrows rotate, + and − zoom, E explodes, Esc clears the selection."></canvas>
         <div class="labels" id="labels"></div>
-        <div class="hint"><span id="hint">اسحب للتدوير · اقرص أو مرّر العجلة للتقريب · اضغط على جزء</span><button class="mini" id="goinfo" type="button">التفاصيل ↓</button></div>
+        <div class="hint"><span id="hint"></span><button class="mini" id="goinfo" type="button"><span data-l="ar">التفاصيل ↓</span><span data-l="en">Details ↓</span></button></div>
         <div class="ctrls">
-          <button class="btn" id="b-explode" type="button" aria-pressed="false">تفكيك / <bdi class="en">Exploded view</bdi></button>
-          <button class="btn" id="b-deploy" type="button">طيّ الألواح والهوائيات</button>
-          <button class="btn" id="b-xray" type="button" aria-pressed="false">إظهار الداخل</button>
-          <button class="btn" id="b-reset" type="button">إعادة ضبط</button>
+          <button class="btn" id="b-explode" type="button" aria-pressed="false"><span data-l="ar">تفكيك / <bdi class="en">Exploded view</bdi></span><span data-l="en">Exploded view</span></button>
+          <button class="btn" id="b-deploy" type="button"></button>
+          <button class="btn" id="b-xray" type="button" aria-pressed="false"><span data-l="ar">إظهار الداخل</span><span data-l="en">See inside</span></button>
+          <button class="btn" id="b-reset" type="button"><span data-l="ar">إعادة ضبط</span><span data-l="en">Reset</span></button>
         </div>
       </div>
       <div class="side">
         <div class="info" id="info" aria-live="polite"></div>
-        <div class="parts" id="parts" role="group" aria-label="أجزاء القمر الصناعي"></div>
+        <div class="parts" id="parts" role="group"></div>
       </div>
     </div>
   </div>
@@ -415,18 +514,37 @@ footer small{display:block;margin-top:10px;font-size:.84rem;line-height:1.8}
 <section id="sizes" aria-labelledby="h-sizes">
   <div class="wrap">
     <p class="eyebrow">03 — Form factors</p>
-    <h2 id="h-sizes">الأحجام: من <bdi class="en">1U</bdi> إلى <bdi class="en">12U</bdi></h2>
-    <p class="lead" style="margin-bottom:24px">كل الأحجام مضاعفات للوحدة 10 سم، والرسم أدناه بمقياس رسم موحّد. اضغط على أي حجم لتفاصيله.</p>
+    <h2 id="h-sizes"><span data-l="ar">الأحجام: من <bdi class="en">1U</bdi> إلى <bdi class="en">12U</bdi></span><span data-l="en">Sizes: from 1U to 12U</span></h2>
+    <p class="lead" style="margin-bottom:24px"><span data-l="ar">كل الأحجام مضاعفات للوحدة 10 سم، والرسم أدناه بمقياس رسم موحّد. اضغط على أي حجم لتفاصيله.</span><span data-l="en">Every size is a multiple of the 10 cm unit, and the drawing below uses one common scale. Tap a size for details.</span></p>
     <div class="sizes-box">
-      <svg id="sizes-svg" role="group" aria-label="مقارنة أحجام الكيوبسات بمقياس رسم موحّد"></svg>
-      <div class="seg" id="seg" role="group" aria-label="اختر الحجم"></div>
+      <svg id="sizes-svg" role="group" aria-label="CubeSat sizes drawn to a common scale"></svg>
+      <div class="seg" id="seg" role="group"></div>
       <div class="size-card" id="size-card" aria-live="polite"></div>
     </div>
     <div class="mass-note">
-      <p><b>الكتلة:</b> كانت الوحدة <bdi class="en">1U</bdi> محدودة بنحو 1.33 كغ في الإصدارات الأقدم من المعيار، وتصل إلى 2 كغ في الإصدار الحالي <bdi class="en">CDS Rev. 14</bdi>.</p>
+      <p data-l="ar"><b>الكتلة:</b> كانت الوحدة <bdi class="en">1U</bdi> محدودة بنحو 1.33 كغ في الإصدارات الأقدم من المعيار، وتصل إلى 2 كغ في الإصدار الحالي <bdi class="en">CDS Rev. 14</bdi>.</p>
+      <p data-l="en"><b>Mass:</b> a 1U was limited to about 1.33 kg in older versions of the standard, and up to 2 kg in the current CDS Rev. 14.</p>
       <p class="mono" style="color:var(--mut);font-size:.8rem">1U ≈ 1.33 kg (older) → up to 2 kg (Rev. 14)</p>
-      <p style="color:var(--mut);font-size:.92rem">أبعاد الأحجام الأكبر اسمية (مضاعفات الوحدة). الأبعاد الدقيقة والتفاوتات وحدود الكتلة لبقية الأحجام موجودة في وثيقة <bdi class="en">CDS</bdi> الرسمية.</p>
+      <p style="color:var(--mut);font-size:.92rem"><span data-l="ar">أبعاد الأحجام الأكبر اسمية (مضاعفات الوحدة). الأبعاد الدقيقة والتفاوتات وحدود الكتلة لبقية الأحجام موجودة في وثيقة <bdi class="en">CDS</bdi> الرسمية.</span><span data-l="en">Dimensions of the larger sizes are nominal (multiples of the unit). Exact dimensions, tolerances and mass limits for the other sizes are in the official CDS.</span></p>
     </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- 4b. DESIGN LAB -->
+<section id="lab" aria-labelledby="h-lab">
+  <div class="wrap">
+    <p class="eyebrow">04 — Design lab</p>
+    <h2 id="h-lab"><span data-l="ar">مختبر التصميم: الطاقة والمدار</span><span data-l="en">Design lab: power and orbit</span></h2>
+    <p class="lead" style="margin-bottom:22px"><span data-l="ar">اختر الحجم والألواح والأجهزة والارتفاع، وشاهد كم طاقة يولّد قمرك وكم يستهلك، وكم من كل دورة يقضيه في ضوء الشمس وكم في ظل الأرض.</span><span data-l="en">Pick the size, panels, equipment and altitude, and see how much power your satellite generates and uses, and how much of each orbit it spends in sunlight versus Earth’s shadow.</span></p>
+    <div class="myth">
+      <b><span data-l="ar">هل يحتاج القمر طاقة ليتحرك؟</span><span data-l="en">Does a satellite need energy to move?</span></b>
+      <p data-l="ar">لا. يضعه الصاروخ في المدار بسرعة تقارب 7.6 كم في الثانية، ثم يستمر في الدوران بفعل سرعته وجاذبية الأرض، دون محرك ودون وقود؛ ومعظم الكيوبسات لا تحمل نظام دفع أصلًا. الطاقة الشمسية تشغّل الأجهزة فقط. لذلك نقيس هنا كم طاقة يجمعها القمر خلال كل مسافة يقطعها.</p>
+      <p data-l="en">No. The rocket places it in orbit at about 7.6 km per second, and it keeps circling thanks to that speed and Earth’s gravity, with no engine and no fuel; most CubeSats carry no propulsion at all. Solar power only runs the equipment. That is why this lab measures how much energy the satellite collects over each distance it travels.</p>
+    </div>
+    <div class="lab" id="lab-root"></div>
+    <p class="fig lab-fig"><span data-l="ar">نموذج تعليمي مبسّط: قيم المكوّنات تقريبية للتوضيح، والقدرة الفعلية أقل بسبب الحرارة وتقادم الخلايا وخسائر التحويل. معادلات المدار لمدار دائري، وحساب الظل بنموذج الظل الأسطواني.</span><span data-l="en">Simplified teaching model: component values are illustrative estimates, and real power is lower due to temperature, cell ageing and conversion losses. Orbit equations assume a circular orbit; eclipse uses the cylindrical-shadow model.</span></p>
   </div>
 </section>
 
@@ -435,21 +553,21 @@ footer small{display:block;margin-top:10px;font-size:.84rem;line-height:1.8}
 <!-- 5. JOURNEY -->
 <section id="journey" aria-labelledby="h-journey">
   <div class="wrap">
-    <p class="eyebrow">04 — Mission timeline</p>
-    <h2 id="h-journey">رحلة القمر الصناعي</h2>
-    <p class="lead" style="margin-bottom:28px">من الفكرة إلى العودة إلى الغلاف الجوي، سبع مراحل متتابعة.</p>
+    <p class="eyebrow">05 — Mission timeline</p>
+    <h2 id="h-journey"><span data-l="ar">رحلة القمر الصناعي</span><span data-l="en">The satellite’s journey</span></h2>
+    <p class="lead" style="margin-bottom:28px"><span data-l="ar">من الفكرة إلى العودة إلى الغلاف الجوي، سبع مراحل متتابعة.</span><span data-l="en">From idea to re-entry, in seven consecutive stages.</span></p>
     <div class="journey">
       <ol class="steps" id="steps">
-        <li><h3>التصميم <bdi class="en">Design</bdi></h3><p>تحديد هدف المهمة والمتطلبات، واختيار المكوّنات، وتوزيع الكتلة والطاقة بين الأنظمة.</p></li>
-        <li><h3>البناء والاختبار <bdi class="en">Build &amp; Test</bdi></h3><p>تجميع القمر واختباره على الأرض، مثل اختبارات الاهتزاز والحرارة والفراغ، للتأكد أنه يتحمّل الإطلاق والمدار.</p></li>
-        <li><h3>الدمج في أداة الإطلاق <bdi class="en">P-POD</bdi></h3><p>يوضع القمر داخل أداة إطلاق قياسية <bdi class="en">(deployer)</bdi> تحميه أثناء الصعود، ثم تدفعه إلى الخارج عند الإشارة.</p></li>
-        <li><h3>الإطلاق</h3><p>يُطلق غالبًا حمولةً ثانوية <bdi class="en">(rideshare)</bdi> على صاروخ يحمل أقمارًا أخرى، أو يُنقل إلى المحطة الفضائية الدولية ويُطلق منها.</p></li>
-        <li><h3>الانفصال وفتح الهوائيات والألواح</h3><p>بعد خروجه من أداة الإطلاق يبدأ القمر عمله، وتنفتح الهوائيات والألواح الشمسية القابلة للنشر.</p><button class="go" type="button" id="see-deploy">شاهد ذلك على المجسّم ↑</button></li>
-        <li><h3>التشغيل في المدار الأرضي المنخفض <bdi class="en">LEO</bdi></h3><p>يدور القمر حول الأرض، ويتصل بالمحطة الأرضية في كل مرة يمرّ فيها فوقها، لبضع دقائق في كل مرور، فيرسل بياناته ويستقبل الأوامر.</p></li>
-        <li><h3>نهاية العمر والعودة</h3><p>مع الوقت يفقد القمر ارتفاعه بفعل الاحتكاك مع الغلاف الجوي الرقيق، ثم يعود إلى الغلاف الجوي ويحترق.</p></li>
+        <li><h3><span data-l="ar">التصميم</span><span data-l="en">Design</span></h3><p><span data-l="ar">تحديد هدف المهمة والمتطلبات، واختيار المكوّنات، وتوزيع الكتلة والطاقة بين الأنظمة.</span><span data-l="en">Define the mission goal and requirements, choose components, and budget mass and power across the subsystems.</span></p></li>
+        <li><h3><span data-l="ar">البناء والاختبار</span><span data-l="en">Build &amp; test</span></h3><p><span data-l="ar">تجميع القمر واختباره على الأرض، مثل اختبارات الاهتزاز والحرارة والفراغ، للتأكد أنه يتحمّل الإطلاق والمدار.</span><span data-l="en">Assemble the satellite and test it on the ground, including vibration, thermal and vacuum tests, to make sure it survives launch and orbit.</span></p></li>
+        <li><h3><span data-l="ar">الدمج في أداة الإطلاق</span><span data-l="en">Integration into the deployer</span></h3><p><span data-l="ar">يوضع القمر داخل أداة إطلاق قياسية مثل <bdi class="en">P-POD</bdi> تحميه أثناء الصعود، ثم تدفعه إلى الخارج عند الإشارة.</span><span data-l="en">The satellite is loaded into a standard deployer such as the P-POD, which protects it during ascent and pushes it out on command.</span></p></li>
+        <li><h3><span data-l="ar">الإطلاق</span><span data-l="en">Launch</span></h3><p><span data-l="ar">يُطلق غالبًا حمولةً ثانوية <bdi class="en">(rideshare)</bdi> على صاروخ يحمل أقمارًا أخرى، أو يُنقل إلى المحطة الفضائية الدولية ويُطلق منها.</span><span data-l="en">It usually flies as a secondary (rideshare) payload on a rocket carrying other satellites, or it is taken to the International Space Station and deployed from there.</span></p></li>
+        <li><h3><span data-l="ar">الانفصال وفتح الهوائيات والألواح</span><span data-l="en">Deployment and unfolding</span></h3><p><span data-l="ar">بعد خروجه من أداة الإطلاق يبدأ القمر عمله، وتنفتح الهوائيات والألواح الشمسية القابلة للنشر.</span><span data-l="en">After leaving the deployer the satellite powers up, and its antennas and deployable solar panels unfold.</span></p><button class="go" type="button" id="see-deploy"><span data-l="ar">شاهد ذلك على المجسّم ↑</span><span data-l="en">See it on the 3D model ↑</span></button></li>
+        <li><h3><span data-l="ar">التشغيل في المدار الأرضي المنخفض <bdi class="en">LEO</bdi></span><span data-l="en">Operations in low Earth orbit (LEO)</span></h3><p><span data-l="ar">يدور القمر حول الأرض، ويتصل بالمحطة الأرضية في كل مرة يمرّ فيها فوقها، لبضع دقائق في كل مرور، فيرسل بياناته ويستقبل الأوامر.</span><span data-l="en">The satellite circles Earth and talks to its ground station each time it passes overhead, for a few minutes per pass, sending data down and receiving commands.</span></p></li>
+        <li><h3><span data-l="ar">نهاية العمر والعودة</span><span data-l="en">End of life and re-entry</span></h3><p><span data-l="ar">مع الوقت يفقد القمر ارتفاعه بفعل الاحتكاك مع الغلاف الجوي الرقيق، ثم يعود إلى الغلاف الجوي ويحترق.</span><span data-l="en">Over time, drag from the thin upper atmosphere lowers the orbit until the satellite re-enters the atmosphere and burns up.</span></p></li>
       </ol>
       <div class="orbit-wrap" id="scene-panel">
-        <div class="scene-head"><b id="sc-t">التصميم</b><span class="mono" id="sc-n">01 / 07</span></div>
+        <div class="scene-head"><b id="sc-t"></b><span class="mono" id="sc-n">01 / 07</span></div>
         <svg id="orbit-svg" viewBox="0 0 400 320" role="img" aria-label="رسم توضيحي متحرك لمرحلة الرحلة المحددة">
           <defs>
             <radialGradient id="earthG" cx="40%" cy="35%" r="75%"><stop offset="0" stop-color="#1c3a5a"/><stop offset="1" stop-color="#0a1626"/></radialGradient>
@@ -550,7 +668,7 @@ footer small{display:block;margin-top:10px;font-size:.84rem;line-height:1.8}
           <line id="o-link" x1="0" y1="0" x2="0" y2="0" stroke="#ffa23f" stroke-width="1.5" stroke-dasharray="4 4" opacity="0"/>
           <g id="o-gs"><path d="M0 -9 L7 4 L-7 4 Z" fill="#ffa23f"/><line x1="0" y1="4" x2="0" y2="9" stroke="#ffa23f"/></g>
           <g id="o-sat"><rect x="-5" y="-5" width="10" height="10" fill="#e9eef6" stroke="#ffa23f" stroke-width="1.5"/><rect x="-16" y="-2.5" width="9" height="5" fill="#2a5a8a"/><rect x="7" y="-2.5" width="9" height="5" fill="#2a5a8a"/></g>
-          <text x="200" y="204" text-anchor="middle" font-size="12" fill="#93a3ba" font-family="IBM Plex Sans Arabic, Tahoma, sans-serif">الأرض</text>
+          <text x="200" y="204" text-anchor="middle" font-size="12" fill="#93a3ba" font-family="IBM Plex Sans Arabic, Tahoma, sans-serif"><tspan data-l="ar">الأرض</tspan><tspan data-l="en">Earth</tspan></text>
           <text x="200" y="344" text-anchor="middle" class="sv-mono acc">LEO · GROUND STATION PASS</text>
           </g>
 
@@ -562,17 +680,17 @@ footer small{display:block;margin-top:10px;font-size:.84rem;line-height:1.8}
             <path id="r-path" d="" fill="none" stroke="rgba(160,185,215,.35)" stroke-dasharray="3 6"/>
             <circle id="r-glow" cx="0" cy="0" r="16" fill="url(#glowG)" opacity="0"/>
             <rect id="r-sat" x="-4" y="-4" width="8" height="8" fill="#e9eef6" stroke="#ffa23f" stroke-width="1.2"/>
-            <text x="200" y="184" text-anchor="middle" font-size="12" fill="#93a3ba" font-family="IBM Plex Sans Arabic, Tahoma, sans-serif">الأرض</text>
+            <text x="200" y="184" text-anchor="middle" font-size="12" fill="#93a3ba" font-family="IBM Plex Sans Arabic, Tahoma, sans-serif"><tspan data-l="ar">الأرض</tspan><tspan data-l="en">Earth</tspan></text>
             <text x="16" y="24" class="sv-mono acc">ORBIT DECAY → RE-ENTRY</text>
           </g>
         </svg>
-        <div class="orbit-status"><span class="dot" id="o-dot"></span><span id="o-text">تحديد المتطلبات ورسم التصميم</span></div>
+        <div class="orbit-status"><span class="dot" id="o-dot"></span><span id="o-text"></span></div>
         <div class="sc-ctrl">
-          <button type="button" id="sc-prev" aria-label="المرحلة السابقة">→ السابق</button>
-          <button type="button" id="sc-play" aria-pressed="false">تشغيل تلقائي</button>
-          <button type="button" id="sc-next" aria-label="المرحلة التالية">التالي ←</button>
+          <button type="button" id="sc-prev"><span data-l="ar">→ السابق</span><span data-l="en">← Previous</span></button>
+          <button type="button" id="sc-play" aria-pressed="false"></button>
+          <button type="button" id="sc-next"><span data-l="ar">التالي ←</span><span data-l="en">Next →</span></button>
         </div>
-        <p class="fig">رسوم توضيحية مبسّطة، وليست بمقياس رسم.</p>
+        <p class="fig"><span data-l="ar">رسوم توضيحية مبسّطة، وليست بمقياس رسم.</span><span data-l="en">Simplified illustrations, not to scale.</span></p>
       </div>
     </div>
   </div>
@@ -583,41 +701,66 @@ footer small{display:block;margin-top:10px;font-size:.84rem;line-height:1.8}
 <!-- 6. ARAB CUBESATS -->
 <section id="arab" aria-labelledby="h-arab">
   <div class="wrap">
-    <p class="eyebrow">05 — Arab CubeSats</p>
-    <h2 id="h-arab">كيوبسات عربية</h2>
-    <p class="lead" style="margin-bottom:28px">أربعة أقمار من الأردن والإمارات وتونس، بُنيت داخل جامعات وشركات عربية.</p>
+    <p class="eyebrow">06 — Arab CubeSats</p>
+    <h2 id="h-arab"><span data-l="ar">كيوبسات عربية</span><span data-l="en">Arab CubeSats</span></h2>
+    <p class="lead" style="margin-bottom:24px"><span data-l="ar">أربعة أقمار من الأردن والإمارات وتونس، بُنيت داخل جامعات وشركات عربية.</span><span data-l="en">Four satellites from Jordan, the UAE and Tunisia, built by Arab universities and companies.</span></p>
+    <ol class="tline" id="tline" aria-label="Timeline"></ol>
     <div class="cards">
       <article class="card">
-        <div class="country">الأردن</div>
+        <div class="country"><span data-l="ar">الأردن</span><span data-l="en">Jordan</span></div>
         <h3 class="en">JY1-SAT</h3>
         <div class="meta"><span class="chip hl">1U</span><span class="chip">3 Dec 2018</span><span class="chip">Falcon 9 · SSO-A</span></div>
-        <p>أول قمر صناعي أردني، وهو كيوبسات من وحدة واحدة <bdi class="en">(1U)</bdi>. بناه طلاب هندسة من جامعات أردنية ضمن مبادرة «مسار» التابعة لمؤسسة ولي العهد.</p>
-        <p>سُمّي تيمّنًا بإشارة النداء اللاسلكية الهاوية للملك الحسين <bdi class="en">JY1</bdi>. أُطلق في 3 ديسمبر 2018 على صاروخ <bdi class="en">SpaceX Falcon 9</bdi> (مهمة <bdi class="en">SSO-A</bdi>) من قاعدة <bdi class="en">Vandenberg</bdi>. حمل مُرسِلًا-مستجيبًا لاسلكيًا هاويًا <bdi class="en">(FUNcube transponder)</bdi>، وأرسل صورًا للتراث الأردني.</p>
-        <div class="src">المصادر: <a href="https://en.wikipedia.org/wiki/JY1-SAT" target="_blank" rel="noopener">Wikipedia</a> · <a href="https://amsat-uk.org/tag/jy1-sat/" target="_blank" rel="noopener">AMSAT-UK</a></div>
+        <div data-l="ar">
+          <p>أول قمر صناعي أردني، وهو كيوبسات من وحدة واحدة <bdi class="en">(1U)</bdi>. بناه طلاب هندسة من جامعات أردنية ضمن مبادرة «مسار» التابعة لمؤسسة ولي العهد.</p>
+          <p>سُمّي تيمّنًا بإشارة النداء اللاسلكية الهاوية للملك الحسين <bdi class="en">JY1</bdi>. أُطلق في 3 ديسمبر 2018 على صاروخ <bdi class="en">SpaceX Falcon 9</bdi> (مهمة <bdi class="en">SSO-A</bdi>) من قاعدة <bdi class="en">Vandenberg</bdi>. حمل مُرسِلًا-مستجيبًا لاسلكيًا هاويًا <bdi class="en">(FUNcube transponder)</bdi>، وأرسل صورًا للتراث الأردني.</p>
+        </div>
+        <div data-l="en">
+          <p>Jordan’s first satellite, a single-unit (1U) CubeSat. It was built by engineering students from Jordanian universities under the Crown Prince Foundation’s Masar initiative.</p>
+          <p>It is named after King Hussein’s amateur-radio call sign, JY1. It launched on 3 December 2018 on a SpaceX Falcon 9 (SSO-A mission) from Vandenberg, carried an amateur-radio FUNcube transponder, and transmitted images of Jordanian heritage.</p>
+        </div>
+        <div class="src"><span data-l="ar">المصادر:</span><span data-l="en">Sources:</span> <a href="https://en.wikipedia.org/wiki/JY1-SAT" target="_blank" rel="noopener">Wikipedia</a> · <a href="https://amsat-uk.org/tag/jy1-sat/" target="_blank" rel="noopener">AMSAT-UK</a></div>
       </article>
       <article class="card">
-        <div class="country">الإمارات</div>
+        <div class="country"><span data-l="ar">الإمارات</span><span data-l="en">United Arab Emirates</span></div>
         <h3 class="en">MYSat-1</h3>
         <div class="meta"><span class="chip hl">1U</span><span class="chip">Launch Nov 2018 · NG-10</span><span class="chip">Deployed Feb 2019</span></div>
-        <p>أول كيوبسات <bdi class="en">(1U)</bdi> لجامعة خليفة، بالتعاون مع <bdi class="en">Yahsat</bdi> و<bdi class="en">Northrop Grumman</bdi>.</p>
-        <p>أُطلق في نوفمبر 2018 ضمن المهمة <bdi class="en">NG-10</bdi>، وانفصل في المدار في فبراير 2019. التقط صورًا للأرض، واختبر بطارية ليثيوم-أيون جديدة طوّرتها الجامعة.</p>
-        <div class="src">المصدر: <a href="https://www.ku.ac.ae/kus-mysat-1-launched-to-international-space-station" target="_blank" rel="noopener">Khalifa University</a></div>
+        <div data-l="ar">
+          <p>أول كيوبسات <bdi class="en">(1U)</bdi> لجامعة خليفة، بالتعاون مع <bdi class="en">Yahsat</bdi> و<bdi class="en">Northrop Grumman</bdi>.</p>
+          <p>أُطلق في نوفمبر 2018 ضمن المهمة <bdi class="en">NG-10</bdi>، وانفصل في المدار في فبراير 2019. التقط صورًا للأرض، واختبر بطارية ليثيوم-أيون جديدة طوّرتها الجامعة.</p>
+        </div>
+        <div data-l="en">
+          <p>Khalifa University’s first CubeSat (1U), developed with Yahsat and Northrop Grumman.</p>
+          <p>It launched in November 2018 on the NG-10 mission and was deployed into orbit in February 2019. It took images of Earth and tested a new lithium-ion battery developed at the university.</p>
+        </div>
+        <div class="src"><span data-l="ar">المصدر:</span><span data-l="en">Source:</span> <a href="https://www.ku.ac.ae/kus-mysat-1-launched-to-international-space-station" target="_blank" rel="noopener">Khalifa University</a></div>
       </article>
       <article class="card">
-        <div class="country">الإمارات</div>
+        <div class="country"><span data-l="ar">الإمارات</span><span data-l="en">United Arab Emirates</span></div>
         <h3 class="en">DhabiSat</h3>
         <div class="meta"><span class="chip hl">Student CubeSat</span><span class="chip">Launch 20 Feb 2021</span><span class="chip">Deployed Jul 2021</span></div>
-        <p>كيوبسات طلابي من جامعة خليفة. أُطلق في 20 فبراير 2021 إلى المحطة الفضائية الدولية على متن المركبة <bdi class="en">Cygnus</bdi>، ثم أُطلق في مداره في يوليو 2021.</p>
-        <p>هدف المهمة اختبار برمجيات طوّرها الطلاب لنظام التحكم بالاتجاه <bdi class="en">(ADCS)</bdi>، واستراتيجيات التوجيه.</p>
-        <div class="src">المصدر: <a href="https://www.ku.ac.ae/khalifa-universitys-dhabisat-set-for-launch-on-20-february-from-aboard-cygnus" target="_blank" rel="noopener">Khalifa University</a></div>
+        <div data-l="ar">
+          <p>كيوبسات طلابي من جامعة خليفة. أُطلق في 20 فبراير 2021 إلى المحطة الفضائية الدولية على متن المركبة <bdi class="en">Cygnus</bdi>، ثم أُطلق في مداره في يوليو 2021.</p>
+          <p>هدف المهمة اختبار برمجيات طوّرها الطلاب لنظام التحكم بالاتجاه <bdi class="en">(ADCS)</bdi>، واستراتيجيات التوجيه.</p>
+        </div>
+        <div data-l="en">
+          <p>A student CubeSat from Khalifa University. It launched on 20 February 2021 to the International Space Station aboard a Cygnus spacecraft, and was deployed into orbit in July 2021.</p>
+          <p>Its mission was to test student-developed software for the attitude determination and control system (ADCS), along with pointing strategies.</p>
+        </div>
+        <div class="src"><span data-l="ar">المصدر:</span><span data-l="en">Source:</span> <a href="https://www.ku.ac.ae/khalifa-universitys-dhabisat-set-for-launch-on-20-february-from-aboard-cygnus" target="_blank" rel="noopener">Khalifa University</a></div>
       </article>
       <article class="card">
-        <div class="country">تونس</div>
+        <div class="country"><span data-l="ar">تونس</span><span data-l="en">Tunisia</span></div>
         <h3 class="en">Challenge One</h3>
         <div class="meta"><span class="chip hl">3U</span><span class="chip">22 Mar 2021</span><span class="chip">Soyuz-2 · Baikonur</span></div>
-        <p>أول قمر صناعي تونسي مصنوع محليًا، بنته شركة <bdi class="en">TelNet</bdi>. أُطلق في 22 مارس 2021 على صاروخ <bdi class="en">Soyuz-2</bdi> من قاعدة <bdi class="en">Baikonur</bdi>.</p>
-        <p>قمر لإنترنت الأشياء <bdi class="en">(IoT)</bdi> يعتمد بروتوكول <bdi class="en">LoRaWAN</bdi>، وهو كيوبسات من ثلاث وحدات <bdi class="en">(3U)</bdi>.</p>
-        <div class="src">المصدر: <a href="https://en.wikipedia.org/wiki/Challenge-1" target="_blank" rel="noopener">Wikipedia</a></div>
+        <div data-l="ar">
+          <p>أول قمر صناعي تونسي مصنوع محليًا، بنته شركة <bdi class="en">TelNet</bdi>. أُطلق في 22 مارس 2021 على صاروخ <bdi class="en">Soyuz-2</bdi> من قاعدة <bdi class="en">Baikonur</bdi>.</p>
+          <p>قمر لإنترنت الأشياء <bdi class="en">(IoT)</bdi> يعتمد بروتوكول <bdi class="en">LoRaWAN</bdi>، وهو كيوبسات من ثلاث وحدات <bdi class="en">(3U)</bdi>.</p>
+        </div>
+        <div data-l="en">
+          <p>Tunisia’s first domestically made satellite, built by the company TelNet. It launched on 22 March 2021 on a Soyuz-2 rocket from Baikonur.</p>
+          <p>An Internet of Things (IoT) satellite using the LoRaWAN protocol, built as a three-unit (3U) CubeSat.</p>
+        </div>
+        <div class="src"><span data-l="ar">المصدر:</span><span data-l="en">Source:</span> <a href="https://en.wikipedia.org/wiki/Challenge-1" target="_blank" rel="noopener">Wikipedia</a></div>
       </article>
     </div>
   </div>
@@ -628,16 +771,16 @@ footer small{display:block;margin-top:10px;font-size:.84rem;line-height:1.8}
 <!-- 7. START -->
 <section id="start" aria-labelledby="h-start">
   <div class="wrap">
-    <p class="eyebrow">06 — Getting started</p>
-    <h2 id="h-start">كيف يبدأ فريق جامعي؟</h2>
-    <p class="lead" style="margin-bottom:28px">خطوات عملية وواقعية. لا تضمن أي منها الوصول إلى الإطلاق، لكنها تبني الأساس الذي تحتاجه أي مهمة.</p>
+    <p class="eyebrow">07 — Getting started</p>
+    <h2 id="h-start"><span data-l="ar">كيف يبدأ فريق جامعي؟</span><span data-l="en">How does a university team start?</span></h2>
+    <p class="lead" style="margin-bottom:28px"><span data-l="ar">خطوات عملية وواقعية. لا تضمن أي منها الوصول إلى الإطلاق، لكنها تبني الأساس الذي تحتاجه أي مهمة.</span><span data-l="en">Practical, realistic steps. None of them guarantees a launch, but together they build the foundation every mission needs.</span></p>
     <div class="grid3">
-      <div class="tile"><span class="t">TEAM</span><h3>فريق متعدد التخصصات</h3><p>ميكانيكا وكهرباء وميكاترونكس وبرمجيات. القمر الصناعي مشروع تتداخل فيه هذه التخصصات كلها، ويفيد وجود مشرف أكاديمي.</p></div>
-      <div class="tile"><span class="t">MISSION</span><h3>مهمة بسيطة</h3><p>اختيار هدف واحد واضح وقابل للقياس، مثل التقاط صورة أو قياس بسيط، بدل أهداف كثيرة تُرهق الفريق.</p></div>
-      <div class="tile"><span class="t">CANSAT / 1U</span><h3>ابدأ بـ <bdi class="en">CanSat</bdi> أو طقم <bdi class="en">1U</bdi></h3><p>الـ <bdi class="en">CanSat</bdi> نموذج بحجم علبة مشروب، يتدرّب الفريق عليه على الأنظمة الأساسية قبل الانتقال إلى قمر حقيقي.</p></div>
-      <div class="tile"><span class="t">COTS</span><h3>مكوّنات جاهزة</h3><p>استخدام مكوّنات تجارية جاهزة <bdi class="en">(COTS)</bdi> يوفّر الوقت والتكلفة، مع اختبار مدى ملاءمتها لبيئة الفضاء.</p></div>
-      <div class="tile"><span class="t">GROUND</span><h3>أساسيات المحطة الأرضية</h3><p>يمكن تعلّمها عبر الراديو الهاوي <bdi class="en">(amateur radio)</bdi>، بتجربة استقبال إشارات الأقمار القائمة.</p></div>
-      <div class="tile"><span class="t">LAUNCH</span><h3>فرصة إطلاق وشركاء</h3><p>البحث عن فرصة إطلاق مشتركة وعن جامعات وجهات داعمة. هذه الخطوة تحتاج وقتًا وتخطيطًا مبكرًا، ولا يوجد ضمان لقبول أي طلب.</p></div>
+      <div class="tile"><span class="t">TEAM</span><h3><span data-l="ar">فريق متعدد التخصصات</span><span data-l="en">A multidisciplinary team</span></h3><p><span data-l="ar">ميكانيكا وكهرباء وميكاترونكس وبرمجيات. القمر الصناعي مشروع تتداخل فيه هذه التخصصات كلها، ويفيد وجود مشرف أكاديمي.</span><span data-l="en">Mechanical, electrical, mechatronics and software. A satellite needs all of them working together, and an academic supervisor helps.</span></p></div>
+      <div class="tile"><span class="t">MISSION</span><h3><span data-l="ar">مهمة بسيطة</span><span data-l="en">A simple mission</span></h3><p><span data-l="ar">اختيار هدف واحد واضح وقابل للقياس، مثل التقاط صورة أو قياس بسيط، بدل أهداف كثيرة تُرهق الفريق.</span><span data-l="en">Choose one clear, measurable goal, such as taking an image or a simple measurement, instead of many goals that overload the team.</span></p></div>
+      <div class="tile"><span class="t">CANSAT / 1U</span><h3><span data-l="ar">ابدأ بـ <bdi class="en">CanSat</bdi> أو طقم <bdi class="en">1U</bdi></span><span data-l="en">Start with a CanSat or a 1U kit</span></h3><p><span data-l="ar">الـ <bdi class="en">CanSat</bdi> نموذج بحجم علبة مشروب، يتدرّب الفريق عليه على الأنظمة الأساسية قبل الانتقال إلى قمر حقيقي.</span><span data-l="en">A CanSat is a soda-can-sized model that lets the team practise the core subsystems before moving to a real satellite.</span></p></div>
+      <div class="tile"><span class="t">COTS</span><h3><span data-l="ar">مكوّنات جاهزة</span><span data-l="en">Off-the-shelf parts</span></h3><p><span data-l="ar">استخدام مكوّنات تجارية جاهزة <bdi class="en">(COTS)</bdi> يوفّر الوقت والتكلفة، مع اختبار مدى ملاءمتها لبيئة الفضاء.</span><span data-l="en">Commercial off-the-shelf (COTS) components save time and money, as long as they are tested for the space environment.</span></p></div>
+      <div class="tile"><span class="t">GROUND</span><h3><span data-l="ar">أساسيات المحطة الأرضية</span><span data-l="en">Ground-station basics</span></h3><p><span data-l="ar">يمكن تعلّمها عبر الراديو الهاوي <bdi class="en">(amateur radio)</bdi>، بتجربة استقبال إشارات الأقمار القائمة.</span><span data-l="en">Learn them through amateur radio by receiving signals from satellites already in orbit.</span></p></div>
+      <div class="tile"><span class="t">LAUNCH</span><h3><span data-l="ar">فرصة إطلاق وشركاء</span><span data-l="en">A launch opportunity and partners</span></h3><p><span data-l="ar">البحث عن فرصة إطلاق مشتركة وعن جامعات وجهات داعمة. هذه الخطوة تحتاج وقتًا وتخطيطًا مبكرًا، ولا يوجد ضمان لقبول أي طلب.</span><span data-l="en">Look for a shared launch opportunity and for supporting universities and organisations. This takes time and early planning, and no application is guaranteed.</span></p></div>
     </div>
   </div>
 </section>
@@ -647,10 +790,10 @@ footer small{display:block;margin-top:10px;font-size:.84rem;line-height:1.8}
 <!-- 8. WHY -->
 <section id="why" aria-labelledby="h-why">
   <div class="wrap">
-    <p class="eyebrow">07 — Why it matters</p>
-    <h2 id="h-why">لماذا يهمّ هذا للعالم العربي؟</h2>
-    <p class="lead">تُظهر تجارب الأردن والإمارات وتونس أن الكيوبسات منصة عملية لبناء الخبرة: طلاب جامعيون يصمّمون قمرًا ويشغّلونه، وشركة محلية تبني قمرًا كاملًا.</p>
-    <p class="lead">وكل فريق جديد يضيف مهندسين يعرفون الأنظمة الفضائية والاتصالات والبرمجيات، وهي أساس القدرات الفضائية المحلية على المدى الطويل.</p>
+    <p class="eyebrow">08 — Why it matters</p>
+    <h2 id="h-why"><span data-l="ar">لماذا يهمّ هذا للعالم العربي؟</span><span data-l="en">Why does this matter for the Arab world?</span></h2>
+    <p class="lead"><span data-l="ar">تُظهر تجارب الأردن والإمارات وتونس أن الكيوبسات منصة عملية لبناء الخبرة: طلاب جامعيون يصمّمون قمرًا ويشغّلونه، وشركة محلية تبني قمرًا كاملًا.</span><span data-l="en">The experiences of Jordan, the UAE and Tunisia show that CubeSats are a practical way to build expertise: university students designing and operating a satellite, and a local company building a complete one.</span></p>
+    <p class="lead"><span data-l="ar">وكل فريق جديد يضيف مهندسين يعرفون الأنظمة الفضائية والاتصالات والبرمجيات، وهي أساس القدرات الفضائية المحلية على المدى الطويل.</span><span data-l="en">Every new team adds engineers who understand space systems, communications and software: the foundation of long-term local space capability.</span></p>
   </div>
 </section>
 
@@ -660,8 +803,8 @@ footer small{display:block;margin-top:10px;font-size:.84rem;line-height:1.8}
 <section id="quiz" aria-labelledby="h-quiz">
   <div class="wrap">
     <p class="eyebrow">Quiz</p>
-    <h2 id="h-quiz">اختبر معلوماتك</h2>
-    <p class="lead" style="margin-bottom:24px">ستة أسئلة سريعة من محتوى هذه الصفحة.</p>
+    <h2 id="h-quiz"><span data-l="ar">اختبر معلوماتك</span><span data-l="en">Test yourself</span></h2>
+    <p class="lead" style="margin-bottom:24px"><span data-l="ar">ستة أسئلة سريعة من محتوى هذه الصفحة.</span><span data-l="en">Six quick questions based on this page.</span></p>
     <div class="quiz" id="quiz-box"></div>
   </div>
 </section>
@@ -672,20 +815,21 @@ footer small{display:block;margin-top:10px;font-size:.84rem;line-height:1.8}
 <section id="glossary" aria-labelledby="h-gloss">
   <div class="wrap">
     <p class="eyebrow">Glossary</p>
-    <h2 id="h-gloss">مسرد المصطلحات</h2>
+    <h2 id="h-gloss"><span data-l="ar">مسرد المصطلحات</span><span data-l="en">Glossary</span></h2>
     <dl class="gloss">
-      <div><dt>CubeSat</dt><dd>قمر صناعي صغير مبني من وحدات قياسية مكعبة.</dd></div>
-      <div><dt>1U</dt><dd>الوحدة الأساسية في المعيار: مكعب أبعاده 10 × 10 × 10 سم.</dd></div>
-      <div><dt>CDS<small>CubeSat Design Specification</small></dt><dd>الوثيقة التي تحدّد مواصفات الكيوبسات وأبعاده.</dd></div>
-      <div><dt>P-POD<small>Poly-Picosatellite Orbital Deployer</small></dt><dd>أداة إطلاق قياسية تحمل الكيوبسات أثناء الصعود ثم تدفعه إلى المدار.</dd></div>
-      <div><dt>LEO<small>Low Earth Orbit</small></dt><dd>المدار الأرضي المنخفض، حيث تعمل معظم أقمار الكيوبسات.</dd></div>
-      <div><dt>ADCS<small>Attitude Determination &amp; Control System</small></dt><dd>نظام تحديد اتجاه القمر والتحكم فيه.</dd></div>
-      <div><dt>EPS<small>Electrical Power System</small></dt><dd>نظام توليد الطاقة الكهربائية وتخزينها وتوزيعها.</dd></div>
-      <div><dt>OBC<small>On-Board Computer</small></dt><dd>الحاسوب الذي يدير القمر وينفّذ أوامره.</dd></div>
-      <div><dt>COTS<small>Commercial Off-The-Shelf</small></dt><dd>مكوّنات تجارية جاهزة تُشترى بدل تصنيعها خصيصًا.</dd></div>
-      <div><dt>Rideshare</dt><dd>إطلاق قمر حمولةً ثانوية مع أقمار أخرى على الصاروخ نفسه.</dd></div>
-      <div><dt>Transponder</dt><dd>جهاز يستقبل إشارة لاسلكية ويعيد بثّها، مثل جهاز FUNcube على JY1-SAT.</dd></div>
-      <div><dt>IoT · LoRaWAN<small>Internet of Things · Long Range Wide Area Network</small></dt><dd>إنترنت الأشياء، وبروتوكول اتصال بعيد المدى منخفض الاستهلاك استخدمه Challenge One.</dd></div>
+      <div><dt>CubeSat</dt><dd><span data-l="ar">قمر صناعي صغير مبني من وحدات قياسية مكعبة.</span><span data-l="en">A small satellite built from standard cube-shaped units.</span></dd></div>
+      <div><dt>1U</dt><dd><span data-l="ar">الوحدة الأساسية في المعيار: مكعب أبعاده 10 × 10 × 10 سم.</span><span data-l="en">The standard’s basic unit: a 10 × 10 × 10 cm cube.</span></dd></div>
+      <div><dt>CDS<small>CubeSat Design Specification</small></dt><dd><span data-l="ar">الوثيقة التي تحدّد مواصفات الكيوبسات وأبعاده.</span><span data-l="en">The document that defines CubeSat requirements and dimensions.</span></dd></div>
+      <div><dt>P-POD<small>Poly-Picosatellite Orbital Deployer</small></dt><dd><span data-l="ar">أداة إطلاق قياسية تحمل الكيوبسات أثناء الصعود ثم تدفعه إلى المدار.</span><span data-l="en">A standard deployer that carries CubeSats during ascent and then releases them into orbit.</span></dd></div>
+      <div><dt>LEO<small>Low Earth Orbit</small></dt><dd><span data-l="ar">المدار الأرضي المنخفض، حيث تعمل معظم أقمار الكيوبسات.</span><span data-l="en">Low Earth orbit, where most CubeSats operate.</span></dd></div>
+      <div><dt>ADCS<small>Attitude Determination &amp; Control System</small></dt><dd><span data-l="ar">نظام تحديد اتجاه القمر والتحكم فيه.</span><span data-l="en">The system that determines and controls where the satellite points.</span></dd></div>
+      <div><dt>EPS<small>Electrical Power System</small></dt><dd><span data-l="ar">نظام توليد الطاقة الكهربائية وتخزينها وتوزيعها.</span><span data-l="en">Generates, stores and distributes electrical power.</span></dd></div>
+      <div><dt>OBC<small>On-Board Computer</small></dt><dd><span data-l="ar">الحاسوب الذي يدير القمر وينفّذ أوامره.</span><span data-l="en">The computer that runs the satellite and executes commands.</span></dd></div>
+      <div><dt>COTS<small>Commercial Off-The-Shelf</small></dt><dd><span data-l="ar">مكوّنات تجارية جاهزة تُشترى بدل تصنيعها خصيصًا.</span><span data-l="en">Ready-made commercial parts bought instead of custom-built.</span></dd></div>
+      <div><dt>Rideshare</dt><dd><span data-l="ar">إطلاق قمر حمولةً ثانوية مع أقمار أخرى على الصاروخ نفسه.</span><span data-l="en">Launching as a secondary payload alongside other satellites on the same rocket.</span></dd></div>
+      <div><dt>Eclipse</dt><dd><span data-l="ar">الجزء من المدار الذي يمرّ فيه القمر في ظل الأرض، فيعمل على البطارية.</span><span data-l="en">The part of the orbit spent in Earth’s shadow, when the satellite runs on its battery.</span></dd></div>
+      <div><dt>Transponder</dt><dd><span data-l="ar">جهاز يستقبل إشارة لاسلكية ويعيد بثّها، مثل جهاز FUNcube على JY1-SAT.</span><span data-l="en">A device that receives a radio signal and retransmits it, like the FUNcube unit on JY1-SAT.</span></dd></div>
+      <div><dt>IoT · LoRaWAN<small>Internet of Things · Long Range Wide Area Network</small></dt><dd><span data-l="ar">إنترنت الأشياء، وبروتوكول اتصال بعيد المدى منخفض الاستهلاك استخدمه Challenge One.</span><span data-l="en">The Internet of Things, and a long-range, low-power communication protocol used by Challenge One.</span></dd></div>
     </dl>
   </div>
 </section>
@@ -695,13 +839,13 @@ footer small{display:block;margin-top:10px;font-size:.84rem;line-height:1.8}
 <!-- 9. SOURCES -->
 <section id="sources" aria-labelledby="h-src">
   <div class="wrap">
-    <p class="eyebrow">08 — Sources</p>
-    <h2 id="h-src">المصادر</h2>
+    <p class="eyebrow">09 — Sources</p>
+    <h2 id="h-src"><span data-l="ar">المصادر</span><span data-l="en">Sources</span></h2>
     <ul class="sources">
       <li><a href="https://en.wikipedia.org/wiki/JY1-SAT" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/JY1-SAT</a><span>JY1-SAT — Wikipedia</span></li>
       <li><a href="https://amsat-uk.org/tag/jy1-sat/" target="_blank" rel="noopener">https://amsat-uk.org/tag/jy1-sat/</a><span>JY1-SAT — AMSAT-UK</span></li>
-      <li><a href="https://www.ku.ac.ae/khalifa-universitys-dhabisat-set-for-launch-on-20-february-from-aboard-cygnus" target="_blank" rel="noopener">https://www.ku.ac.ae/khalifa-universitys-dhabisat-set-for-launch-on-20-february-from-aboard-cygnus</a><span>DhabiSat — جامعة خليفة</span></li>
-      <li><a href="https://www.ku.ac.ae/kus-mysat-1-launched-to-international-space-station" target="_blank" rel="noopener">https://www.ku.ac.ae/kus-mysat-1-launched-to-international-space-station</a><span>MYSat-1 — جامعة خليفة</span></li>
+      <li><a href="https://www.ku.ac.ae/khalifa-universitys-dhabisat-set-for-launch-on-20-february-from-aboard-cygnus" target="_blank" rel="noopener">https://www.ku.ac.ae/khalifa-universitys-dhabisat-set-for-launch-on-20-february-from-aboard-cygnus</a><span>DhabiSat — Khalifa University</span></li>
+      <li><a href="https://www.ku.ac.ae/kus-mysat-1-launched-to-international-space-station" target="_blank" rel="noopener">https://www.ku.ac.ae/kus-mysat-1-launched-to-international-space-station</a><span>MYSat-1 — Khalifa University</span></li>
       <li><a href="https://en.wikipedia.org/wiki/Challenge-1" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Challenge-1</a><span>Challenge One — Wikipedia</span></li>
       <li><a href="https://www.nasa.gov/wp-content/uploads/2018/01/cubesatdesignspecificationrev14_12022-02-09.pdf" target="_blank" rel="noopener">https://www.nasa.gov/wp-content/uploads/2018/01/cubesatdesignspecificationrev14_12022-02-09.pdf</a><span>CubeSat Design Specification, Rev. 14</span></li>
       <li><a href="https://eoportal.org/other-space-activities/cubesat-concept" target="_blank" rel="noopener">https://eoportal.org/other-space-activities/cubesat-concept</a><span>CubeSat Concept — eoPortal</span></li>
@@ -713,9 +857,9 @@ footer small{display:block;margin-top:10px;font-size:.84rem;line-height:1.8}
 
 <footer>
   <div class="wrap">
-    <div class="by">إعداد: <span class="en">Ameer Hamam</span></div>
-    <div>مُقدَّم إلى الاتحاد العربي لعلوم الفضاء والفلك</div>
-    <small>مشروع تعليمي أعدّه طالب هندسة ميكاترونكس في الجامعة الأردنية. هذه الصفحة ليست صفحة رسمية للاتحاد.</small>
+    <div class="by"><span data-l="ar">إعداد:</span><span data-l="en">Prepared by:</span> <span class="en">Ameer Hamam</span></div>
+    <div><span data-l="ar">مُقدَّم إلى الاتحاد العربي لعلوم الفضاء والفلك</span><span data-l="en">Presented to the Arab Union for Astronomy and Space Sciences</span></div>
+    <small><span data-l="ar">مشروع تعليمي أعدّه طالب هندسة ميكاترونكس في الجامعة الأردنية. هذه الصفحة ليست صفحة رسمية للاتحاد.</span><span data-l="en">An educational project by a mechatronics engineering student at the University of Jordan. This is not an official page of the Union.</span></small>
   </div>
 </footer>
 
@@ -726,6 +870,20 @@ footer small{display:block;margin-top:10px;font-size:.84rem;line-height:1.8}
 var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
 var ACC=0xffa23f;
 function $(id){return document.getElementById(id)}
+
+/* ---------- language ---------- */
+var LANG=document.documentElement.lang==='en'?'en':'ar',langCbs=[];
+function L(a,e){return LANG==='en'?e:a}
+function onLang(f){langCbs.push(f)}
+function setLang(l){
+  LANG=l==='en'?'en':'ar';var h=document.documentElement;h.lang=LANG;h.dir=LANG==='en'?'ltr':'rtl';
+  document.title=L('الكيوبسات — قمر صناعي بحجم مكعب','CubeSats — an interactive guide');
+  var md=document.querySelector('meta[name=description]');
+  if(md)md.content=L('موقع تعليمي تفاعلي بالعربية عن الكيوبسات (CubeSat): مجسّم ثلاثي الأبعاد قابل للتفكيك، مقارنة الأحجام، مختبر الطاقة والمدار، رحلة القمر الصناعي، وأقمار عربية.','An interactive guide to CubeSats: an explodable 3D model, size comparison, a power and orbit lab, the mission journey, and Arab CubeSats.');
+  try{localStorage.setItem('lang',LANG)}catch(e){}
+  try{var u=new URL(location.href);if(LANG==='en')u.searchParams.set('lang','en');else u.searchParams.delete('lang');history.replaceState(null,'',u)}catch(e){}
+  langCbs.forEach(function(f){f()});
+}
 
 /* ---------- star field (drawn once) ---------- */
 (function(){
@@ -788,7 +946,7 @@ function lights(scene){
 /* ---------- hero 1U ---------- */
 function initHero(){
   var host=$('hero-view'),cv=$('hero-canvas'),r;
-  function fb(){host.insertAdjacentHTML('beforeend','<div class="fallback3d">تعذّر عرض المجسّم ثلاثي الأبعاد على هذا الجهاز.</div>');cv.style.display='none'}
+  function fb(){host.insertAdjacentHTML('beforeend','<div class="fallback3d">'+L('تعذّر عرض المجسّم ثلاثي الأبعاد على هذا الجهاز.','The 3D model cannot be displayed on this device.')+'</div>');cv.style.display='none'}
   if(!HAS3D){fb();return}
   try{r=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true})}catch(e){fb();return}
   var scene=new THREE.Scene(),cam=new THREE.PerspectiveCamera(32,1,.1,50);
@@ -820,25 +978,39 @@ function initHero(){
 var PARTS=[
  {k:'structure',ar:'الهيكل',en:'Structure / Frame',acr:'STRUCT',
   role:'يحمل جميع الأنظمة ويحميها من اهتزازات الإطلاق. سكك الهيكل تنزلق داخل أداة الإطلاق، فيدخل القمر ويخرج منها بسلاسة.',
-  comps:['سكك وقضبان الهيكل، وهي غالبًا من سبائك الألمنيوم','ألواح طرفية علوية وسفلية','براغي ومثبّتات وفواصل لتثبيت الدوائر']},
+  roleE:'Holds every subsystem and protects it from launch vibration. Its rails slide inside the deployer, so the satellite loads and leaves it smoothly.',
+  comps:['سكك وقضبان الهيكل، وهي غالبًا من سبائك الألمنيوم','ألواح طرفية علوية وسفلية','براغي ومثبّتات وفواصل لتثبيت الدوائر'],
+  compsE:['Rails and frame members, usually aluminium alloy','Top and bottom end plates','Screws, standoffs and spacers that hold the boards']},
  {k:'solar',ar:'الألواح الشمسية',en:'Solar Panels',acr:'SP',
   role:'تحوّل ضوء الشمس إلى كهرباء لشحن البطاريات وتشغيل القمر. تزيد الألواح القابلة للنشر المساحة المعرّضة للشمس، وبالتالي القدرة الكهربائية.',
-  comps:['خلايا شمسية مثبّتة على أوجه الهيكل','ألواح شمسية قابلة للنشر (deployable panels)','مفاصل وآلية تثبيت وتحرير للألواح']},
+  roleE:'Turn sunlight into electricity to charge the batteries and run the satellite. Deployable panels add area facing the Sun, and therefore more power.',
+  comps:['خلايا شمسية مثبّتة على أوجه الهيكل','ألواح شمسية قابلة للنشر (deployable panels)','مفاصل وآلية تثبيت وتحرير للألواح'],
+  compsE:['Solar cells mounted on the body faces','Deployable solar panels','Hinges plus a hold-down and release mechanism']},
  {k:'eps',ar:'نظام الطاقة',en:'Electrical Power System',acr:'EPS',
   role:'يجمع الكهرباء القادمة من الألواح، وينظّمها، ويخزّنها في البطاريات، ثم يوزّعها على باقي الأنظمة.',
-  comps:['بطاريات ليثيوم-أيون (Li-ion)','لوحة إدارة الطاقة','منظّمات الجهد ودوائر الحماية']},
+  roleE:'Collects power from the panels, regulates it, stores it in the batteries and distributes it to the other subsystems.',
+  comps:['بطاريات ليثيوم-أيون (Li-ion)','لوحة إدارة الطاقة','منظّمات الجهد ودوائر الحماية'],
+  compsE:['Lithium-ion (Li-ion) batteries','Power management board','Voltage regulators and protection circuits']},
  {k:'obc',ar:'الحاسوب',en:'On-Board Computer',acr:'OBC',
   role:'«عقل» القمر: يشغّل برنامج الطيران، ويقرأ الحساسات، وينفّذ الأوامر القادمة من الأرض، ويخزّن البيانات.',
-  comps:['متحكّم دقيق أو معالج (microcontroller)','ذاكرة لتخزين البرنامج والبيانات','واجهات اتصال مع باقي الأنظمة مثل I²C وSPI وUART']},
+  roleE:'The satellite’s “brain”: runs the flight software, reads the sensors, executes commands from the ground and stores data.',
+  comps:['متحكّم دقيق أو معالج (microcontroller)','ذاكرة لتخزين البرنامج والبيانات','واجهات اتصال مع باقي الأنظمة مثل I²C وSPI وUART'],
+  compsE:['Microcontroller or processor','Memory for software and data','Interfaces to other subsystems such as I²C, SPI and UART']},
  {k:'adcs',ar:'التحكم بالاتجاه',en:'Attitude Determination & Control',acr:'ADCS',
   role:'يحدّد اتجاه القمر في الفضاء ويوجّهه، لتتجه الكاميرا أو الهوائي أو الألواح نحو الجهة المطلوبة.',
-  comps:['عجلات تفاعلية (reaction wheels)','ملفات مغناطيسية (magnetorquers)','حساسات شمسية (sun sensors)','مقياس مغناطيسية (magnetometer)']},
+  roleE:'Works out which way the satellite is facing and turns it, so the camera, antenna or panels point where needed.',
+  comps:['عجلات تفاعلية (reaction wheels)','ملفات مغناطيسية (magnetorquers)','حساسات شمسية (sun sensors)','مقياس مغناطيسية (magnetometer)'],
+  compsE:['Reaction wheels','Magnetorquers','Sun sensors','Magnetometer']},
  {k:'comms',ar:'الاتصالات',en:'Communications',acr:'COMMS',
   role:'يربط القمر بالأرض: يرسل البيانات والقياسات إلى المحطة الأرضية، ويستقبل الأوامر منها.',
-  comps:['جهاز إرسال واستقبال راديوي (transceiver)','هوائيات قابلة للنشر (deployable antennas) تنفتح بعد الانفصال','كابلات ومرشّحات ومضخّمات إشارة حسب التصميم']},
+  roleE:'Links the satellite to Earth: sends data and measurements to the ground station and receives commands from it.',
+  comps:['جهاز إرسال واستقبال راديوي (transceiver)','هوائيات قابلة للنشر (deployable antennas) تنفتح بعد الانفصال','كابلات ومرشّحات ومضخّمات إشارة حسب التصميم'],
+  compsE:['Radio transceiver','Deployable antennas that unfold after deployment','Cables, filters and amplifiers as the design requires']},
  {k:'payload',ar:'الحمولة',en:'Payload',acr:'PAYLOAD',
   role:'سبب وجود المهمة: الجهاز أو التجربة التي يحملها القمر. تختلف الحمولة كليًا من قمر إلى آخر.',
-  comps:['كاميرا لتصوير الأرض','حساس علمي','تجربة تقنية أو تعليمية']}
+  roleE:'The reason the mission exists: the instrument or experiment the satellite carries. It differs completely from one satellite to the next.',
+  comps:['كاميرا لتصوير الأرض','حساس علمي','تجربة تقنية أو تعليمية'],
+  compsE:['Camera for Earth imaging','Science sensor','Technology or educational experiment']}
 ];
 var partByKey={};PARTS.forEach(function(p){partByKey[p.k]=p});
 
@@ -851,29 +1023,34 @@ function initModel(){
 
   function en(t){return t.replace(/\(([A-Za-z][^)]*)\)/g,'<bdi class="en">($1)</bdi>')}
   function renderInfo(){
-    if(!sel){infoEl.innerHTML='<p class="empty">اضغط على أي جزء في المجسّم، أو اختره من القائمة أدناه، لتظهر هنا وظيفته ومكوّناته.</p>';return}
+    if(!sel){infoEl.innerHTML='<p class="empty">'+L('اضغط على أي جزء في المجسّم، أو اختره من القائمة أدناه، لتظهر هنا وظيفته ومكوّناته.','Tap any part of the model, or pick one from the list, to see its role and components here.')+'</p>';return}
     var p=partByKey[sel];
-    infoEl.innerHTML='<span class="acr">'+p.acr+'</span><h3>'+p.ar+'</h3><div class="en-name">'+p.en+'</div><p>'+en(p.role)+'</p><h4>المكوّنات المعتادة</h4><ul>'+p.comps.map(function(c){return'<li>'+en(c)+'</li>'}).join('')+'</ul>';
+    infoEl.innerHTML=LANG==='en'?'<span class="acr">'+p.acr+'</span><h3>'+p.en+'</h3><div class="en-name">'+p.ar+'</div><p>'+p.roleE+'</p><h4>Typical components</h4><ul>'+p.compsE.map(function(c){return'<li>'+c+'</li>'}).join('')+'</ul>'
+      :'<span class="acr">'+p.acr+'</span><h3>'+p.ar+'</h3><div class="en-name">'+p.en+'</div><p>'+en(p.role)+'</p><h4>المكوّنات المعتادة</h4><ul>'+p.comps.map(function(c){return'<li>'+en(c)+'</li>'}).join('')+'</ul>';
   }
-  listEl.innerHTML=PARTS.map(function(p){return'<button type="button" data-k="'+p.k+'" aria-pressed="false">'+p.ar+'<small>'+p.acr+'</small></button>'}).join('');
+  function renderList(){listEl.innerHTML=PARTS.map(function(p){return'<button type="button" data-k="'+p.k+'" aria-pressed="'+(p.k===sel)+'">'+L(p.ar,p.en)+'<small>'+p.acr+'</small></button>'}).join('')}
+  renderList();
   listEl.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;setSel(sel===b.dataset.k?null:b.dataset.k)});
   function setSel(k){
     sel=k;renderInfo();updateHint();
     Array.prototype.forEach.call(listEl.children,function(b){b.setAttribute('aria-pressed',String(b.dataset.k===k))});
     if(onSel)onSel();
   }
-  var hintEl=$('hint'),goEl=$('goinfo'),HINT0=hintEl.textContent;
+  var hintEl=$('hint'),goEl=$('goinfo');
   function updateHint(){
-    if(sel){hintEl.innerHTML='الجزء المحدد: <b>'+partByKey[sel].ar+'</b>';goEl.classList.add('on')}
-    else{hintEl.textContent=HINT0;goEl.classList.remove('on')}
+    if(sel){hintEl.innerHTML=L('الجزء المحدد: ','Selected: ')+'<b>'+L(partByKey[sel].ar,partByKey[sel].en)+'</b>';goEl.classList.add('on')}
+    else{hintEl.textContent=L('اسحب للتدوير · اقرص أو مرّر العجلة للتقريب · اضغط على جزء','Drag to rotate · pinch or scroll to zoom · tap a part');goEl.classList.remove('on')}
   }
+  updateHint();
+  var langModel=[];
+  onLang(function(){renderList();renderInfo();updateHint();langModel.forEach(function(f){f()})});
   goEl.addEventListener('click',function(){infoEl.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'})});
   renderInfo();
 
   function fb(){
     cv.style.display='none';$('hint').parentNode.style.display='none';
-    stage.insertAdjacentHTML('afterbegin','<div class="fallback3d">المجسّم ثلاثي الأبعاد يحتاج دعم WebGL، وهو غير متاح على هذا الجهاز. يمكنك استكشاف الأجزاء من القائمة.</div>');
-    $('b-explode').disabled=$('b-xray').disabled=$('b-reset').disabled=true;
+    stage.insertAdjacentHTML('afterbegin','<div class="fallback3d">'+L('المجسّم ثلاثي الأبعاد يحتاج دعم WebGL، وهو غير متاح على هذا الجهاز. يمكنك استكشاف الأجزاء من القائمة.','The 3D model needs WebGL, which is not available on this device. You can still explore the parts from the list.')+'</div>');
+    stage.querySelector('.ctrls').style.display='none';
     stage.style.minHeight='180px';stage.style.height='auto';
   }
   if(!HAS3D){fb();return}
@@ -1003,10 +1180,11 @@ function initModel(){
   var LBL={},lblWrap=$('labels'),vA=new THREE.Vector3(),vR=new THREE.Vector3();
   PARTS.forEach(function(p){
     var b=document.createElement('button');b.type='button';b.className='lbl r';b.tabIndex=-1;
-    b.innerHTML='<span class="ar">'+p.ar+'</span><small>'+p.acr+'</small>';
+    b.innerHTML='<span class="ar">'+L(p.ar,p.en)+'</span><small>'+p.acr+'</small>';
     b.addEventListener('click',function(){setSel(sel===p.k?null:p.k)});
     lblWrap.appendChild(b);LBL[p.k]=b;
   });
+  langModel.push(function(){PARTS.forEach(function(p){LBL[p.k].querySelector('.ar').textContent=L(p.ar,p.en)});dirty=true});
   function updateLabels(){
     var show=e>.6,W=stage.clientWidth,H=stage.clientHeight,pos=[];
     cam.updateMatrixWorld();vR.setFromMatrixColumn(cam.matrixWorld,0);
@@ -1047,10 +1225,11 @@ function initModel(){
   bXr.addEventListener('click',function(){xray=!xray;bXr.setAttribute('aria-pressed',String(xray));applyVisuals()});
   var bDp=$('b-deploy');
   function setDeploy(t,instant){
-    dpT=t;bDp.textContent=t?'طيّ الألواح والهوائيات':'نشر الألواح والهوائيات';
+    dpT=t;bDp.textContent=t?L('طيّ الألواح والهوائيات','Fold panels & antennas'):L('نشر الألواح والهوائيات','Deploy panels & antennas');
     if(instant||reduce){dp=t;applyDeploy()}
   }
   bDp.addEventListener('click',function(){auto=false;setDeploy(dpT?0:1)});
+  setDeploy(1,true);langModel.push(function(){bDp.textContent=dpT?L('طيّ الألواح والهوائيات','Fold panels & antennas'):L('نشر الألواح والهوائيات','Deploy panels & antennas')});
   model.playDeploy=function(){
     exploded=false;eTarget=0;bEx.setAttribute('aria-pressed','false');setSel(null);
     setDeploy(0,true);
@@ -1135,11 +1314,11 @@ function initModel(){
 /* ---------- sizes ---------- */
 function initSizes(){
   var SZ=[
-    {k:'1U',a:1,b:1,c:1,dim:'10 × 10 × 10 cm',n:'وحدة واحدة',d:'الوحدة الأساسية للمعيار: مكعب طول ضلعه 10 سم.'},
-    {k:'2U',a:1,b:1,c:2,dim:'10 × 10 × 20 cm',n:'وحدتان',d:'وحدتان متراصّتان فوق بعضهما.'},
-    {k:'3U',a:1,b:1,c:3,dim:'10 × 10 × 30 cm',n:'3 وحدات',d:'ثلاث وحدات متراصّة. هذا هو الحجم المستخدم في المجسّم التفاعلي أعلاه، وهو حجم Challenge One التونسي.'},
-    {k:'6U',a:1,b:2,c:3,dim:'10 × 20 × 30 cm',n:'6 وحدات',d:'ست وحدات بترتيب 1 × 2 × 3. الأبعاد اسمية.'},
-    {k:'12U',a:2,b:2,c:3,dim:'20 × 20 × 30 cm',n:'12 وحدة',d:'اثنتا عشرة وحدة بترتيب 2 × 2 × 3. الأبعاد اسمية.'}
+    {k:'1U',a:1,b:1,c:1,dim:'10 × 10 × 10 cm',n:'وحدة واحدة',d:'الوحدة الأساسية للمعيار: مكعب طول ضلعه 10 سم.',nE:'One unit',dE:'The standard’s basic unit: a 10 cm cube.'},
+    {k:'2U',a:1,b:1,c:2,dim:'10 × 10 × 20 cm',n:'وحدتان',d:'وحدتان متراصّتان فوق بعضهما.',nE:'Two units',dE:'Two units stacked on top of each other.'},
+    {k:'3U',a:1,b:1,c:3,dim:'10 × 10 × 30 cm',n:'3 وحدات',d:'ثلاث وحدات متراصّة. هذا هو الحجم المستخدم في المجسّم التفاعلي أعلاه، وهو حجم Challenge One التونسي.',nE:'Three units',dE:'Three stacked units. This is the size of the interactive model above, and of Tunisia’s Challenge One.'},
+    {k:'6U',a:1,b:2,c:3,dim:'10 × 20 × 30 cm',n:'6 وحدات',d:'ست وحدات بترتيب 1 × 2 × 3. الأبعاد اسمية.',nE:'Six units',dE:'Six units arranged 1 × 2 × 3. Nominal dimensions.'},
+    {k:'12U',a:2,b:2,c:3,dim:'20 × 20 × 30 cm',n:'12 وحدة',d:'اثنتا عشرة وحدة بترتيب 2 × 2 × 3. الأبعاد اسمية.',nE:'Twelve units',dE:'Twelve units arranged 2 × 2 × 3. Nominal dimensions.'}
   ];
   var svg=$('sizes-svg'),seg=$('seg'),card=$('size-card'),cur='3U';
   var cs=Math.cos(Math.PI/6),sn=.5,U=40,gap=34,pad=16,labelH=52;
@@ -1174,12 +1353,13 @@ function initSizes(){
   }
   function show(){
     var s=SZ.filter(function(z){return z.k===cur})[0];
-    card.innerHTML='<div class="dim">'+s.k+' · '+s.dim+'</div><p><b style="color:var(--tx)">'+s.n+'</b> من الوحدة 10 سم.</p><p>'+s.d+'</p>';
+    card.innerHTML='<div class="dim">'+s.k+' · '+s.dim+'</div><p><b style="color:var(--tx)">'+L(s.n,s.nE)+'</b>'+L(' من الوحدة 10 سم.',' of the 10 cm unit.')+'</p><p>'+L(s.d,s.dE)+'</p>';
     Array.prototype.forEach.call(seg.children,function(b){b.setAttribute('aria-pressed',String(b.dataset.k===cur))});
     draw();
   }
   seg.innerHTML=SZ.map(function(s){return'<button type="button" data-k="'+s.k+'" aria-pressed="false">'+s.k+'</button>'}).join('');
   seg.addEventListener('click',function(ev){var b=ev.target.closest('button');if(b){cur=b.dataset.k;show()}});
+  onLang(show);
   svg.addEventListener('click',function(ev){var g=ev.target.closest('.hit');if(g){cur=g.dataset.k;show()}});
   svg.addEventListener('keydown',function(ev){
     if(ev.key!=='Enter'&&ev.key!==' ')return;var g=ev.target.closest&&ev.target.closest('.hit');
@@ -1192,8 +1372,8 @@ function initSizes(){
 function initJourney(){
   var svg=$('orbit-svg'),steps=Array.prototype.slice.call($('steps').children);
   var scenes=svg.querySelectorAll('.scene'),dot=$('o-dot'),txt=$('o-text'),tEl=$('sc-t'),nEl=$('sc-n');
-  var CAP=['تحديد المتطلبات ورسم التصميم','اختبار الاهتزاز يحاكي ظروف الإطلاق','القمر داخل أداة الإطلاق قبل الصعود','الصعود على صاروخ مع حمولات أخرى','الخروج من أداة الإطلاق ثم فتح الهوائيات والألواح',null,'انخفاض المدار تدريجيًا ثم الاحتراق في الغلاف الجوي'];
-  var TITLES=steps.map(function(li){return li.querySelector('h3').childNodes[0].textContent.trim()});
+  var CAP=[['تحديد المتطلبات ورسم التصميم','Defining requirements and drawing the design'],['اختبار الاهتزاز يحاكي ظروف الإطلاق','Vibration testing recreates launch conditions'],['القمر داخل أداة الإطلاق قبل الصعود','The satellite inside its deployer before launch'],['الصعود على صاروخ مع حمولات أخرى','Riding to orbit alongside other payloads'],['الخروج من أداة الإطلاق ثم فتح الهوائيات والألواح','Leaving the deployer, then unfolding antennas and panels'],null,['انخفاض المدار تدريجيًا ثم الاحتراق في الغلاف الجوي','The orbit slowly decays until the satellite burns up']];
+  function title(i){var h=steps[i].querySelector('h3'),sp=h.querySelector('[data-l="'+LANG+'"]');return (sp||h).textContent.trim()}
   var cur=0,on=null,timer=null,lockScroll=0;
 
   /* orbit (scene 5) */
@@ -1208,7 +1388,7 @@ function initJourney(){
     var c=Math.abs(wrap(ang-gsA))<.62;
     link.setAttribute('x1',gx);link.setAttribute('y1',gy);link.setAttribute('x2',sx.toFixed(1));link.setAttribute('y2',sy.toFixed(1));
     link.setAttribute('opacity',c?1:0);
-    if(c!==on){on=c;dot.classList.toggle('on',c);txt.textContent=c?'اتصال بالمحطة الأرضية: القمر فوق الأفق':'خارج نطاق المحطة الأرضية'}
+    if(c!==on){on=c;dot.classList.toggle('on',c);txt.textContent=c?L('اتصال بالمحطة الأرضية: القمر فوق الأفق','Ground-station contact: the satellite is above the horizon'):L('خارج نطاق المحطة الأرضية','Out of range of the ground station')}
   }
 
   /* re-entry (scene 6) */
@@ -1227,18 +1407,20 @@ function initJourney(){
     cur=(i+steps.length)%steps.length;
     Array.prototype.forEach.call(scenes,function(g){g.classList.toggle('on',+g.dataset.i===cur)});
     steps.forEach(function(li,j){li.classList.toggle('on',j===cur);if(j===cur)li.setAttribute('aria-current','step');else li.removeAttribute('aria-current')});
-    tEl.textContent=TITLES[cur];nEl.textContent=('0'+(cur+1)).slice(-2)+' / '+('0'+steps.length).slice(-2);
-    if(cur===5){on=null;drawOrbit()}else{dot.classList.remove('on');txt.textContent=CAP[cur]}
+    tEl.textContent=title(cur);nEl.textContent=('0'+(cur+1)).slice(-2)+' / '+('0'+steps.length).slice(-2);
+    if(cur===5){on=null;drawOrbit()}else{dot.classList.remove('on');txt.textContent=L(CAP[cur][0],CAP[cur][1])}
     if(cur===6){rt=reduce?.85:0;drawReentry()}
     if(!fromScroll)lockScroll=performance.now();
   }
-  function stopAuto(){if(timer){clearInterval(timer);timer=null;$('sc-play').setAttribute('aria-pressed','false');$('sc-play').textContent='تشغيل تلقائي'}}
+  function playTxt(){$('sc-play').textContent=timer?L('إيقاف','Pause'):L('تشغيل تلقائي','Autoplay')}
+  function stopAuto(){if(timer){clearInterval(timer);timer=null;$('sc-play').setAttribute('aria-pressed','false');playTxt()}}
+  playTxt();onLang(function(){playTxt();show(cur,true)});
   $('sc-prev').addEventListener('click',function(){stopAuto();show(cur-1)});
   $('sc-next').addEventListener('click',function(){stopAuto();show(cur+1)});
   $('sc-play').addEventListener('click',function(){
     if(timer){stopAuto();return}
-    this.setAttribute('aria-pressed','true');this.textContent='إيقاف';
-    show(cur+1);timer=setInterval(function(){show(cur+1)},6000);
+    this.setAttribute('aria-pressed','true');
+    show(cur+1);timer=setInterval(function(){show(cur+1)},6000);playTxt();
   });
   steps.forEach(function(li,j){
     li.tabIndex=0;
@@ -1265,28 +1447,191 @@ function initJourney(){
   }});
 }
 
+/* ---------- design lab: power + orbit ---------- */
+function initLab(){
+  var MU=398600.4418,RE=6378.137,SOLAR=1361,A1=0.006; /* km^3/s^2, km, W/m^2, m^2 of cells per 10x10 cm face (2 cells) */
+  var COMPS=[
+    {k:'obc',ar:'الحاسوب (OBC)',en:'On-board computer (OBC)',u:.15,m:60,p:.4},
+    {k:'eps',ar:'نظام الطاقة + بطارية 20 Wh',en:'Power system + 20 Wh battery',u:.3,m:250,p:.15,bat:20},
+    {k:'uhf',ar:'راديو UHF + هوائيات',en:'UHF radio + antennas',u:.25,m:150,p:.8},
+    {k:'adcs',ar:'تحكم بالاتجاه أساسي (ملفات مغناطيسية وحساسات)',en:'Basic ADCS (magnetorquers + sensors)',u:.25,m:180,p:.4,adcs:1},
+    {k:'rw',ar:'عجلات تفاعلية لتوجيه دقيق',en:'Reaction wheels for fine pointing',u:.4,m:350,p:1.2,adcs:1},
+    {k:'cam',ar:'كاميرا لتصوير الأرض',en:'Earth-imaging camera',u:.5,m:250,p:1},
+    {k:'sband',ar:'مرسل S-band لبيانات أكثر',en:'S-band transmitter (more data)',u:.25,m:150,p:1.5},
+    {k:'gps',ar:'مستقبل GPS',en:'GPS receiver',u:.1,m:40,p:.5},
+    {k:'bat2',ar:'بطارية إضافية 20 Wh',en:'Extra 20 Wh battery',u:.25,m:200,p:0,bat:20}
+  ];
+  var st={n:3,dep:2,att:'sun',eff:28,alt:500,beta:0,on:{obc:1,eps:1,uhf:1,adcs:1,cam:1}};
+  var root=$('lab-root'),R={},anim={phi:0,dist:0,eng:0};
+  function f1(x,d){return Number(x).toLocaleString(LANG==='en'?'en-US':'en-US',{minimumFractionDigits:d,maximumFractionDigits:d})}
+  function u(v,unit){return'<bdi dir="ltr">'+v+' '+unit+'</bdi>'}
+  function pills(name,opts,cur){return'<div class="pills" data-name="'+name+'">'+opts.map(function(o){return'<button type="button" data-v="'+o[0]+'" aria-pressed="'+(String(o[0])===String(cur))+'">'+o[1]+'</button>'}).join('')+'</div>'}
+  function render(){
+    var h='<div class="lab-in">';
+    h+='<fieldset><legend>'+L('١. الحجم والألواح','1. Size and panels')+'</legend>'+
+      '<div class="row"><span>'+L('الحجم','Size')+'</span>'+pills('n',[[1,'1U'],[2,'2U'],[3,'3U']],st.n)+'</div>'+
+      '<div class="row"><span>'+L('ألواح قابلة للنشر','Deployable panels')+'</span>'+pills('dep',[[0,L('بدون','None')],[2,'2'],[4,'4']],st.dep)+'</div>'+
+      '<div class="row"><span>'+L('التوجيه','Attitude')+'</span>'+pills('att',[['sun',L('نحو الشمس','Sun-pointing')],['tumble',L('دوران حر','Free tumbling')]],st.att)+'</div>'+
+      '<div class="row"><span>'+L('كفاءة الخلايا','Cell efficiency')+'</span><input type="range" id="lb-eff" min="20" max="32" step="1" value="'+st.eff+'"><output id="lo-eff"></output></div>'+
+      '<p class="warn" id="lw-att" hidden></p></fieldset>';
+    h+='<fieldset><legend>'+L('٢. ابنِ قمرك: الأجهزة','2. Build your satellite: equipment')+'</legend><div class="comps">'+
+      COMPS.map(function(c){return'<label class="comp"><input type="checkbox" data-k="'+c.k+'"'+(st.on[c.k]?' checked':'')+'><span><b>'+L(c.ar,c.en)+'</b><small>'+c.u+' U · '+c.m+' g · '+c.p+' W'+(c.bat?' · '+c.bat+' Wh':'')+'</small></span></label>'}).join('')+
+      '</div><div class="row"><span>'+L('الحجم المستخدم','Volume used')+'</span><output id="lo-vol" style="min-width:8em"></output></div><div class="bar" id="lb-vol"><i></i></div>'+
+      '<div class="row"><span>'+L('الكتلة التقديرية','Estimated mass')+'</span><output id="lo-mass" style="min-width:8em"></output></div><p class="warn" id="lw-fit" hidden></p></fieldset>';
+    h+='<fieldset><legend>'+L('٣. المدار','3. Orbit')+'</legend>'+
+      '<div class="row"><span>'+L('الارتفاع','Altitude')+'</span><input type="range" id="lb-alt" min="300" max="800" step="10" value="'+st.alt+'"><output id="lo-alt"></output></div>'+
+      '<div class="row"><span>'+L('زاوية الشمس β','Sun angle β')+'</span><input type="range" id="lb-beta" min="0" max="90" step="1" value="'+st.beta+'"><output id="lo-beta"></output></div>'+
+      '<p class="fig" style="text-align:start;margin:6px 0 0">'+L('β هي الزاوية بين مستوى المدار واتجاه الشمس. عند β = 0 يمرّ القمر في أطول ظل؛ وعند زاوية كبيرة قد يبقى في الشمس طوال الدورة.','β is the angle between the orbit plane and the direction of the Sun. At β = 0 the satellite crosses the longest shadow; at large angles it can stay in sunlight for the whole orbit.')+'</p></fieldset>';
+    h+='</div><div class="lab-out">'+
+      '<div class="orb-box"><svg id="lab-svg" viewBox="0 0 400 250" role="img" aria-label="'+L('القمر في ضوء الشمس وفي ظل الأرض','Satellite in sunlight and in Earth’s shadow')+'">'+
+        '<g stroke="#ffd27a" stroke-opacity=".35"><line x1="300" y1="50" x2="246" y2="50"/><line x1="300" y1="90" x2="246" y2="90"/><line x1="300" y1="125" x2="246" y2="125"/><line x1="300" y1="160" x2="246" y2="160"/><line x1="300" y1="200" x2="246" y2="200"/></g>'+
+        '<circle cx="352" cy="125" r="26" fill="#ffb84d"/><circle cx="352" cy="125" r="34" fill="none" stroke="#ffb84d" stroke-opacity=".35" stroke-width="3"/>'+
+        '<text x="352" y="176" text-anchor="middle" class="sv-mono acc loc">'+L('الشمس','SUN')+'</text>'+
+        '<rect id="ls-shadow" x="0" y="67" width="150" height="116" fill="#000" opacity=".45"/>'+
+        '<text x="40" y="228" class="sv-mono loc">'+L('ظل الأرض','EARTH SHADOW')+'</text>'+
+        '<circle id="ls-orbit" cx="150" cy="125" r="90" fill="none" stroke="#ffa23f" stroke-width="2.5" stroke-opacity=".8"/>'+
+        '<path id="ls-ecl" d="" fill="none" stroke="#5b6b82" stroke-width="5"/>'+
+        '<circle cx="150" cy="125" r="58" fill="url(#earthG2)" stroke="rgba(160,185,215,.5)"/>'+
+        '<defs><radialGradient id="earthG2" cx="65%" cy="40%" r="75%"><stop offset="0" stop-color="#2a5a8a"/><stop offset=".55" stop-color="#14304f"/><stop offset="1" stop-color="#060d18"/></radialGradient></defs>'+
+        '<text x="150" y="129" text-anchor="middle" font-size="12" fill="#c8d4e4" font-family="IBM Plex Sans Arabic, Tahoma, sans-serif">'+L('الأرض','Earth')+'</text>'+
+        '<g id="ls-sat"><rect x="-5" y="-5" width="10" height="10" fill="#e9eef6" stroke="#ffa23f" stroke-width="1.5"/></g>'+
+        '</svg><div class="orb-state"><span class="dot" id="ls-dot"></span><span id="ls-txt"></span></div>'+
+        '<div class="orb-state" style="font-size:.84rem"><span id="ls-odo"></span></div></div>'+
+      '<div class="kpis" id="lk"></div><div class="verdict" id="lv"></div></div>'+
+      '<div class="lab-sum" id="lsum"></div>';
+    root.innerHTML=h;
+    R.eff=$('lb-eff');R.alt=$('lb-alt');R.beta=$('lb-beta');
+    update();
+  }
+  function calc(){
+    var h=st.alt,a=RE+h,T=2*Math.PI*Math.sqrt(a*a*a/MU),v=Math.sqrt(MU/a),d=2*Math.PI*a;
+    var b=st.beta*Math.PI/180,bs=Math.asin(RE/a),fe=0;
+    if(b<bs)fe=Math.acos(Math.sqrt(h*h+2*RE*h)/(a*Math.cos(b)))/Math.PI;
+    var hasAdcs=COMPS.some(function(c){return c.adcs&&st.on[c.k]}),sun=st.att==='sun'&&hasAdcs;
+    var Af=st.n*A1,Aeff=sun?Af*(1+st.dep):(4*Af+st.dep*Af)/4;
+    var Ps=SOLAR*st.eff/100*Aeff,Te=fe*T,Ts=T-Te;
+    var load=0,vol=0,mass=st.n*120+4*st.n*35+st.dep*st.n*40,bat=0;
+    COMPS.forEach(function(c){if(st.on[c.k]){load+=c.p;vol+=c.u;mass+=c.m;bat+=c.bat||0}});
+    var Eg=Ps*Ts/3600,El=load*T/3600,Eb=load*Te/3600;
+    return{T:T,v:v,d:d,fe:fe,Te:Te,Ts:Ts,Ps:Ps,Pavg:Ps*(1-fe),Eg:Eg,El:El,Eb:Eb,bal:Eg-El,load:load,vol:vol,mass:mass,bat:bat,day:86400/T,hasAdcs:hasAdcs,sun:sun};
+  }
+  var C;
+  function kpi(l,v,hl){return'<div class="kpi'+(hl?' hl':'')+'"><span class="v">'+v+'</span><span class="l">'+l+'</span></div>'}
+  function update(){
+    C=calc();
+    $('lo-eff').textContent=st.eff+' %';$('lo-alt').textContent=st.alt+' km';$('lo-beta').textContent=st.beta+'°';
+    var wa=$('lw-att');wa.hidden=!(st.att==='sun'&&!C.hasAdcs);
+    wa.textContent=L('التوجيه نحو الشمس يحتاج نظام تحكم بالاتجاه (ADCS). بدونه يدور القمر بحرية، لذلك حُسبت القدرة كدوران حر.','Sun-pointing needs an attitude control system (ADCS). Without one the satellite tumbles freely, so power is calculated as tumbling.');
+    var vb=$('lb-vol');vb.firstChild.style.width=Math.min(100,C.vol/st.n*100)+'%';vb.classList.toggle('over',C.vol>st.n);
+    $('lo-vol').textContent=f1(C.vol,2)+' / '+st.n+' U';$('lo-mass').textContent=f1(C.mass/1000,2)+' kg';
+    var w=[];
+    if(C.vol>st.n)w.push(L('الأجهزة لا تتّسع في هذا الحجم. اختر حجمًا أكبر أو أزل بعض الأجهزة.','The equipment does not fit in this size. Choose a larger size or remove something.'));
+    if(st.n===1&&C.mass>2000)w.push(L('الكتلة تتجاوز 2 كغ، وهو الحد الأقصى لوحدة 1U في CDS Rev. 14.','Mass exceeds 2 kg, the 1U maximum in CDS Rev. 14.'));
+    if(!st.on.eps)w.push(L('بدون نظام طاقة وبطارية لا يمكن تشغيل القمر في الظل.','Without a power system and battery the satellite cannot operate in shadow.'));
+    var wf=$('lw-fit');wf.hidden=!w.length;wf.innerHTML=w.join('<br>');
+    var per1000=C.Eg/C.d*1000;
+    $('lk').innerHTML=
+      kpi(L('زمن الدورة','Orbital period'),f1(C.T/60,1)+' min')+
+      kpi(L('السرعة المدارية','Orbital speed'),f1(C.v,2)+' km/s')+
+      kpi(L('المسافة في كل دورة','Distance per orbit'),f1(C.d,0)+' km')+
+      kpi(L('في ضوء الشمس','In sunlight'),f1((1-C.fe)*100,0)+'% · '+f1(C.Ts/60,0)+' min',1)+
+      kpi(L('في ظل الأرض','In Earth’s shadow'),f1(C.fe*100,0)+'% · '+f1(C.Te/60,0)+' min')+
+      kpi(L('دورات في اليوم','Orbits per day'),f1(C.day,1))+
+      kpi(L('القدرة في ضوء الشمس','Power in sunlight'),f1(C.Ps,1)+' W',1)+
+      kpi(L('متوسط القدرة على الدورة','Orbit-average power'),f1(C.Pavg,1)+' W')+
+      kpi(L('استهلاك الأجهزة (متوسط)','Equipment load (average)'),f1(C.load,2)+' W')+
+      kpi(L('الطاقة المولّدة في كل دورة','Energy generated per orbit'),f1(C.Eg,1)+' Wh',1)+
+      kpi(L('الطاقة المجموعة لكل 1000 كم','Energy collected per 1,000 km'),f1(per1000,2)+' Wh',1)+
+      kpi(L('من البطارية في كل فترة ظل','From battery per eclipse'),f1(C.Eb,1)+' Wh'+(C.bat?' · '+f1(C.Eb/C.bat*100,0)+'%':''));
+    var ok=C.bal>=0&&C.bat>0&&C.Eb<=C.bat;
+    var v=$('lv');v.className='verdict '+(ok?'ok':'no');
+    v.innerHTML=ok?'<b>'+L('الطاقة تكفي ✓','Power budget closes ✓')+'</b>'+L('في كل دورة يولّد القمر '+u(f1(C.Eg,1),'Wh')+' ويستهلك '+u(f1(C.El,1),'Wh')+'، والفائض '+u(f1(C.bal,1),'Wh')+'. خلال '+f1(C.Te/60,0)+' دقيقة في الظل تزوّد البطارية الأجهزة بـ '+u(f1(C.Eb,1),'Wh')+'.',
+        'Each orbit the satellite generates '+u(f1(C.Eg,1),'Wh')+' and uses '+u(f1(C.El,1),'Wh')+', a surplus of '+u(f1(C.bal,1),'Wh')+'. During '+f1(C.Te/60,0)+' minutes of shadow the battery supplies '+u(f1(C.Eb,1),'Wh')+'.')
+      :'<b>'+L('عجز في الطاقة ✗','Power deficit ✗')+'</b>'+(C.bat>0&&C.Eb>C.bat?L('البطارية أصغر من حاجة فترة الظل. ','The battery is smaller than one eclipse needs. ','')+' ':'')+(C.bal<0?L('الأجهزة تستهلك '+u(f1(C.El,1),'Wh')+' في كل دورة، والألواح تولّد '+u(f1(C.Eg,1),'Wh')+' فقط. ','The equipment uses '+u(f1(C.El,1),'Wh')+' per orbit but the panels generate only '+u(f1(C.Eg,1),'Wh')+'. '):'')+(C.bat?'':L('لا توجد بطارية. ','There is no battery. '))+L('جرّب ألواحًا قابلة للنشر، أو التوجيه نحو الشمس، أو إزالة بعض الأجهزة.','Try deployable panels, sun-pointing, or removing some equipment.');
+    $('lsum').innerHTML='<span>'+L('توليد','Gen')+' <b>'+u(f1(C.Eg,1),'Wh')+'</b></span><span>'+L('استهلاك','Use')+' <b>'+u(f1(C.El,1),'Wh')+'</b></span><span>'+(ok?'✓':'✗')+' '+L('لكل دورة','per orbit')+'</span>';
+    /* drawing: shadow arc centred on the side away from the Sun; orbit radius exaggerated */
+    var r=78+(st.alt-300)/500*32,ec=$('ls-ecl');$('ls-orbit').setAttribute('r',r.toFixed(1));
+    if(C.fe>0){var hw=C.fe*Math.PI,a0=Math.PI-hw,a1=Math.PI+hw,p0=[150+r*Math.cos(a0),125-r*Math.sin(a0)],p1=[150+r*Math.cos(a1),125-r*Math.sin(a1)];
+      ec.setAttribute('d','M'+p0[0].toFixed(1)+' '+p0[1].toFixed(1)+'A'+r.toFixed(1)+' '+r.toFixed(1)+' 0 0 0 '+p1[0].toFixed(1)+' '+p1[1].toFixed(1))}
+    else ec.setAttribute('d','');
+    $('ls-shadow').setAttribute('opacity',C.fe>0?.45:.15);
+    anim.dist=0;anim.eng=0;anim.phi=0;draw();
+  }
+  function draw(){
+    var r=78+(st.alt-300)/500*32,ph=anim.phi,x=150+r*Math.cos(ph),y=125-r*Math.sin(ph);
+    var dd=Math.abs(((ph-Math.PI)%(2*Math.PI)+3*Math.PI)%(2*Math.PI)-Math.PI),inSh=C.fe>0&&dd<C.fe*Math.PI;
+    var sat=$('ls-sat');if(!sat)return;
+    sat.setAttribute('transform','translate('+x.toFixed(1)+' '+y.toFixed(1)+')');
+    sat.firstChild.setAttribute('fill',inSh?'#5b6b82':'#e9eef6');
+    $('ls-dot').classList.toggle('on',!inSh);
+    $('ls-txt').innerHTML=inSh?L('في ظل الأرض: الأجهزة تعمل على البطارية ('+u(f1(C.load,1),'W')+')','In Earth’s shadow: equipment runs on the battery ('+u(f1(C.load,1),'W')+')')
+      :L('تحت الشمس: الألواح تولّد '+u(f1(C.Ps,1),'W')+' وتشحن البطارية','In sunlight: panels generate '+u(f1(C.Ps,1),'W')+' and charge the battery');
+    $('ls-odo').innerHTML=L('في هذه الدورة: قطع '+f1(anim.dist,0)+' كم، وجمع '+u(f1(anim.eng,2),'Wh')+'','This orbit so far: '+f1(anim.dist,0)+' km travelled, '+u(f1(anim.eng,2),'Wh')+' collected');
+    return inSh;
+  }
+  root.addEventListener('click',function(ev){
+    var b=ev.target.closest('.pills button');if(!b)return;
+    var name=b.parentNode.dataset.name,v=b.dataset.v;st[name]=name==='att'?v:+v;
+    Array.prototype.forEach.call(b.parentNode.children,function(x){x.setAttribute('aria-pressed',String(x===b))});
+    update();
+  });
+  root.addEventListener('input',function(ev){
+    var t=ev.target;
+    if(t===R.eff)st.eff=+t.value;else if(t===R.alt)st.alt=+t.value;else if(t===R.beta)st.beta=+t.value;else return;
+    update();
+  });
+  root.addEventListener('change',function(ev){var t=ev.target;if(t.type==='checkbox'){st.on[t.dataset.k]=t.checked?1:0;update()}});
+  render();onLang(render);
+  if(reduce)return;
+  register({el:root,visible:true,dirty:true,update:function(dt){
+    var step=dt*2*Math.PI/12,sh=draw();
+    anim.phi+=step;anim.dist+=C.d*step/(2*Math.PI);
+    if(!sh)anim.eng+=C.Ps*(C.T*step/(2*Math.PI))/3600;
+    if(anim.phi>=2*Math.PI){anim.phi-=2*Math.PI;anim.dist=0;anim.eng=0}
+  }});
+}
+
+/* ---------- Arab CubeSats timeline ---------- */
+function initTimeline(){
+  var TL=[
+    {d:['نوفمبر 2018','Nov 2018'],n:'MYSat-1',x:['الإطلاق ضمن المهمة NG-10','Launch on the NG-10 mission']},
+    {d:['3 ديسمبر 2018','3 Dec 2018'],n:'JY1-SAT',x:['الإطلاق على Falcon 9 (مهمة SSO-A)','Launch on Falcon 9 (SSO-A)']},
+    {d:['فبراير 2019','Feb 2019'],n:'MYSat-1',x:['الانفصال في المدار','Deployed into orbit'],dep:1},
+    {d:['20 فبراير 2021','20 Feb 2021'],n:'DhabiSat',x:['الإطلاق إلى المحطة الفضائية الدولية على Cygnus','Launch to the ISS aboard Cygnus']},
+    {d:['22 مارس 2021','22 Mar 2021'],n:'Challenge One',x:['الإطلاق على Soyuz-2 من Baikonur','Launch on Soyuz-2 from Baikonur']},
+    {d:['يوليو 2021','Jul 2021'],n:'DhabiSat',x:['الانفصال في المدار','Deployed into orbit'],dep:1}
+  ];
+  var ol=$('tline');
+  function render(){
+    ol.innerHTML=TL.map(function(e){return'<li'+(e.dep?' class="dep"':'')+'><span class="d">'+L(e.d[0],e.d[1])+'</span><bdi class="n">'+e.n+'</bdi><span class="x">'+L(e.x[0],e.x[1])+'</span></li>'}).join('');
+    var key=$('tl-key');if(!key){key=document.createElement('p');key.id='tl-key';key.className='tl-key';ol.after(key)}
+    key.innerHTML='<span><i></i>'+L('إطلاق','Launch')+'</span><span><i class="f"></i>'+L('انفصال في المدار','Deployed into orbit')+'</span>';
+  }
+  render();onLang(render);
+}
+
 /* ---------- quiz ---------- */
 function initQuiz(){
   var Q=[
-    {q:'ما أبعاد الوحدة الأساسية <bdi class="en">1U</bdi>؟',o:['10 × 10 × 10 سم','30 × 30 × 30 سم','1 × 1 × 1 م','10 × 20 × 30 سم'],a:0,w:'الوحدة <bdi class="en">1U</bdi> مكعب طول ضلعه 10 سم، والأحجام الأكبر مضاعفات لها.'},
-    {q:'في أي عام اقتُرح معيار الكيوبسات؟',o:['1987','2008','1999','2018'],a:2,w:'اقترحه عام 1999 البروفيسور <bdi class="en">Jordi Puig-Suari</bdi> والبروفيسور <bdi class="en">Bob Twiggs</bdi>.'},
-    {q:'أي نظام فرعي يستخدم العجلات التفاعلية والملفات المغناطيسية؟',o:['EPS','ADCS','COMMS','OBC'],a:1,w:'نظام التحكم بالاتجاه <bdi class="en">(ADCS)</bdi> يحدّد اتجاه القمر ويوجّهه.'},
-    {q:'ما اسم أول قمر صناعي أردني؟',o:['MYSat-1','DhabiSat','Challenge One','JY1-SAT'],a:3,w:'<bdi class="en">JY1-SAT</bdi> كيوبسات <bdi class="en">1U</bdi> أُطلق في 3 ديسمبر 2018.'},
-    {q:'ما بروتوكول الاتصال الذي يعتمده القمر التونسي <bdi class="en">Challenge One</bdi>؟',o:['LoRaWAN','Wi-Fi','Bluetooth','5G'],a:0,w:'<bdi class="en">Challenge One</bdi> قمر لإنترنت الأشياء يعتمد بروتوكول <bdi class="en">LoRaWAN</bdi>.'},
-    {q:'كيف ينتهي عمر قمر في المدار الأرضي المنخفض عادةً؟',o:['يبقى في مداره إلى الأبد','يعود إلى الغلاف الجوي ويحترق','يهبط على الأرض بمظلة','ينتقل إلى مدار القمر'],a:1,w:'يفقد القمر ارتفاعه تدريجيًا بفعل الاحتكاك مع الغلاف الجوي الرقيق، ثم يحترق عند عودته.'}
+    {q:['ما أبعاد الوحدة الأساسية <bdi class="en">1U</bdi>؟','What are the dimensions of the basic 1U unit?'],o:[['10 × 10 × 10 سم','30 × 30 × 30 سم','1 × 1 × 1 م','10 × 20 × 30 سم'],['10 × 10 × 10 cm','30 × 30 × 30 cm','1 × 1 × 1 m','10 × 20 × 30 cm']],a:0,w:['الوحدة <bdi class="en">1U</bdi> مكعب طول ضلعه 10 سم، والأحجام الأكبر مضاعفات لها.','A 1U is a 10 cm cube, and larger sizes are multiples of it.']},
+    {q:['في أي عام اقتُرح معيار الكيوبسات؟','In which year was the CubeSat standard proposed?'],o:[['1987','2008','1999','2018'],['1987','2008','1999','2018']],a:2,w:['اقترحه عام 1999 البروفيسور <bdi class="en">Jordi Puig-Suari</bdi> والبروفيسور <bdi class="en">Bob Twiggs</bdi>.','It was proposed in 1999 by Prof. Jordi Puig-Suari and Prof. Bob Twiggs.']},
+    {q:['أي نظام فرعي يستخدم العجلات التفاعلية والملفات المغناطيسية؟','Which subsystem uses reaction wheels and magnetorquers?'],o:[['EPS','ADCS','COMMS','OBC'],['EPS','ADCS','COMMS','OBC']],a:1,w:['نظام التحكم بالاتجاه <bdi class="en">(ADCS)</bdi> يحدّد اتجاه القمر ويوجّهه.','The attitude determination and control system (ADCS) finds and controls where the satellite points.']},
+    {q:['ما اسم أول قمر صناعي أردني؟','What was Jordan’s first satellite?'],o:[['MYSat-1','DhabiSat','Challenge One','JY1-SAT'],['MYSat-1','DhabiSat','Challenge One','JY1-SAT']],a:3,w:['<bdi class="en">JY1-SAT</bdi> كيوبسات <bdi class="en">1U</bdi> أُطلق في 3 ديسمبر 2018.','JY1-SAT, a 1U CubeSat launched on 3 December 2018.']},
+    {q:['في المدار المنخفض، أين يحصل القمر على الكهرباء عندما يكون في ظل الأرض؟','In low Earth orbit, where does the satellite get electricity while in Earth’s shadow?'],o:[['من الألواح الشمسية مباشرة','من البطارية التي شُحنت في ضوء الشمس','من المحرك','لا يحتاج كهرباء في الظل'],['Directly from the solar panels','From the battery charged in sunlight','From the engine','It needs no power in shadow']],a:1,w:['في الظل لا يصل ضوء الشمس إلى الألواح، فتعمل الأجهزة على البطارية. جرّب ذلك في «مختبر التصميم».','In shadow no sunlight reaches the panels, so the equipment runs on the battery. Try it in the Design lab.']},
+    {q:['كيف ينتهي عمر قمر في المدار الأرضي المنخفض عادةً؟','How does a satellite in low Earth orbit usually end its life?'],o:[['يبقى في مداره إلى الأبد','يعود إلى الغلاف الجوي ويحترق','يهبط على الأرض بمظلة','ينتقل إلى مدار القمر'],['It stays in orbit forever','It re-enters the atmosphere and burns up','It lands with a parachute','It moves to lunar orbit']],a:1,w:['يفقد القمر ارتفاعه تدريجيًا بفعل الاحتكاك مع الغلاف الجوي الرقيق، ثم يحترق عند عودته.','Drag from the thin atmosphere slowly lowers it until it re-enters and burns up.']}
   ];
   var box=$('quiz-box'),score=0,done=0;
   function render(){
   score=0;done=0;var html='';
   Q.forEach(function(it,i){
-    html+='<fieldset class="q" data-i="'+i+'"><legend><span class="mono">'+(i+1)+'/'+Q.length+'</span>'+it.q+'</legend><div class="opts">'+
-      it.o.map(function(o,j){return'<button type="button" data-j="'+j+'">'+(/^[A-Za-z0-9 .\-]+$/.test(o)?'<bdi class="en">'+o+'</bdi>':o)+'</button>'}).join('')+
+    html+='<fieldset class="q" data-i="'+i+'"><legend><span class="mono">'+(i+1)+'/'+Q.length+'</span>'+L(it.q[0],it.q[1])+'</legend><div class="opts">'+
+      L(it.o[0],it.o[1]).map(function(o,j){return'<button type="button" data-j="'+j+'">'+(/^[A-Za-z0-9 .\-]+$/.test(o)?'<bdi class="en">'+o+'</bdi>':o)+'</button>'}).join('')+
       '</div><p class="why" hidden></p></fieldset>';
   });
-  html+='<div class="score" aria-live="polite"><span id="q-score">أجب عن الأسئلة لترى نتيجتك.</span><button class="btn" type="button" id="q-reset">إعادة الاختبار</button></div>';
+  html+='<div class="score" aria-live="polite"><span id="q-score">'+L('أجب عن الأسئلة لترى نتيجتك.','Answer the questions to see your score.')+'</span><button class="btn" type="button" id="q-reset">'+L('إعادة الاختبار','Restart quiz')+'</button></div>';
   box.innerHTML=html;
   }
-  render();
+  render();onLang(render);
   box.addEventListener('click',function(ev){
     if(ev.target.closest('#q-reset')){render();$('quiz').scrollIntoView({behavior:reduce?'auto':'smooth'});return}
     var b=ev.target.closest('.opts button');if(!b||b.disabled)return;
@@ -1294,15 +1639,16 @@ function initQuiz(){
     Array.prototype.forEach.call(btns,function(x){x.disabled=true;if(+x.dataset.j===it.a)x.classList.add('ok')});
     if(j!==it.a)b.classList.add('no');else score++;
     done++;
-    var why=fs.querySelector('.why');why.innerHTML=(j===it.a?'<b style="color:#8ff0bd">إجابة صحيحة.</b> ':'<b style="color:#ffb0b0">الإجابة الصحيحة مظلّلة.</b> ')+it.w;why.hidden=false;
-    $('q-score').innerHTML=done<Q.length?'النتيجة حتى الآن: <b>'+score+' / '+done+'</b>':'النتيجة النهائية: <b>'+score+' / '+Q.length+'</b>'+(score===Q.length?' — ممتاز!':'');
+    var why=fs.querySelector('.why');why.innerHTML=(j===it.a?'<b style="color:#8ff0bd">'+L('إجابة صحيحة.','Correct.')+'</b> ':'<b style="color:#ffb0b0">'+L('الإجابة الصحيحة مظلّلة.','The correct answer is highlighted.')+'</b> ')+L(it.w[0],it.w[1]);why.hidden=false;
+    $('q-score').innerHTML=done<Q.length?L('النتيجة حتى الآن: ','Score so far: ')+'<b>'+score+' / '+done+'</b>':L('النتيجة النهائية: ','Final score: ')+'<b>'+score+' / '+Q.length+'</b>'+(score===Q.length?L(' — ممتاز!',' — excellent!'):'');
   });
 }
 
 /* ---------- header: progress, active section, mobile menu ---------- */
 function initHeader(){
   var bar=$('progress'),btn=$('menu-btn'),mn=$('mnav');
-  var links=document.querySelectorAll('.top nav a, .mnav a'),ticking=false;
+  $('lang-btn').addEventListener('click',function(){setLang(LANG==='en'?'ar':'en')});
+  var links=document.querySelectorAll('.top .dnav a, .mnav a'),ticking=false;
   function onScroll(){
     ticking=false;
     var h=document.documentElement,max=h.scrollHeight-h.clientHeight;
@@ -1322,7 +1668,8 @@ function initHeader(){
   }
 }
 
-initHeader();initHero();initModel();initSizes();initJourney();initQuiz();
+initHeader();initHero();initModel();initSizes();initLab();initJourney();initTimeline();initQuiz();
+if(LANG==='en')setLang('en');
 })();
 </script>
 </body>
